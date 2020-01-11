@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="vsfridge-emu" />
+        <module name="vsfridge-assembly" />
+        <module name="vsfridge-core" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="vsfridge" target="1.5" />
+      <module name="vsfridge-assembly" target="11" />
+      <module name="vsfridge-core" target="11" />
+      <module name="vsfridge-emu" target="11" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

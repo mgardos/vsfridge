@@ -1,0 +1,4 @@
+# Project exclude paths
+/vsfridge-assembly/target/
+/vsfridge-core/target/
+/vsfridge-emu/target/

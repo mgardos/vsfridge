@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/vsfridge.iml" filepath="$PROJECT_DIR$/vsfridge.iml" />
+      <module fileurl="file://$PROJECT_DIR$/vsfridge-assembly/vsfridge-assembly.iml" filepath="$PROJECT_DIR$/vsfridge-assembly/vsfridge-assembly.iml" />
+      <module fileurl="file://$PROJECT_DIR$/vsfridge-core/vsfridge-core.iml" filepath="$PROJECT_DIR$/vsfridge-core/vsfridge-core.iml" />
+      <module fileurl="file://$PROJECT_DIR$/vsfridge-emu/vsfridge-emu.iml" filepath="$PROJECT_DIR$/vsfridge-emu/vsfridge-emu.iml" />
+    </modules>
+  </component>
+</project>
