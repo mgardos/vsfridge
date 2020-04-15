@@ -1,5 +1,6 @@
 package ar.net.mgardos.vsfridge.core.component.base;
 
+import ar.net.mgardos.vsfridge.core.component.FridgeDoor;
 import ar.net.mgardos.vsfridge.core.component.FridgeDoors;
 import ar.net.mgardos.vsfridge.core.component.FridgeShelves;
 import ar.net.mgardos.vsfridge.core.component.SmartFridgeBuildException;
@@ -12,11 +13,6 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class BaseSmartFridgeTest {
 	private BaseSmartFridge smartFridge;
-
-	@BeforeEach
-	public void setUp() {
-		//smartFridge = new BaseSmartFridge();
-	}
 
 	@Test
 	public void testCreateFridgeUnpluggedAndTurnedOff() throws Exception {
@@ -272,21 +268,63 @@ class BaseSmartFridgeTest {
 	}
 
 	@Test
-	public void testNewFridgeHasNoSensors() {
-		assertThat(smartFridge.hasSensors()).isFalse();
+	public void testNewFridgeInformClosedDoors() throws Exception {
+		smartFridge = new BaseSmartFridge();
+
+		assertThat(smartFridge.isOpened()).isFalse();
 	}
 
 	@Test
-	public void testFridgeAssembledWithOneSensorWhenNotReadyForSensors() {
-		assertThatThrownBy(() -> smartFridge.assembleSensor(new BaseSensor()))
-				.isInstanceOf(IllegalStateException.class)
-				.hasMessage(BaseSmartFridge.NOT_READY_FOR_SENSORS);
+	public void testFridgeInformClosedDoorsBeforeTurnOn() throws Exception {
+		smartFridge = new BaseSmartFridge();
+		smartFridge.plugIn();
+
+		assertThat(smartFridge.isOpened()).isFalse();
 	}
 
 	@Test
-	public void testFridgeAssembledWithInvalidSensors() {
-		assertThatThrownBy(() -> smartFridge.assembleSensor(null))
-				.isInstanceOf(IllegalArgumentException.class)
-				.hasMessage(BaseSmartFridge.INVALID_SENSOR);
+	public void testFridgeInformClosedDoorsAfterTurnOn() throws Exception {
+		smartFridge = new BaseSmartFridge();
+		smartFridge.plugIn();
+		smartFridge.turnOn();
+
+		assertThat(smartFridge.isOpened()).isFalse();
+	}
+
+	@Test
+	public void testFridgeInformClosedDoors() throws Exception {
+		FridgeDoor door1 = new BaseFridgeDoor();
+		FridgeDoor door2 = new BaseFridgeDoor();
+
+		FridgeDoors doors = new BaseFridgeDoors(1, 0, 1);
+		smartFridge = new BaseSmartFridge(doors);
+		smartFridge.assembleDoor(door1);
+		smartFridge.assembleDoor(door2);
+
+		smartFridge.plugIn();
+		smartFridge.turnOn();
+
+		assertThat(smartFridge.isOpened()).isFalse();
+		assertThat(door1.isOpened()).isFalse();
+		assertThat(door2.isOpened()).isFalse();
+	}
+
+	@Test
+	public void testFridgeInformOpenedDoorsAfterTurnOn() throws Exception {
+		FridgeDoor door1 = new BaseFridgeDoor();
+		door1.open();
+		FridgeDoor door2 = new BaseFridgeDoor();
+
+		FridgeDoors doors = new BaseFridgeDoors(1, 0, 1);
+		smartFridge = new BaseSmartFridge(doors);
+		smartFridge.assembleDoor(door1);
+		smartFridge.assembleDoor(door2);
+
+		smartFridge.plugIn();
+		smartFridge.turnOn();
+
+		assertThat(smartFridge.isOpened()).isTrue();
+		assertThat(door1.isOpened()).isTrue();
+		assertThat(door2.isOpened()).isFalse();
 	}
 }

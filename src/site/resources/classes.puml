@@ -1,0 +1,44 @@
+@startuml
+
+interface FridgeDoor
+
+interface SmartFridge {
+    turnOn() : void
+    open() : void
+    put(Product product) : void
+    take(Product product) : void
+    close() : void
+    turnOn() : void
+}
+
+class VirtualSmartFridge {
+}
+
+SmartFridge <|.. VirtualSmartFridge
+
+interface FridgeDoor {
+    isOpened : Boolean
+    open() : void
+    close() : void
+    timeElapsed() : Long
+    timesOpened() : Integer
+}
+class BaseFridgeDoor {
+}
+FridgeDoor <|.. BaseFridgeDoor
+interface FridgeDoors
+class BaseFridgeDoors {
+}
+
+class Product {
+Object[] elementData
+size()
+}
+
+enum TimeUnit {
+DAYS
+HOURS
+MINUTES
+}
+
+@enduml

@@ -1,6 +1,6 @@
 package ar.net.mgardos.vsfridge.core.component;
 
-public interface FridgeDoors {
+public interface FridgeDoors extends Iterable<FridgeDoor> {
 	String DOORS_NOT_SUPPORTED = "Doors are not supported by this fridge model.";
 
 	default void addDoor(FridgeDoor door) {

@@ -1,0 +1,18 @@
+@startuml
+left to right direction
+:User:
+:Tiempo:
+:Proveedor:
+rectangle HeladeraVirtual {
+    User -- (Abrir)
+    User -- (Cerrar)
+    User -- (Encender)
+    User <- (Notificar escasez\nde alimentos)
+    User -- (Agregar\nproveedor)
+    User <- (Notificar alimentos\nen vencimiento)
+    (Encender) .> (Cerrar) : <<include>>
+    (Monitorear vencimiento\nde alimentos) <- Tiempo
+    (Notificar alimentos\nen vencimiento) -|> (Monitorear vencimiento\nde alimentos) : <<extend>>
+    (Comprar\nalimentos) -- Proveedor
+}
+@enduml

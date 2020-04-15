@@ -1,16 +1,20 @@
 package ar.net.mgardos.vsfridge.core.component;
 
-import ar.net.mgardos.vsfridge.core.Product;
-
-public interface Sensor {
+public interface Sensor<T> {
 	/**
-	 * Observes a fridge component to capture the events it produces.
+	 * Observes a component or a property to capture the events it produces or changes on its state.
 	 *
-	 * @param product A fridge component capable of producing events
+	 * @param object the type of the component or property observed.
 	 */
-	default void sense(Product product) {}
+	default void sense(T object) {}
 
+	/**
+	 * Enables the sensor so it starts observing.
+	 */
 	default void enable() {}
 
+	/**
+	 * Pause or ends the observation the sensor is performing.
+	 */
 	default void disable() {}
 }

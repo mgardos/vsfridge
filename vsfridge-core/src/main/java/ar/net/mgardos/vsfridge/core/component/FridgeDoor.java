@@ -5,8 +5,13 @@ public interface FridgeDoor {
 		return false;
 	}
 
-	default void open() {}
-	default void close() {}
+	default void open() {
+		throw new RuntimeException("The door is not ready to be opened.");
+	}
+
+	default void close() {
+		throw new RuntimeException("The door is not ready to be closed.");
+	}
 
 	default Long timeElapsed() {
 		return 0L;

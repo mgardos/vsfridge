@@ -3,6 +3,7 @@ package ar.net.mgardos.vsfridge.core.component.base;
 import ar.net.mgardos.vsfridge.core.component.*;
 
 import java.util.Optional;
+import java.util.stream.StreamSupport;
 
 /**
  * Implementation of a Smart Fridge with basic features that enables, by extension, the creation of more complex or
@@ -12,7 +13,6 @@ public class BaseSmartFridge implements SmartFridge {
 	static final String INVALID_DOORS_ARRANGE = "The provided doors arrangement for the fridge is invalid.";
 	static final String INVALID_DOOR = "The provided door for the fridge is invalid.";
 	static final String ASSEMBLE_DOOR_NOT_ALLOWED = "A door cannot be added when fridge turned on.";
-	//static final String NOT_READY_FOR_SHELVES = "The fridge is not initialized with available slots for shelves.";
 	static final String INVALID_SHELVES_ARRANGE = "The provided shelves arrangement for the fridge is invalid.";
 	static final String INVALID_SHELF = "The provided shelf for the fridge is invalid.";
 	static final String NOT_READY_FOR_SENSORS = "The fridge is not initialized to hold any sensors.";
@@ -22,7 +22,6 @@ public class BaseSmartFridge implements SmartFridge {
 	private Boolean isTurnOn;
 	private FridgeDoors doors;
 	private FridgeShelves shelves;
-	private Sensors sensors;
 
 	/**
 	 * Creates a fully functional smart fridge with one center door and two shelves.
@@ -43,7 +42,7 @@ public class BaseSmartFridge implements SmartFridge {
 	/**
 	 * Creates a smart fridge that accepts doors as per the provided arrangement.
 	 *
-	 * @param doors the arrangement of doors that defines the number of doors and their layout.
+	 * @param doors the arrangement of doors that defines the doors of the fridge with their corresponding layout.
 	 * @throws SmartFridgeBuildException
 	 */
 	public BaseSmartFridge(FridgeDoors doors) throws SmartFridgeBuildException {
@@ -62,7 +61,7 @@ public class BaseSmartFridge implements SmartFridge {
 	/**
 	 * Creates a smart fridge that accepts shelves as per the provided arrangement.
 	 *
-	 * @param shelves the arrangement of shelves that defines the number of shelves.
+	 * @param shelves the arrangement of shelves that defines the shelves of the fridge.
 	 * @throws SmartFridgeBuildException
 	 */
 	public BaseSmartFridge(FridgeShelves shelves) throws SmartFridgeBuildException {
@@ -78,9 +77,10 @@ public class BaseSmartFridge implements SmartFridge {
 	}
 
 	/**
+	 * Creates a smart fridge that accepts doors and shelves as per the provided arrangements.
 	 *
-	 * @param doors
-	 * @param shelves
+	 * @param doors the arrangement of doors that defines the doors of the fridge with their corresponding layout.
+	 * @param shelves the arrangement of shelves that defines the shelves of the fridge.
 	 * @throws SmartFridgeBuildException
 	 */
 	public BaseSmartFridge(FridgeDoors doors, FridgeShelves shelves) throws SmartFridgeBuildException {
@@ -128,7 +128,15 @@ public class BaseSmartFridge implements SmartFridge {
 		isTurnOn = false;
 	}
 
-	public Boolean hasDoors() {
+    @Override
+    public Boolean isOpened() {
+		Boolean hasOpenedDoors = StreamSupport.stream(doors.spliterator(), false)
+											  .filter(doors -> doors.isOpened())
+											  .count() > 0;
+        return isTurnedOn() && hasDoors() && hasOpenedDoors;
+    }
+
+    public Boolean hasDoors() {
 		return doors.hasDoors();
 	}
 
@@ -159,18 +167,5 @@ public class BaseSmartFridge implements SmartFridge {
 		} catch (Exception e) {
 			throw new SmartFridgeBuildException(e);
 		}
-	}
-
-	public Boolean hasSensors() {
-		return false;
-	}
-
-	public void assembleSensor(Sensor fridgeSensor) {
-		Sensor sensor = Optional
-				.ofNullable(fridgeSensor)
-				.orElseThrow(() -> new IllegalArgumentException(INVALID_SENSOR));
-		Sensors fridgeSensors = Optional
-				.ofNullable(sensors)
-				.orElseThrow(() -> new IllegalStateException(NOT_READY_FOR_SENSORS));
 	}
 }

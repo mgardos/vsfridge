@@ -27,7 +27,7 @@ public class BaseFridgeDoor implements FridgeDoor {
 	@Override
 	public void open() {
 		Optional.of(isOpened)
-				.filter(opened -> opened == false)
+				.filter(opened -> opened.equals(false))
 				.orElseThrow(() -> new IllegalStateException(ALREADY_OPENED));
 		isOpened = true;
 		timesOpened++;
@@ -37,7 +37,7 @@ public class BaseFridgeDoor implements FridgeDoor {
 	@Override
 	public void close() {
 		Optional.of(isOpened)
-		        .filter(opened -> opened == true)
+		        .filter(opened -> opened.equals(true))
 		        .orElseThrow(() -> new IllegalStateException(ALREADY_CLOSED));
 		timeElapsed = timeElapsed();
 		isOpened = false;
@@ -46,7 +46,7 @@ public class BaseFridgeDoor implements FridgeDoor {
 	@Override
 	public Long timeElapsed() {
 		return Optional.of(isOpened)
-		               .filter(opened -> opened == true)
+		               .filter(opened -> opened.equals(true))
 		               .map(opened -> Instant.now().getEpochSecond() - timeElapsed)
 		               .orElse(timeElapsed);
 	}

@@ -11,6 +11,15 @@ public interface SmartFridge {
         return false;
     }
 
+    /**
+     * Informs if any of the fridge doors is opened.
+     *
+     * @return true if any door is opened, false otherwise.
+     */
+    default Boolean isOpened() {
+        return false;
+    }
+
     default void plugIn() {
         throw new RuntimeException();
     }
@@ -23,7 +32,14 @@ public interface SmartFridge {
         throw new RuntimeException();
     }
 
-    default void open() {
+    /**
+     * Opens the door identified by an id. This id could be anything, like a name or code, a number or the very same
+     * door object. It is up to the implementation how to handle this functionality.
+     *
+     * @param id the unique value that identifies the door.
+     * @param <T> the type of the door identifier.
+     */
+    default <T> void open(T id) {
         throw new RuntimeException();
     }
 

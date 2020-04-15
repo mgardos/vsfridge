@@ -6,7 +6,7 @@ Feature: Open Fridge Door CU_AR
     And the fridge door is closed
 
   Scenario: Normal flow CU_AR_NF
-    When the user opens the fridge door
+    When the user opens a fridge door
     Then the fridge increments the counter for door opened
     And the fridge starts the timer for door opened
     When the user closes the fridge door

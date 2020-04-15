@@ -18,7 +18,7 @@
     <javafx-plugin.version>0.0.3</javafx-plugin.version>
     <dl4j.version>1.0.0-beta5</dl4j.version>
     <log4j.version>2.11.2</log4j.version>
-    <slf4j.version>1.8.0-beta4</slf4j.version>
+    <slf4j.version>2.0.0-alpha1</slf4j.version>
     <lombok.version>1.18.8</lombok.version>
     <junit-jupiter.version>5.4.2</junit-jupiter.version>
     <junit-platform.version>1.4.2</junit-platform.version>
@@ -78,21 +78,27 @@
         <artifactId>deeplearning4j-modelimport</artifactId>
         <version>${dl4j.version}</version>
       </dependency>
-      <dependency>
+      <!-- dependency>
         <groupId>org.apache.logging.log4j</groupId>
         <artifactId>log4j-core</artifactId>
         <version>${log4j.version}</version>
-      </dependency>
-      <dependency>
+      </dependency -->
+      <!-- dependency>
         <groupId>org.apache.logging.log4j</groupId>
         <artifactId>log4j-api</artifactId>
         <version>${log4j.version}</version>
-      </dependency>
-      <dependency>
+      </dependency -->
+      <!-- dependency>
         <groupId>org.slf4j</groupId>
         <artifactId>slf4j-api</artifactId>
         <version>${slf4j.version}</version>
-      </dependency>
+      </dependency -->
+      <!-- dependency>
+        <groupId>org.slf4j</groupId>
+        <artifactId>slf4j-log4j12</artifactId>
+        <version>${slf4j.version}</version>
+        <scope>test</scope>
+      </dependency -->
       <dependency>
         <groupId>org.apache.logging.log4j</groupId>
         <artifactId>log4j-slf4j-impl</artifactId>

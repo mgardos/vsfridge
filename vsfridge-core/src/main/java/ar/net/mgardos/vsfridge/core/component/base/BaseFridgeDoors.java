@@ -3,11 +3,9 @@ package ar.net.mgardos.vsfridge.core.component.base;
 import ar.net.mgardos.vsfridge.core.component.FridgeDoor;
 import ar.net.mgardos.vsfridge.core.component.FridgeDoors;
 
-import java.util.Arrays;
-import java.util.Objects;
-import java.util.Optional;
-import java.util.stream.IntStream;
-import java.util.stream.Stream;
+import java.util.*;
+import java.util.function.Consumer;
+import java.util.stream.*;
 
 public class BaseFridgeDoors implements FridgeDoors {
 	private FridgeDoor[] doorsLeft;
@@ -87,5 +85,29 @@ public class BaseFridgeDoors implements FridgeDoors {
 		                        .count();
 
 		return quantity.intValue();
+	}
+
+	@Override
+	public Iterator<FridgeDoor> iterator() {
+		return new BaseFridgeDoorsIterator(buildDoorsArray());
+	}
+
+	@Override
+	public void forEach(Consumer<? super FridgeDoor> action) {
+
+	}
+
+	@Override
+	public Spliterator<FridgeDoor> spliterator() {
+		return new BaseFridgeDoorsSpliterator(buildDoorsArray());
+	}
+
+	private FridgeDoor[] buildDoorsArray() {
+		Stream<FridgeDoor> fridgeDoorStream = Stream.concat(Arrays.stream(doorsLeft), Arrays.stream(doorsCenter));
+		fridgeDoorStream = Stream.concat(fridgeDoorStream, Arrays.stream(doorsRight));
+		fridgeDoorStream = fridgeDoorStream.filter(Objects::nonNull);
+		List<FridgeDoor> doors = fridgeDoorStream.collect(Collectors.toList());
+
+		return doors.toArray(new FridgeDoor[doors.size()]);
 	}
 }
