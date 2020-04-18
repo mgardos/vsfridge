@@ -29,6 +29,12 @@
 
 ## Descripcion de la propuesta
 
+Algunas de las grandes compañías de electrónica y electrodomésticos han comenzado a dar los primeros pequeños pasos en la dirección de lo que podría llegar a considerarse la heladera inteligente. En algunos países desarrollados e industrializados se comercializan en la actualidad  heladeras publicitadas como inteligentes. Aquello que se considera inteligente puede variar drásticamente dependiendo de diversos factores, como el sujeto, el objeto, el contexto, la escala, las expectativas, en otros. La heladera que este trabajo práctico considera inteligente se encuentra descrita mediante los usos que se espera hacer de ella, enunciados en la sección Usos de la heladera inteligente.
+
+El diagrama esquematico presenta el entorno en el cual opera la heladera inteligente. Los actores principales que se observan en el diagrama son la heladera inteligente y el consumidor, que hace uso de ella. Otros actores o participantes, que se consideran secundarios, son otras heladeras inteligentes vecinas o próximas, proveedores de alimentos o productos alimenticios, tales como supermercados, tiendas en línea o fuera de línea, y despachantes de productos, ya sea propios de los proveedores mencionados o independientes.
+
+(Diagrama esquematico pendiente)
+
 ## Caracteristicas de heladeras inteligentes
 
 ### Caracteristicas comunes de heladeras inteligentes en el mercado
@@ -297,6 +303,19 @@
 |:------:|-------------------------------------|----------------------------------------|
 | 1      |                                     |                                        |
 
+#### Flujo alternativo CU_CA_ALT1: Sin proveedor para realizar la compra de alimentos
+
+| Paso   | Estimulo del actor                  | Respuesta del sistema                  |
+|:------:|-------------------------------------|----------------------------------------|
+| 4.1    |                                     |                                        |
+| 4.2    |                                     |                                        |
+
+#### Flujo alternativo CU_CA_ALT2: Medio de comunicacion con proveedor caido
+
+| Paso   | Estimulo del actor                  | Respuesta del sistema                  |
+|:------:|-------------------------------------|----------------------------------------|
+| 4.1    |                                     |                                        |
+
 ### Caso de uso Monitorear vencimiento de alimentos CU_MV
 
 | Nombre del caso de uso     |                                        |
@@ -312,6 +331,25 @@
 | Paso   | Estimulo del actor                  | Respuesta del sistema                  |
 |:------:|-------------------------------------|----------------------------------------|
 | 1      |                                     |                                        |
+
+#### Flujo alternativo CU_MV_ALT1: Puerta abierta detectada durante monitoreo
+
+| Paso   | Estimulo del actor                  | Respuesta del sistema                  |
+|:------:|-------------------------------------|----------------------------------------|
+| 1.1    |                                     |                                        |
+| 1.2    |                                     |                                        |
+
+#### Flujo alternativo CU_MV_ALT2: Monitoreo pendiente por interrupcion
+
+| Paso   | Estimulo del actor                  | Respuesta del sistema                  |
+|:------:|-------------------------------------|----------------------------------------|
+| 1.1    |                                     |                                        |
+
+#### Flujo alternativo CU_MV_ALT3: Notificacion del resultado del monitoreo
+
+| Paso   | Estimulo del actor                  | Respuesta del sistema                  |
+|:------:|-------------------------------------|----------------------------------------|
+| 1.1    |                                     |                                        |
 
 ### Caso de uso Notificar alimentos en vencimiento CU_NV
 
@@ -329,6 +367,12 @@
 |:------:|-------------------------------------|----------------------------------------|
 | 1      |                                     |                                        |
 
+#### Flujo alternativo CU_NV_ALT1: ...
+
+| Paso   | Estimulo del actor                  | Respuesta del sistema                  |
+|:------:|-------------------------------------|----------------------------------------|
+| 1.1    |                                     |                                        |
+
 ### Caso de uso Monitorear escasez de alimentos CU_ME
 
 | Nombre del caso de uso     |                                        |
@@ -345,6 +389,19 @@
 |:------:|-------------------------------------|----------------------------------------|
 | 1      |                                     |                                        |
 
+#### Flujo alternativo CU_ME_ALT1: Puerta abierta detectada durante monitoreo
+
+| Paso   | Estimulo del actor                  | Respuesta del sistema                  |
+|:------:|-------------------------------------|----------------------------------------|
+| 1.1    |                                     |                                        |
+| 1.2    |                                     |                                        |
+
+#### Flujo alternativo CU_ME_ALT2: Monitoreo pendiente por interrupcion
+
+| Paso   | Estimulo del actor                  | Respuesta del sistema                  |
+|:------:|-------------------------------------|----------------------------------------|
+| 1.1    |                                     |                                        |
+
 ### Caso de uso Notificar escasez de alimentos CU_NE
 
 | Nombre del caso de uso     |                                        |
@@ -360,6 +417,22 @@
 | Paso   | Estimulo del actor                  | Respuesta del sistema                  |
 |:------:|-------------------------------------|----------------------------------------|
 | 1      |                                     |                                        |
+
+#### Flujo alternativo CU_NE_ALT1: Postergar compra de alimentos escasos
+
+| Paso   | Estimulo del actor                  | Respuesta del sistema                  |
+|:------:|-------------------------------------|----------------------------------------|
+| 2.1    |                                     |                                        |
+| 2.2    |                                     |                                        |
+| 2.3    |                                     |                                        |
+
+#### Flujo alternativo CU_NE_ALT2: Aprobacion de compra de alimentos escasos
+
+| Paso   | Estimulo del actor                  | Respuesta del sistema                  |
+|:------:|-------------------------------------|----------------------------------------|
+| 1.1    |                                     |                                        |
+| 1.2    |                                     |                                        |
+| 1.3    |                                     |                                        |
 
 ## Mockups
 
