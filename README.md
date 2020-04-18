@@ -1,6 +1,5 @@
 # Heladera Inteligente Virtual
 
-
 ## Contenidos
 + [Descripcion de la propuesta](#descripcion-de-la-propuesta)
 + [Caracteristicas de heladeras inteligentes](#caracteristicas-de-heladeras-inteligentes)
@@ -125,6 +124,18 @@
 |:------:|-------------------------------------|----------------------------------------|
 | 1      |                                     |                                        |
 
+#### Flujo alternativo CU_AR_ALT1: Poner producto
+
+| Paso   | Estimulo del actor                  | Respuesta del sistema                  |
+|:------:|-------------------------------------|----------------------------------------|
+| 2.1    |                                     |                                        |
+
+#### Flujo alternativo CU_AR_ALT2: Tomar producto
+
+| Paso   | Estimulo del actor                  | Respuesta del sistema                  |
+|:------:|-------------------------------------|----------------------------------------|
+| 2.1    |                                     |                                        |
+
 ### Caso de uso Poner producto CU_PP
 
 | Nombre del caso de uso     |                                        |
@@ -140,6 +151,12 @@
 | Paso   | Estimulo del actor                  | Respuesta del sistema                  |
 |:------:|-------------------------------------|----------------------------------------|
 | 1      |                                     |                                        |
+
+#### Flujo alternativo CU_PP_ALT1: Poner otro producto
+
+| Paso   | Estimulo del actor                  | Respuesta del sistema                  |
+|:------:|-------------------------------------|----------------------------------------|
+| 2.1    |                                     |                                        |
 
 ### Caso de uso Tomar producto CU_TP
 
@@ -157,6 +174,12 @@
 |:------:|-------------------------------------|----------------------------------------|
 | 1      |                                     |                                        |
 
+#### Flujo alternativo CU_TP_ALT1: Tomar otro producto
+
+| Paso   | Estimulo del actor                  | Respuesta del sistema                  |
+|:------:|-------------------------------------|----------------------------------------|
+| 2.1    |                                     |                                        |
+
 ### Caso de uso Identificar productos CU_IP
 
 | Nombre del caso de uso     |                                        |
@@ -172,6 +195,25 @@
 | Paso   | Estimulo del actor                  | Respuesta del sistema                  |
 |:------:|-------------------------------------|----------------------------------------|
 | 1      |                                     |                                        |
+
+#### Flujo alternativo CU_IP_ALT1: Productos no identificados
+
+| Paso   | Estimulo del actor                  | Respuesta del sistema                  |
+|:------:|-------------------------------------|----------------------------------------|
+| 1.1    |                                     |                                        |
+
+#### Flujo alternativo CU_IP_ALT2: Puerta abierta detectada durante identificacion
+
+| Paso   | Estimulo del actor                  | Respuesta del sistema                  |
+|:------:|-------------------------------------|----------------------------------------|
+| 1.1    |                                     |                                        |
+| 1.2    |                                     |                                        |
+
+#### Flujo alternativo CU_IP_ALT3: Sin productos en el interior
+
+| Paso   | Estimulo del actor                  | Respuesta del sistema                  |
+|:------:|-------------------------------------|----------------------------------------|
+| 1.1    |                                     |                                        |
 
 ### Caso de uso Cerrar CU_CR
 
@@ -189,6 +231,18 @@
 |:------:|-------------------------------------|----------------------------------------|
 | 1      |                                     |                                        |
 
+#### Flujo alternativo CU_CR_ALT1: Sin productos en el interior
+
+| Paso   | Estimulo del actor                  | Respuesta del sistema                  |
+|:------:|-------------------------------------|----------------------------------------|
+| 1.1    |                                     |                                        |
+
+#### Flujo alternativo CU_CR_ALT2: Identificar y registrar productos en forma manual
+
+| Paso   | Estimulo del actor                  | Respuesta del sistema                  |
+|:------:|-------------------------------------|----------------------------------------|
+| 2.1    |                                     |                                        |
+
 ### Caso de uso Identificar productos manualmente CU_IM
 
 | Nombre del caso de uso     |                                        |
@@ -204,6 +258,28 @@
 | Paso   | Estimulo del actor                  | Respuesta del sistema                  |
 |:------:|-------------------------------------|----------------------------------------|
 | 1      |                                     |                                        |
+
+#### Flujo alternativo CU_IM_ALT1: Producto a identificar no es alimento
+
+| Paso   | Estimulo del actor                  | Respuesta del sistema                  |
+|:------:|-------------------------------------|----------------------------------------|
+| 3.1    |                                     |                                        |
+
+#### Flujo alternativo CU_IM_ALT2: Codigo de identificacion no detectado o alimento sin codigo
+
+| Paso   | Estimulo del actor                  | Respuesta del sistema                  |
+|:------:|-------------------------------------|----------------------------------------|
+| 4.1    |                                     |                                        |
+| 4.2    |                                     |                                        |
+| 4.3    |                                     |                                        |
+| 4.4    |                                     |                                        |
+
+#### Flujo alternativo CU_IM_ALT3: Fecha de vencimiento no detectada o alimento sin fecha
+
+| Paso   | Estimulo del actor                  | Respuesta del sistema                  |
+|:------:|-------------------------------------|----------------------------------------|
+| 6.1    |                                     |                                        |
+| 6.2    |                                     |                                        |
 
 ### Caso de uso Comprar alimentos CU_CA
 
@@ -306,3 +382,13 @@
 ### Cerrar la puerta de la heladera
 
 ### Identificar productos
+
+## Pendientes
+
++ Describir las partes involucradas en el diagrama esquematico
++ Incluir datos sensoriales del producto (?)
++ Agregar detalle sobre capacidades, explicando cada característica y en particular las que incorpora la heladera virtual
++ Incluir diagrama de componentes
++ Cada diagrama de modelado requiere una explicación, detallar clases y métodos (?)
++ Incluir detalles de implementación del prototipo, infraestructura, caso de pruebas, pantallas de usuario
++ Resultados obtenidos para cada caso de prueba
