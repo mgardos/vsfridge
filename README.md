@@ -39,7 +39,23 @@ El diagrama esquematico presenta el entorno en el cual opera la heladera intelig
 
 ### Caracteristicas comunes de heladeras inteligentes en el mercado
 
+1. Acceso a Internet y conectividad con otros dispositivos inteligentes mediante WiFi.
+2. Comando por voz para control de funciones básicas (ajuste de temperatura, fabricación de hielo, etc.) mediante Amazon Alexa o Google Assistant.
+3. Descarga de aplicaciones para mayor control de funciones básicas.
+4. Alertas en teléfono móvil por puerta abierta, incremento o disminución de la temperatura en el interior.
+5. Creación de lista de alimentos necesarios y sincronizarlo con teléfono móvil.
+6. Configurar fechas de vencimiento y recibir alertas en teléfono móvil.
+7. Creación de perfiles para usuarios de la heladera (por ejemplo, miembros de la familia), que permite crear y compartir mensajes y listas de tareas.
+
 ### Caracteristicas especificas de heladeras inteligentes en el mercado
+
+1. Dispenser de agua caliente.
+2. Dispenser de café y té.
+3. Ayuda en línea.
+4. Vista del interior sin apertura de puertas y/o pérdida de frío.
+5. Pantalla táctil extra grande.
+6. Observar en forma remota desde el teléfono móvil los productos en el interior.
+7. Transmitir audio y/o video a un televisor inteligente.
 
 ## Cuadro de capacidades de heladeras inteligentes
 
