@@ -98,9 +98,19 @@ El diagrama esquematico presenta el entorno en el cual opera la heladera intelig
 
 ## Usos de la heladera inteligente
 
-1.
-2.
-3.
+1. Detectar productos y fechas de vencimiento al ser introducidos en su interior.
+2. Informar productos próximos a vencer o días disponibles para su consumo.
+3. Informar productos escasos con antelación en base al consumo usual y al tiempo de reposición o despacho por parte del proveedor.
+4. Generar listado de productos necesarios y preparar pedidos a proveedores según disponibilidad de los mismos, costos, plazos de entrega y otros criterios como ofertas disponibles o periodicidad de las mismas.
+5. Permitir agregar proveedores, habilitarlos y suspenderlos, incorporar proveedores fuera de línea por ingreso manual de sus datos (nombre o razón social, dirección, teléfono, correo electrónico, listado de productos que comercializa). Ejemplos de proveedores tipicamente fuera de línea son frutería, verdulería, carnicería, pescadería, heladería).
+6. Permitir al dueño de la heladera consultar a distancia los productos que contiene y las cantidades de los mismos.
+7. Permitir asignar proveedores deseables por productos.
+8. Realizar seguimiento de pedidos y confirmación de los mismos cuando los ingresos son ingresados en su interior.
+9. Reconocimiento de heladeras cercanas para optimización de pedidos.
+10. Ajustar temperatura según los productos en el interior.
+11. Detectar malos olores y determinar los productos que lo generan.
+12. Definir usuarios de heladera con nombre o pseudónimo, género, edad, peso, gustos o preferencias y establecer perfil de consumo con el tiempo.
+13. Generar estadísticas en base a productos comprados, consumidos y desperdiciados, frecuencia y proporción de consumo, características del consumo diario, semanal, mensual, anual, incluyendo valores nutricionales correspondientes a calorías, carbohidratos, azucares, grasas, fibras, sodio, en otros.
 
 ## Diagrama de casos de uso
 
@@ -110,25 +120,28 @@ El diagrama esquematico presenta el entorno en el cual opera la heladera intelig
 
 ### Caso de uso Encender CU_ED
 
-| Nombre del caso de uso     |                                        |
-|----------------------------|----------------------------------------|
-| __Identificador__          |                                        |
-| __Actores__                |                                        |
-| __Entradas__               |                                        |
-| __Pre-condiciones__        |                                        |
-| __Post-condiciones__       |                                        |
+| Nombre del caso de uso     | Encender                                              |
+|----------------------------|-------------------------------------------------------|
+| __Identificador__          | CU_ED                                                 |
+| __Actores__                | Consumidor                                            |
+| __Entradas__               | Productos                                             |
+| __Pre-condiciones__        | La heladera se encuentra enchufada a la red eléctrica |
+|                            | La heladera se encuentra apagada                      |
+| __Post-condiciones__       | La heladera esta encendida                            |
 
 #### Flujo normal
 
-| Paso   | Estimulo del actor                  | Respuesta del sistema                  |
-|:------:|-------------------------------------|----------------------------------------|
-| 1      |                                     |                                        |
+| Paso   | Estimulo del actor                  | Respuesta del sistema                                                       |
+|:------:|-------------------------------------|-----------------------------------------------------------------------------|
+| 1      | El consumidor enciende la heladera  | La heladera inicializa sus servicios                                        |
+|        |                                     | La heladera detecta la puerta cerrada entonces ejecuta el caso de uso CU_CR |
 
 #### Flujo alternativo CU_ED_ALT1: Detectar puerta abierta
 
-| Paso   | Estimulo del actor                  | Respuesta del sistema                  |
-|:------:|-------------------------------------|----------------------------------------|
-| 1.1    |                                     |                                        |
+| Paso   | Estimulo del actor                  | Respuesta del sistema                                                       |
+|:------:|-------------------------------------|-----------------------------------------------------------------------------|
+| 1.1    | El consumidor enciende la heladera  | La heladera inicializa sus servicio                                         |
+|        |                                     | La heladera detecta la puerta abierta entonces ejecuta el caso de uso CU_AR |
 
 ### Caso de uso Abrir CU_AR
 
