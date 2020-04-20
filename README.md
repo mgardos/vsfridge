@@ -145,31 +145,35 @@ El diagrama esquematico presenta el entorno en el cual opera la heladera intelig
 
 ### Caso de uso Abrir CU_AR
 
-| Nombre del caso de uso     |                                        |
-|----------------------------|----------------------------------------|
-| __Identificador__          |                                        |
-| __Actores__                |                                        |
-| __Entradas__               |                                        |
-| __Pre-condiciones__        |                                        |
-| __Post-condiciones__       |                                        |
+| Nombre del caso de uso     | Abrir                                          |
+|----------------------------|------------------------------------------------|
+| __Identificador__          | CU_AR                                          |
+| __Actores__                | Consumidor                                     |
+| __Entradas__               | -                                              |
+| __Pre-condiciones__        | La heladera se encuentra encendida             |
+|                            | La puerta de la heladera se encuentra cerrada  |
+| __Post-condiciones__       | El contador de puerta abierta se incrementa    |
+|                            | El reloj de puerta abierta se encuentra activo |
 
 #### Flujo normal
 
-| Paso   | Estimulo del actor                  | Respuesta del sistema                  |
-|:------:|-------------------------------------|----------------------------------------|
-| 1      |                                     |                                        |
+| Paso   | Estimulo del actor                                   | Respuesta del sistema                                |
+|:------:|------------------------------------------------------|------------------------------------------------------|
+| 1      | El consumidor abre la puerta de la heladera          | La heladera incrementa el contador de puerta abierto |
+|        |                                                      | La heladera inicia el reloj de puerta abierta        |
+| 2      | El consumidor decide cerrar la puerta de la heladera | La heladera ejecuta el caso de uso CU_CR             |
 
 #### Flujo alternativo CU_AR_ALT1: Poner producto
 
-| Paso   | Estimulo del actor                  | Respuesta del sistema                  |
-|:------:|-------------------------------------|----------------------------------------|
-| 2.1    |                                     |                                        |
+| Paso   | Estimulo del actor                                                   | Respuesta del sistema                  |
+|:------:|----------------------------------------------------------------------|----------------------------------------|
+| 2.1    | El consumidor decide poner un producto en el interior de la heladera | La heladera ejecuta el caso de uso CU_PP |
 
 #### Flujo alternativo CU_AR_ALT2: Tomar producto
 
-| Paso   | Estimulo del actor                  | Respuesta del sistema                  |
-|:------:|-------------------------------------|----------------------------------------|
-| 2.1    |                                     |                                        |
+| Paso   | Estimulo del actor                                                 | Respuesta del sistema                    |
+|:------:|--------------------------------------------------------------------|------------------------------------------|
+| 2.1    | El consumidor decide tomar un producto del interior de la heladera | La heladera ejecuta el caso de uso CU_TP |
 
 ### Caso de uso Poner producto CU_PP
 
