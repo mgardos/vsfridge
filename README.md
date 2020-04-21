@@ -1,6 +1,5 @@
 # Heladera Inteligente Virtual
 
-
 ## Contenidos
 + [Descripcion de la propuesta](#descripcion-de-la-propuesta)
 + [Caracteristicas de heladeras inteligentes](#caracteristicas-de-heladeras-inteligentes)
@@ -30,11 +29,33 @@
 
 ## Descripcion de la propuesta
 
+Algunas de las grandes compañías de electrónica y electrodomésticos han comenzado a dar los primeros pequeños pasos en la dirección de lo que podría llegar a considerarse la heladera inteligente. En algunos países desarrollados e industrializados se comercializan en la actualidad  heladeras publicitadas como inteligentes. Aquello que se considera inteligente puede variar drásticamente dependiendo de diversos factores, como el sujeto, el objeto, el contexto, la escala, las expectativas, en otros. La heladera que este trabajo práctico considera inteligente se encuentra descrita mediante los usos que se espera hacer de ella, enunciados en la sección Usos de la heladera inteligente.
+
+El diagrama esquematico presenta el entorno en el cual opera la heladera inteligente. Los actores principales que se observan en el diagrama son la heladera inteligente y el consumidor, que hace uso de ella. Otros actores o participantes, que se consideran secundarios, son otras heladeras inteligentes vecinas o próximas, proveedores de alimentos o productos alimenticios, tales como supermercados, tiendas en línea o fuera de línea, y despachantes de productos, ya sea propios de los proveedores mencionados o independientes.
+
+(Diagrama esquematico pendiente)
+
 ## Caracteristicas de heladeras inteligentes
 
 ### Caracteristicas comunes de heladeras inteligentes en el mercado
 
+1. Acceso a Internet y conectividad con otros dispositivos inteligentes mediante WiFi.
+2. Comando por voz para control de funciones básicas (ajuste de temperatura, fabricación de hielo, etc.) mediante Amazon Alexa o Google Assistant.
+3. Descarga de aplicaciones para mayor control de funciones básicas.
+4. Alertas en teléfono móvil por puerta abierta, incremento o disminución de la temperatura en el interior.
+5. Creación de lista de alimentos necesarios y sincronizarlo con teléfono móvil.
+6. Configurar fechas de vencimiento y recibir alertas en teléfono móvil.
+7. Creación de perfiles para usuarios de la heladera (por ejemplo, miembros de la familia), que permite crear y compartir mensajes y listas de tareas.
+
 ### Caracteristicas especificas de heladeras inteligentes en el mercado
+
+1. Dispenser de agua caliente.
+2. Dispenser de café y té.
+3. Ayuda en línea.
+4. Vista del interior sin apertura de puertas y/o pérdida de frío.
+5. Pantalla táctil extra grande.
+6. Observar en forma remota desde el teléfono móvil los productos en el interior.
+7. Transmitir audio y/o video a un televisor inteligente.
 
 ## Cuadro de capacidades de heladeras inteligentes
 
@@ -77,9 +98,19 @@
 
 ## Usos de la heladera inteligente
 
-1.
-2.
-3.
+1. Detectar productos y fechas de vencimiento al ser introducidos en su interior.
+2. Informar productos próximos a vencer o días disponibles para su consumo.
+3. Informar productos escasos con antelación en base al consumo usual y al tiempo de reposición o despacho por parte del proveedor.
+4. Generar listado de productos necesarios y preparar pedidos a proveedores según disponibilidad de los mismos, costos, plazos de entrega y otros criterios como ofertas disponibles o periodicidad de las mismas.
+5. Permitir agregar proveedores, habilitarlos y suspenderlos, incorporar proveedores fuera de línea por ingreso manual de sus datos (nombre o razón social, dirección, teléfono, correo electrónico, listado de productos que comercializa). Ejemplos de proveedores tipicamente fuera de línea son frutería, verdulería, carnicería, pescadería, heladería).
+6. Permitir al dueño de la heladera consultar a distancia los productos que contiene y las cantidades de los mismos.
+7. Permitir asignar proveedores deseables por productos.
+8. Realizar seguimiento de pedidos y confirmación de los mismos cuando los ingresos son ingresados en su interior.
+9. Reconocimiento de heladeras cercanas para optimización de pedidos.
+10. Ajustar temperatura según los productos en el interior.
+11. Detectar malos olores y determinar los productos que lo generan.
+12. Definir usuarios de heladera con nombre o pseudónimo, género, edad, peso, gustos o preferencias y establecer perfil de consumo con el tiempo.
+13. Generar estadísticas en base a productos comprados, consumidos y desperdiciados, frecuencia y proporción de consumo, características del consumo diario, semanal, mensual, anual, incluyendo valores nutricionales correspondientes a calorías, carbohidratos, azucares, grasas, fibras, sodio, en otros.
 
 ## Diagrama de casos de uso
 
@@ -89,41 +120,60 @@
 
 ### Caso de uso Encender CU_ED
 
-| Nombre del caso de uso     |                                        |
-|----------------------------|----------------------------------------|
-| __Identificador__          |                                        |
-| __Actores__                |                                        |
-| __Entradas__               |                                        |
-| __Pre-condiciones__        |                                        |
-| __Post-condiciones__       |                                        |
+| Nombre del caso de uso     | Encender                                              |
+|----------------------------|-------------------------------------------------------|
+| __Identificador__          | CU_ED                                                 |
+| __Actores__                | Consumidor                                            |
+| __Entradas__               | Productos                                             |
+| __Pre-condiciones__        | La heladera se encuentra enchufada a la red eléctrica |
+|                            | La heladera se encuentra apagada                      |
+| __Post-condiciones__       | La heladera esta encendida                            |
 
 #### Flujo normal
 
-| Paso   | Estimulo del actor                  | Respuesta del sistema                  |
-|:------:|-------------------------------------|----------------------------------------|
-| 1      |                                     |                                        |
+| Paso   | Estimulo del actor                  | Respuesta del sistema                                                       |
+|:------:|-------------------------------------|-----------------------------------------------------------------------------|
+| 1      | El consumidor enciende la heladera  | La heladera inicializa sus servicios                                        |
+|        |                                     | La heladera detecta la puerta cerrada entonces ejecuta el caso de uso CU_CR |
 
 #### Flujo alternativo CU_ED_ALT1: Detectar puerta abierta
 
-| Paso   | Estimulo del actor                  | Respuesta del sistema                  |
-|:------:|-------------------------------------|----------------------------------------|
-| 1.1    |                                     |                                        |
+| Paso   | Estimulo del actor                  | Respuesta del sistema                                                       |
+|:------:|-------------------------------------|-----------------------------------------------------------------------------|
+| 1.1    | El consumidor enciende la heladera  | La heladera inicializa sus servicio                                         |
+|        |                                     | La heladera detecta la puerta abierta entonces ejecuta el caso de uso CU_AR |
 
 ### Caso de uso Abrir CU_AR
 
-| Nombre del caso de uso     |                                        |
-|----------------------------|----------------------------------------|
-| __Identificador__          |                                        |
-| __Actores__                |                                        |
-| __Entradas__               |                                        |
-| __Pre-condiciones__        |                                        |
-| __Post-condiciones__       |                                        |
+| Nombre del caso de uso     | Abrir                                          |
+|----------------------------|------------------------------------------------|
+| __Identificador__          | CU_AR                                          |
+| __Actores__                | Consumidor                                     |
+| __Entradas__               | -                                              |
+| __Pre-condiciones__        | La heladera se encuentra encendida             |
+|                            | La puerta de la heladera se encuentra cerrada  |
+| __Post-condiciones__       | El contador de puerta abierta se incrementa    |
+|                            | El reloj de puerta abierta se encuentra activo |
 
 #### Flujo normal
 
-| Paso   | Estimulo del actor                  | Respuesta del sistema                  |
-|:------:|-------------------------------------|----------------------------------------|
-| 1      |                                     |                                        |
+| Paso   | Estimulo del actor                                   | Respuesta del sistema                                |
+|:------:|------------------------------------------------------|------------------------------------------------------|
+| 1      | El consumidor abre la puerta de la heladera          | La heladera incrementa el contador de puerta abierto |
+|        |                                                      | La heladera inicia el reloj de puerta abierta        |
+| 2      | El consumidor decide cerrar la puerta de la heladera | La heladera ejecuta el caso de uso CU_CR             |
+
+#### Flujo alternativo CU_AR_ALT1: Poner producto
+
+| Paso   | Estimulo del actor                                                   | Respuesta del sistema                  |
+|:------:|----------------------------------------------------------------------|----------------------------------------|
+| 2.1    | El consumidor decide poner un producto en el interior de la heladera | La heladera ejecuta el caso de uso CU_PP |
+
+#### Flujo alternativo CU_AR_ALT2: Tomar producto
+
+| Paso   | Estimulo del actor                                                 | Respuesta del sistema                    |
+|:------:|--------------------------------------------------------------------|------------------------------------------|
+| 2.1    | El consumidor decide tomar un producto del interior de la heladera | La heladera ejecuta el caso de uso CU_TP |
 
 ### Caso de uso Poner producto CU_PP
 
@@ -141,6 +191,12 @@
 |:------:|-------------------------------------|----------------------------------------|
 | 1      |                                     |                                        |
 
+#### Flujo alternativo CU_PP_ALT1: Poner otro producto
+
+| Paso   | Estimulo del actor                  | Respuesta del sistema                  |
+|:------:|-------------------------------------|----------------------------------------|
+| 2.1    |                                     |                                        |
+
 ### Caso de uso Tomar producto CU_TP
 
 | Nombre del caso de uso     |                                        |
@@ -156,6 +212,12 @@
 | Paso   | Estimulo del actor                  | Respuesta del sistema                  |
 |:------:|-------------------------------------|----------------------------------------|
 | 1      |                                     |                                        |
+
+#### Flujo alternativo CU_TP_ALT1: Tomar otro producto
+
+| Paso   | Estimulo del actor                  | Respuesta del sistema                  |
+|:------:|-------------------------------------|----------------------------------------|
+| 2.1    |                                     |                                        |
 
 ### Caso de uso Identificar productos CU_IP
 
@@ -173,6 +235,25 @@
 |:------:|-------------------------------------|----------------------------------------|
 | 1      |                                     |                                        |
 
+#### Flujo alternativo CU_IP_ALT1: Productos no identificados
+
+| Paso   | Estimulo del actor                  | Respuesta del sistema                  |
+|:------:|-------------------------------------|----------------------------------------|
+| 1.1    |                                     |                                        |
+
+#### Flujo alternativo CU_IP_ALT2: Puerta abierta detectada durante identificacion
+
+| Paso   | Estimulo del actor                  | Respuesta del sistema                  |
+|:------:|-------------------------------------|----------------------------------------|
+| 1.1    |                                     |                                        |
+| 1.2    |                                     |                                        |
+
+#### Flujo alternativo CU_IP_ALT3: Sin productos en el interior
+
+| Paso   | Estimulo del actor                  | Respuesta del sistema                  |
+|:------:|-------------------------------------|----------------------------------------|
+| 1.1    |                                     |                                        |
+
 ### Caso de uso Cerrar CU_CR
 
 | Nombre del caso de uso     |                                        |
@@ -188,6 +269,18 @@
 | Paso   | Estimulo del actor                  | Respuesta del sistema                  |
 |:------:|-------------------------------------|----------------------------------------|
 | 1      |                                     |                                        |
+
+#### Flujo alternativo CU_CR_ALT1: Sin productos en el interior
+
+| Paso   | Estimulo del actor                  | Respuesta del sistema                  |
+|:------:|-------------------------------------|----------------------------------------|
+| 1.1    |                                     |                                        |
+
+#### Flujo alternativo CU_CR_ALT2: Identificar y registrar productos en forma manual
+
+| Paso   | Estimulo del actor                  | Respuesta del sistema                  |
+|:------:|-------------------------------------|----------------------------------------|
+| 2.1    |                                     |                                        |
 
 ### Caso de uso Identificar productos manualmente CU_IM
 
@@ -205,6 +298,28 @@
 |:------:|-------------------------------------|----------------------------------------|
 | 1      |                                     |                                        |
 
+#### Flujo alternativo CU_IM_ALT1: Producto a identificar no es alimento
+
+| Paso   | Estimulo del actor                  | Respuesta del sistema                  |
+|:------:|-------------------------------------|----------------------------------------|
+| 3.1    |                                     |                                        |
+
+#### Flujo alternativo CU_IM_ALT2: Codigo de identificacion no detectado o alimento sin codigo
+
+| Paso   | Estimulo del actor                  | Respuesta del sistema                  |
+|:------:|-------------------------------------|----------------------------------------|
+| 4.1    |                                     |                                        |
+| 4.2    |                                     |                                        |
+| 4.3    |                                     |                                        |
+| 4.4    |                                     |                                        |
+
+#### Flujo alternativo CU_IM_ALT3: Fecha de vencimiento no detectada o alimento sin fecha
+
+| Paso   | Estimulo del actor                  | Respuesta del sistema                  |
+|:------:|-------------------------------------|----------------------------------------|
+| 6.1    |                                     |                                        |
+| 6.2    |                                     |                                        |
+
 ### Caso de uso Comprar alimentos CU_CA
 
 | Nombre del caso de uso     |                                        |
@@ -220,6 +335,19 @@
 | Paso   | Estimulo del actor                  | Respuesta del sistema                  |
 |:------:|-------------------------------------|----------------------------------------|
 | 1      |                                     |                                        |
+
+#### Flujo alternativo CU_CA_ALT1: Sin proveedor para realizar la compra de alimentos
+
+| Paso   | Estimulo del actor                  | Respuesta del sistema                  |
+|:------:|-------------------------------------|----------------------------------------|
+| 4.1    |                                     |                                        |
+| 4.2    |                                     |                                        |
+
+#### Flujo alternativo CU_CA_ALT2: Medio de comunicacion con proveedor caido
+
+| Paso   | Estimulo del actor                  | Respuesta del sistema                  |
+|:------:|-------------------------------------|----------------------------------------|
+| 4.1    |                                     |                                        |
 
 ### Caso de uso Monitorear vencimiento de alimentos CU_MV
 
@@ -237,6 +365,25 @@
 |:------:|-------------------------------------|----------------------------------------|
 | 1      |                                     |                                        |
 
+#### Flujo alternativo CU_MV_ALT1: Puerta abierta detectada durante monitoreo
+
+| Paso   | Estimulo del actor                  | Respuesta del sistema                  |
+|:------:|-------------------------------------|----------------------------------------|
+| 1.1    |                                     |                                        |
+| 1.2    |                                     |                                        |
+
+#### Flujo alternativo CU_MV_ALT2: Monitoreo pendiente por interrupcion
+
+| Paso   | Estimulo del actor                  | Respuesta del sistema                  |
+|:------:|-------------------------------------|----------------------------------------|
+| 1.1    |                                     |                                        |
+
+#### Flujo alternativo CU_MV_ALT3: Notificacion del resultado del monitoreo
+
+| Paso   | Estimulo del actor                  | Respuesta del sistema                  |
+|:------:|-------------------------------------|----------------------------------------|
+| 1.1    |                                     |                                        |
+
 ### Caso de uso Notificar alimentos en vencimiento CU_NV
 
 | Nombre del caso de uso     |                                        |
@@ -252,6 +399,12 @@
 | Paso   | Estimulo del actor                  | Respuesta del sistema                  |
 |:------:|-------------------------------------|----------------------------------------|
 | 1      |                                     |                                        |
+
+#### Flujo alternativo CU_NV_ALT1: ...
+
+| Paso   | Estimulo del actor                  | Respuesta del sistema                  |
+|:------:|-------------------------------------|----------------------------------------|
+| 1.1    |                                     |                                        |
 
 ### Caso de uso Monitorear escasez de alimentos CU_ME
 
@@ -269,6 +422,19 @@
 |:------:|-------------------------------------|----------------------------------------|
 | 1      |                                     |                                        |
 
+#### Flujo alternativo CU_ME_ALT1: Puerta abierta detectada durante monitoreo
+
+| Paso   | Estimulo del actor                  | Respuesta del sistema                  |
+|:------:|-------------------------------------|----------------------------------------|
+| 1.1    |                                     |                                        |
+| 1.2    |                                     |                                        |
+
+#### Flujo alternativo CU_ME_ALT2: Monitoreo pendiente por interrupcion
+
+| Paso   | Estimulo del actor                  | Respuesta del sistema                  |
+|:------:|-------------------------------------|----------------------------------------|
+| 1.1    |                                     |                                        |
+
 ### Caso de uso Notificar escasez de alimentos CU_NE
 
 | Nombre del caso de uso     |                                        |
@@ -284,6 +450,22 @@
 | Paso   | Estimulo del actor                  | Respuesta del sistema                  |
 |:------:|-------------------------------------|----------------------------------------|
 | 1      |                                     |                                        |
+
+#### Flujo alternativo CU_NE_ALT1: Postergar compra de alimentos escasos
+
+| Paso   | Estimulo del actor                  | Respuesta del sistema                  |
+|:------:|-------------------------------------|----------------------------------------|
+| 2.1    |                                     |                                        |
+| 2.2    |                                     |                                        |
+| 2.3    |                                     |                                        |
+
+#### Flujo alternativo CU_NE_ALT2: Aprobacion de compra de alimentos escasos
+
+| Paso   | Estimulo del actor                  | Respuesta del sistema                  |
+|:------:|-------------------------------------|----------------------------------------|
+| 1.1    |                                     |                                        |
+| 1.2    |                                     |                                        |
+| 1.3    |                                     |                                        |
 
 ## Mockups
 
@@ -306,3 +488,13 @@
 ### Cerrar la puerta de la heladera
 
 ### Identificar productos
+
+## Pendientes
+
++ Describir las partes involucradas en el diagrama esquematico
++ Incluir datos sensoriales del producto (?)
++ Agregar detalle sobre capacidades, explicando cada característica y en particular las que incorpora la heladera virtual
++ Incluir diagrama de componentes
++ Cada diagrama de modelado requiere una explicación, detallar clases y métodos (?)
++ Incluir detalles de implementación del prototipo, infraestructura, caso de pruebas, pantallas de usuario
++ Resultados obtenidos para cada caso de prueba
