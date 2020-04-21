@@ -1,18 +1,27 @@
 @startuml
 left to right direction
-:User:
-:Tiempo:
-:Proveedor:
-rectangle HeladeraVirtual {
-    User -- (Abrir)
-    User -- (Cerrar)
+Actor User
+Actor Tiempo
+Actor Proveedor
+rectangle "Heladera Inteligente Virtual" {
+    User --- (Abrir)
+    User --- (Cerrar)
     User -- (Encender)
-    User <- (Notificar escasez\nde alimentos)
-    User -- (Agregar\nproveedor)
     User <- (Notificar alimentos\nen vencimiento)
+    (Cerrar) <.. (Identificar producto\nmanualmente) : <<extend>>
+    (Cerrar) .> (Identificar producto) : <<include>>
     (Encender) .> (Cerrar) : <<include>>
-    (Monitorear vencimiento\nde alimentos) <- Tiempo
-    (Notificar alimentos\nen vencimiento) -|> (Monitorear vencimiento\nde alimentos) : <<extend>>
-    (Comprar\nalimentos) -- Proveedor
+    (Identificar producto) <.. (Detectar peso del alimento) : <<extend >>
+    (Poner productos) .> (Abrir) : <<extend>>
+    (Abrir) <.. (Tomar productos) : <<extend>>
+    (Comprar\nalimentos) ---- Proveedor
+    User <- (Notificar escasez\nde alimentos)
+    (Notificar escasez\nde alimentos) ..> (Monitorear escasez\nde alimentos) : <<extend>>
+    (Comprar\nalimentos) .> (Notificar escasez\nde alimentos) : <<extend>>
+    User --- (Agregar\nproveedor)
+    (Agregar\nproveedor) <. (Comprar\nalimentos) : <<extend>>
+    (Monitorear vencimiento\nde alimentos) <-- Tiempo
+    (Notificar alimentos\nen vencimiento) ..> (Monitorear vencimiento\nde alimentos) : <<extend>>
+    (Monitorear escasez\nde alimentos) <-- Tiempo
 }
 @enduml
