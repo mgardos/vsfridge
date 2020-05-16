@@ -307,70 +307,94 @@ El diagrama esquematico presenta el entorno en el cual opera la heladera intelig
 
 ### Caso de uso Identificar productos manualmente CU_IM
 
-| Nombre del caso de uso     |                                        |
+| Nombre del caso de uso     | Identificar productos manualmente      |
 |----------------------------|----------------------------------------|
-| __Identificador__          |                                        |
-| __Actores__                |                                        |
-| __Entradas__               |                                        |
-| __Pre-condiciones__        |                                        |
-| __Post-condiciones__       |                                        |
+| __Identificador__          | CU_IM                                  |
+| __Actores__                | Consumidor                             |
+| __Entradas__               | Productos                              |
+| __Pre-condiciones__        | Uno o más productos u objetos en el interior no identificados |
+| __Post-condiciones__       | Productos identificados como alimentos |
 
 #### Flujo normal
 
-| Paso   | Estimulo del actor                  | Respuesta del sistema                  |
-|:------:|-------------------------------------|----------------------------------------|
-| 1      |                                     |                                        |
+| Paso   | Estimulo del actor                                                        | Respuesta del sistema                  |
+|:------:|---------------------------------------------------------------------------|----------------------------------------|
+| 1      | El consumidor acepta identificar manualmente productos en el interior de la heladera no identificados automáticamente                                                                      | La heladera presenta los productos no identificados mostrando la foto que tomó de cada uno de ellos |
+| 2      | El consumidor selecciona uno de los productos no identificados            | La heladera solicita al consumidor que seleccione la categoría de producto |
+| 3      | El consumidor selecciona la categoría alimento                            | La heladera solicita al consumidor que informe si el alimento dispone de código de identificación |
+| 4      | El consumidor informa que el alimento dispone de código de identificación | La heladera solicita al consumidor que ingrese el código de identificación del alimento |
+| 5      | El consumidor ingresa el código de identificación del alimento            | La heladera recupera los datos del alimento correspondiente al código de identificación |
+|        |                                                                           | La heladera informa al consumidor los datos del alimento que recuperó mediante el código de identificación |
+|        |                                                                           | La heladera solicita al consumidor modificar el peso del alimento ingresando el adecuado |
+| 6      | El consumidor modifica el peso del alimento                               | La heladera solicita al consumidor confirmación para los datos del alimento identificado manualmente |
+| 7      | El consumidor confirma la identificación manual del alimento              | La heladera registra el alimento, asociando los datos ingresados con la foto del mismo |
+|        |                                                                           | La heladera informa al consumidor que el alimento identificado manualmente fue registrado |
 
 #### Flujo alternativo CU_IM_ALT1: Producto a identificar no es alimento
 
-| Paso   | Estimulo del actor                  | Respuesta del sistema                  |
-|:------:|-------------------------------------|----------------------------------------|
-| 3.1    |                                     |                                        |
+| Paso   | Estimulo del actor                         | Respuesta del sistema                                               |
+|:------:|--------------------------------------------|---------------------------------------------------------------------|
+| 3.1    | El consumidor selecciona la categoría otro | La heladera informa al consumidor que solo debería haber alimentos en el interior |
+|        |                                            | La heladera quita este producto del conjunto de productos no identificados |
+|        |                                            | La heladera presenta los productos no identificados mostrando la foto que tomó de cada uno de ellos |
+|        |                                            | El flujo continúa en el paso 2 del flujo normal |
 
-#### Flujo alternativo CU_IM_ALT2: Codigo de identificacion no detectado o alimento sin codigo
+#### Flujo alternativo CU_IM_ALT2: Codigo de identificacion no detectado o alimento sin código de identificación
 
-| Paso   | Estimulo del actor                  | Respuesta del sistema                  |
-|:------:|-------------------------------------|----------------------------------------|
-| 4.1    |                                     |                                        |
-| 4.2    |                                     |                                        |
-| 4.3    |                                     |                                        |
-| 4.4    |                                     |                                        |
+| Paso   | Estimulo del actor                                                           | Respuesta del sistema                  |
+|:------:|------------------------------------------------------------------------------|----------------------------------------|
+| 4.1    | El consumidor informa que el alimento no dispone de código de identificación | La heladera solicita al consumidor que seleccione el tipo de producto |
+| 4.2    | El consumidor selecciona el tipo de producto                                 | La heladera solicita al consumidor que ingrese el nombre del producto |
+| 4.3    | El consumidor ingresa el nombre del producto                                 | La heladera solicita al consumidor que ingrese el peso del alimento |
+| 4.4    | El consumidor ingresa el peso del alimento                                   | La heladera solicita al cliente confirmación para los datos del alimento identificado manualmente |
+|        |                                                                              | El flujo continúa en el paso 7 del flujo normal |
 
-#### Flujo alternativo CU_IM_ALT3: Fecha de vencimiento no detectada o alimento sin fecha
+#### Flujo alternativo CU_IM_ALT3: Fecha de vencimiento no detectada o alimento sin fecha de vencimiento
 
-| Paso   | Estimulo del actor                  | Respuesta del sistema                  |
-|:------:|-------------------------------------|----------------------------------------|
-| 6.1    |                                     |                                        |
-| 6.2    |                                     |                                        |
+| Paso   | Estimulo del actor                                         | Respuesta del sistema                           |
+|:------:|------------------------------------------------------------|-------------------------------------------------|
+| 6.1    | El consumidor modifica el peso del alimento                | La heladera solicita al consumidor que ingrese la fecha de vencimiento del alimento |
+| 6.2    | El consumidor ingresa la fecha de vencimiento del alimento | La heladera solicita al consumidor confirmación para los datos del alimento identificado manualmente |
+|        |                                                            | El flujo continúa en el paso 7 del flujo normal |
 
 ### Caso de uso Comprar alimentos CU_CA
 
-| Nombre del caso de uso     |                                        |
-|----------------------------|----------------------------------------|
-| __Identificador__          |                                        |
-| __Actores__                |                                        |
-| __Entradas__               |                                        |
-| __Pre-condiciones__        |                                        |
-| __Post-condiciones__       |                                        |
+| Nombre del caso de uso     | Comprar alimentos                              |
+|----------------------------|------------------------------------------------|
+| __Identificador__          | CU_CA                                          |
+| __Actores__                | Proveedor                                      |
+| __Entradas__               | Registro de aprovisionamiento                  |
+| __Pre-condiciones__        | Registro de aprovisionamiento actualizado      |
+|                            | Medio de comunicación con proveedor disponible |
+| __Post-condiciones__       | Registro de alimentos escasos actualizado      |
+|                            | Registro de aprovisionamiento actualizado      |
 
 #### Flujo normal
 
-| Paso   | Estimulo del actor                  | Respuesta del sistema                  |
-|:------:|-------------------------------------|----------------------------------------|
-| 1      |                                     |                                        |
+| Paso   | Estimulo del actor                                          | Respuesta del sistema                             |
+|:------:|----------------------------------------------------------------------------|------------------------------------|
+| 1      | El consumidor acepta iniciar la compra de alimentos escasos                | La heladera solicita al consumidor eliminar los alimentos escasos que no se deben reponer |
+| 2      | El consumidor mantiene los alimentos escasos en la lista                   | La heladera solicita al consumidor modificar las cantidades de los alimentos escasos a reponer |
+| 3      | El consumidor mantiene las cantidades de los alimentos escasos en la lista | La heladera ofrece al consumidor agregar alimentos para incluir en la lista de aprovisionamiento |
+| 4      | El consumidor decide mantener los alimentos de la lista sin agregar más    | La heladera realiza la compra de alimentos  solicitando al consumidor ingresar los datos solicitados por el proveedor |
+| 5      | El consumidor ingresa los datos solicitados por el proveedor               | La heladera solicita al consumidor confirmar la compra de alimentos |
+| 6      | El consumidor confirma la compra de alimentos                              | La heladera informa al consumidor que la compra se concretó exitosamente, además del detalle de la compra |
+|        |                                                                            | La heladera actualiza el registro de alimentos escasos con los detalles de la compra realizada |
+|        |                                                                            | La heladera actualiza el registro de aprovisionamiento con los detalles de la compra realizada |
 
 #### Flujo alternativo CU_CA_ALT1: Sin proveedor para realizar la compra de alimentos
 
-| Paso   | Estimulo del actor                  | Respuesta del sistema                  |
-|:------:|-------------------------------------|----------------------------------------|
-| 4.1    |                                     |                                        |
-| 4.2    |                                     |                                        |
+| Paso   | Estimulo del actor                                                      | Respuesta del sistema                  |
+|:------:|-------------------------------------------------------------------------|----------------------------------------|
+| 4.1    | El consumidor decide mantener los alimentos de la lista sin agregar más | La heladera no dispone de proveedor alguno, y solicita al consumidor que ingrese un proveedor |
+| 4.2    | El consumidor decide agregar un proveedor                               | La heladera ejecuta el caso de uso CU_AP |
 
-#### Flujo alternativo CU_CA_ALT2: Medio de comunicacion con proveedor caido
+#### Flujo alternativo CU_CA_ALT2: Medio de comunicación con proveedor caído
 
-| Paso   | Estimulo del actor                  | Respuesta del sistema                  |
-|:------:|-------------------------------------|----------------------------------------|
-| 4.1    |                                     |                                        |
+| Paso   | Estimulo del actor                                                      | Respuesta del sistema                  |
+|:------:|-------------------------------------------------------------------------|----------------------------------------|
+| 4.1    | El consumidor decide mantener los alimentos de la lista sin agregar más | La heladera no consigue establecer comunicación con el proveedor luego de varios intentos |
+|        |                                                                         | La heladera informa al cliente que agenda el pedido dado que no es posible en este momento |
 
 ### Caso de uso Monitorear vencimiento de alimentos CU_MV
 
