@@ -225,66 +225,85 @@ El diagrama esquematico presenta el entorno en el cual opera la heladera intelig
 
 ### Caso de uso Identificar productos CU_IP
 
-| Nombre del caso de uso     |                                        |
-|----------------------------|----------------------------------------|
-| __Identificador__          |                                        |
-| __Actores__                |                                        |
-| __Entradas__               |                                        |
-| __Pre-condiciones__        |                                        |
-| __Post-condiciones__       |                                        |
+| Nombre del caso de uso     | Identificar productos                                                             |
+|----------------------------|-----------------------------------------------------------------------------------|
+| __Identificador__          | CU_IP                                                                             |
+| __Actores__                | -                                                                                 |
+| __Entradas__               | Productos                                                                         |
+| __Pre-condiciones__        | La puerta de la heladera está cerrada                                             |
+| __Post-condiciones__       | Cero, uno o más alimentos en interior de la heladera identificados y registrados  |
+|                            | Cero, uno o más productos u objetos en el interior no identificados y registrados |
 
 #### Flujo normal
 
-| Paso   | Estimulo del actor                  | Respuesta del sistema                  |
-|:------:|-------------------------------------|----------------------------------------|
-| 1      |                                     |                                        |
+| Paso   | Estimulo del actor                                                  | Respuesta del sistema                  |
+|:------:|---------------------------------------------------------------------|----------------------------------------|
+| 1      | El consumidor introdujo o retiro uno o más productos de la heladera | La heladera notifica al consumidor que identificará los productos en su interior |
+|        |                                                                     | La heladera escanea los productos para determinar su forma, colores, leyendas, fechas de elaboración y vencimiento y algún código de identificación |
+|        |                                                                     | La heladera identifica todos los productos en su interior como alimentos |
+|        |                                                                     | La heladera registra los alimentos detectados |
+|        |                                                                     | La heladera ejecuta el caso de uso CU_DP |
 
 #### Flujo alternativo CU_IP_ALT1: Productos no identificados
 
-| Paso   | Estimulo del actor                  | Respuesta del sistema                  |
-|:------:|-------------------------------------|----------------------------------------|
-| 1.1    |                                     |                                        |
+| Paso   | Estimulo del actor                                                  | Respuesta del sistema                  |
+|:------:|---------------------------------------------------------------------|----------------------------------------|
+| 1.1    | El consumidor introdujo o retiro uno o más productos de la heladera | La heladera notifica al consumidor que identificará los productos en su interior |
+|        |                                                                     | La heladera escanea los productos para determinar su forma, colores, leyendas, fechas de elaboración y vencimiento y algún código de identificación |
+|        |                                                                     | La heladera escanea los productos pero no logra identificarlos a todos por completo |
+|        |                                                                     | La heladera registra los productos no identificados, tomando una foto de cada uno  para luego solicitar al consumidor la identificación manual |
+|        |                                                                     | La heladera ejecuta el caso de uso CU_DP |
 
-#### Flujo alternativo CU_IP_ALT2: Puerta abierta detectada durante identificacion
+#### Flujo alternativo CU_IP_ALT2: Puerta abierta detectada durante identificación
 
-| Paso   | Estimulo del actor                  | Respuesta del sistema                  |
-|:------:|-------------------------------------|----------------------------------------|
-| 1.1    |                                     |                                        |
-| 1.2    |                                     |                                        |
+| Paso   | Estimulo del actor                                                                 | Respuesta del sistema                  |
+|:------:|------------------------------------------------------------------------------------|----------------------------------------|
+| 1.1    | El consumidor introdujo o retiro uno o más productos de la heladera                | La heladera notifica al consumidor que identificará los productos en su interior |
+|        |                                                                                    | La heladera escanea los productos para determinar su forma, colores, leyendas, fechas de elaboración y vencimiento y algún código de identificación |
+| 1.2    | El consumidor abre la puerta de la heladera durante la identificación de productos | La heladera interrumpe la identificación de productos |
+|        |                                                                                    | La heladera ejecuta el caso de uso CU_AR |
 
 #### Flujo alternativo CU_IP_ALT3: Sin productos en el interior
 
-| Paso   | Estimulo del actor                  | Respuesta del sistema                  |
-|:------:|-------------------------------------|----------------------------------------|
-| 1.1    |                                     |                                        |
+| Paso   | Estimulo del actor                                            | Respuesta del sistema                  |
+|:------:|---------------------------------------------------------------|----------------------------------------|
+| 1.1    | El consumidor no introdujo ni retiró productos de la heladera | La heladera notifica al consumidor que identificará los productos en su interior |
+|        |                                                               | La heladera escanea el interior sin detectar productos |
+|        |                                                               | La heladera registra que no hay productos en su interior |
 
 ### Caso de uso Cerrar CU_CR
 
-| Nombre del caso de uso     |                                        |
+| Nombre del caso de uso     | Cerrar                                 |
 |----------------------------|----------------------------------------|
-| __Identificador__          |                                        |
-| __Actores__                |                                        |
-| __Entradas__               |                                        |
-| __Pre-condiciones__        |                                        |
-| __Post-condiciones__       |                                        |
+| __Identificador__          | CU_CR                                  |
+| __Actores__                | Consumidor                             |
+| __Entradas__               | Productos                              |
+| __Pre-condiciones__        | Caso de uso CU_AR ejecutado con éxito  |
+| __Post-condiciones__       | Tiempo de puerta abierta registrado    |
+|                            | La puerta de la heladera está cerrada  |
 
 #### Flujo normal
 
-| Paso   | Estimulo del actor                  | Respuesta del sistema                  |
-|:------:|-------------------------------------|----------------------------------------|
-| 1      |                                     |                                        |
+| Paso   | Estimulo del actor                            | Respuesta del sistema                                      |
+|:------:|-----------------------------------------------|------------------------------------------------------------|
+| 1      | El consumidor cierra la puerta de la heladera | La heladera registra el tiempo del reloj de puerta abierta |
+|        |                                               | La heladera ejecuta el caso de uso CU_IP                   |
+|        |                                               | La heladera informa al consumidor los alimentos detectados y registrados y los productos u objetos no identificados |
+| 2      | El consumidor recibe la notificación de alimentos detectados y registrados así como de productos u objetos no identificados y acepta el resultado | La heladera mantiene alerta activa en caso de productos u objetos no identificados, para que el consumidor recuerde continuar la identificación en otro momento |
 
 #### Flujo alternativo CU_CR_ALT1: Sin productos en el interior
 
-| Paso   | Estimulo del actor                  | Respuesta del sistema                  |
-|:------:|-------------------------------------|----------------------------------------|
-| 1.1    |                                     |                                        |
+| Paso   | Estimulo del actor                            | Respuesta del sistema                                      |
+|:------:|-----------------------------------------------|------------------------------------------------------------|
+| 1.1    | El consumidor cierra la puerta de la heladera | La heladera registra el tiempo del reloj de puerta abierta |
+|        |                                               | La heladera ejecuta el caso de uso CU_IP                   |
+|        |                                               | La heladera no detecto productos en su interior por lo que notifica al consumidor que no hay productos en su interior mostrando la pantalla VSF_MK1 |
 
 #### Flujo alternativo CU_CR_ALT2: Identificar y registrar productos en forma manual
 
-| Paso   | Estimulo del actor                  | Respuesta del sistema                  |
-|:------:|-------------------------------------|----------------------------------------|
-| 2.1    |                                     |                                        |
+| Paso   | Estimulo del actor                                                                                            | Respuesta del sistema                  |
+|:------:|---------------------------------------------------------------------------------------------------------------|----------------------------------------|
+| 2.1    | El consumidor recibe la notificación y decide identificar en forma manual aquellos productos no identificados | La heladera ejecuta el caso de uso CU_IM |
 
 ### Caso de uso Identificar productos manualmente CU_IM
 
