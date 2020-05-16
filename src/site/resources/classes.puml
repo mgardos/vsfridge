@@ -1,44 +1,154 @@
 @startuml
 
-interface FridgeDoor
+class FridgeDoor {
+    -opened : Boolean
+    -timesOpened : Integer
+    -lastOpeningTime : DateTime
+    -lastClosingTime : DataTime
+    +isOpened() : Boolean
+    +open() : void
+    +close() : void
+    +getTimeElapsed() : Long
+    +getTimesOpened() : Integer
+}
 
+FridgeDoor "1..*" <--* VirtualSmartFridge
+
+hide Sensor fields
+interface Sensor {
+    sense(product : Product) : void
+}
+
+Sensor <|-- SwitchSensor
+Sensor <|-- WeightSensor
+
+class SwitchSensor {
+}
+
+class WeightSensor {
+}
+
+Sensor "0..*" <--* VirtualSmartFridge
+Sensor "1" <--* FridgeDoor
+
+hide SmartFridge fields
 interface SmartFridge {
-    turnOn() : void
-    open() : void
-    put(Product product) : void
-    take(Product product) : void
-    close() : void
-    turnOn() : void
+    +turnOn() : void
+    +open() : void
+    +put(Product product) : void
+    +take(Product product) : void
+    +close() : void
+    +turnOn() : void
 }
 
 class VirtualSmartFridge {
+    +VirtualSmartFridge(door : FridgeDoor)
+    +enableCustomInspection() : void
+    +enableCustomLabeling() : void
+    +hasUnidentifiedProducts() : Boolean
+    +hasFood() : Boolean
 }
 
 SmartFridge <|.. VirtualSmartFridge
 
-interface FridgeDoor {
-    isOpened : Boolean
-    open() : void
-    close() : void
-    timeElapsed() : Long
-    timesOpened() : Integer
+hide Provider fields
+interface Provider {
+    +makeAnOrder(list : ProvisionList) : Order
 }
-class BaseFridgeDoor {
+
+class FoodProvider {
+    -alias : String
+    +FoodProvider(alias : String)
 }
-FridgeDoor <|.. BaseFridgeDoor
-interface FridgeDoors
-class BaseFridgeDoors {
+
+Provider <|-- FoodProvider
+
+class Order {
+    -sentOn : DateTime
 }
+
+Order <.. Provider
+
+class ProvisionList {
+    +addFood() : void
+    +removeFood() : void
+    +hasFood() : Boolean
+}
+
+ProvisionList <.. Provider
+
+class Snapshot {
+    -imageData : Image[]
+    -weight : float
+    +Snapshot(image : Image, weight : float)
+    +add(image : Image, weight : float)
+}
+
+hide SmartFridgeLabeler fields
+interface SmartFridgeLabeler {
+    +identify(snapshots : Snapshot[]) : Product[]
+}
+
+SmartFridgeLabeler <|.. VirtualSmartFridgeLabeler
+
+class VirtualSmartFridgeLabeler {
+    +VirtualSmartFridgeLabeler()
+}
+
+SmartFridgeLabeler .> Snapshot
+
+VirtualSmartFridge *--> "1" SmartFridgeLabeler
 
 class Product {
-Object[] elementData
-size()
+    -name : String
+    -identificationCode : String
+    -imageData : Image[]
+    +Product(name : String, code : String)
+    +addImage(image : Image)
+    +getIdentificationCode() : String
+    +getImageData() : Image[]
 }
 
-enum TimeUnit {
-DAYS
-HOURS
-MINUTES
+class Food {
+    -expirationDate : DateTime
+    -totalWeight : float
+    +Food(nutritionFacts : NutritionFacts)
+    +addFood(food : Food) : void
+    +changeExpirationDate(date : Date) : void
+    +getExpirationDate() : Date
+    +getTotalWeight() : float
 }
+
+Product <|-- Food
+Product "0..*" <-- VirtualSmartFridge
+Food "0..*" <-- VirtualSmartFridge
+
+class NutritionFacts {
+    -calories : Integer
+    -carbohydrates : Integer
+    -proteins : Integer
+    -totalFats : Integer
+    -saturateFats : Integer
+    -transFats : Integer
+    -fiber : Integer
+    -sodium : Integer
+}
+
+Food *--> "1" NutritionFacts
+
+hide SmartFridgeInspector fields
+interface SmartFridgeInspector {
+    +survey(products : Product[]) : Snapshot[]
+}
+
+class VirtualSmartFridgeInspector {
+    +VirtualSmartFridgeInspector()
+}
+
+SmartFridgeInspector <|.. VirtualSmartFridgeInspector
+
+SmartFridgeInspector "1" <--* VirtualSmartFridge
+
+Provider <--* VirtualSmartFridge
 
 @enduml

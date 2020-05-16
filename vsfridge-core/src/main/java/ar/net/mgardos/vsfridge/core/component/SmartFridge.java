@@ -3,6 +3,8 @@ package ar.net.mgardos.vsfridge.core.component;
 import ar.net.mgardos.vsfridge.core.Product;
 
 public interface SmartFridge {
+    String ERROR_MSG_TEMPLATE = "The fridge is not capable of %s.";
+
     default Boolean isPlugged() {
         return false;
     }
@@ -21,15 +23,15 @@ public interface SmartFridge {
     }
 
     default void plugIn() {
-        throw new RuntimeException();
+        throw new RuntimeException(String.format(ERROR_MSG_TEMPLATE, "plugging in."));
     }
 
     default void turnOn() {
-        throw new RuntimeException();
+        throw new RuntimeException(String.format(ERROR_MSG_TEMPLATE, "turning on."));
     }
 
     default void unplug() {
-        throw new RuntimeException();
+        throw new RuntimeException(String.format(ERROR_MSG_TEMPLATE, "unplugging."));
     }
 
     /**
@@ -40,26 +42,42 @@ public interface SmartFridge {
      * @param <T> the type of the door identifier.
      */
     default <T> void open(T id) {
-        throw new RuntimeException();
+        throw new RuntimeException(String.format(ERROR_MSG_TEMPLATE, "opening any door."));
     }
 
+    /**
+     * Puts a product inside the fridge.
+     *
+     * @param product put inside the fridge.
+     */
     default void put(Product product) {
-        throw new RuntimeException();
+        throw new RuntimeException(String.format(ERROR_MSG_TEMPLATE, "putting products inside."));
     }
 
+    /**
+     * Takes a product from inside the fridge.
+     *
+     * @param product took from the fridge.
+     */
     default void take(Product product) {
-        throw new RuntimeException();
+        throw new RuntimeException(String.format(ERROR_MSG_TEMPLATE, "taking products from inside."));
     }
 
+    /**
+     *
+     */
     default void close() {
-        throw new RuntimeException();
+        throw new RuntimeException(String.format(ERROR_MSG_TEMPLATE, "closing any door."));
     }
 
     default void provision() {
-        throw new RuntimeException();
+        throw new RuntimeException(String.format(ERROR_MSG_TEMPLATE, "provisioning any food."));
     }
 
+    /**
+     * Turns the fridge off.
+     */
     default void turnOff() {
-        throw new RuntimeException();
+        throw new RuntimeException(String.format(ERROR_MSG_TEMPLATE, "turning off."));
     }
 }

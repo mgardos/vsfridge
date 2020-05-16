@@ -1,13 +1,13 @@
 @startuml
 left to right direction
-Actor User
+Actor Consumidor
 Actor Tiempo
 Actor Proveedor
 rectangle "Heladera Inteligente Virtual" {
-    User --- (Abrir)
-    User --- (Cerrar)
-    User -- (Encender)
-    User <- (Notificar alimentos\nen vencimiento)
+    Consumidor --- (Abrir)
+    Consumidor --- (Cerrar)
+    Consumidor -- (Encender)
+    Consumidor <- (Notificar alimentos\nen vencimiento)
     (Cerrar) <.. (Identificar producto\nmanualmente) : <<extend>>
     (Cerrar) .> (Identificar producto) : <<include>>
     (Encender) .> (Cerrar) : <<include>>
@@ -15,10 +15,10 @@ rectangle "Heladera Inteligente Virtual" {
     (Poner productos) .> (Abrir) : <<extend>>
     (Abrir) <.. (Tomar productos) : <<extend>>
     (Comprar\nalimentos) ---- Proveedor
-    User <- (Notificar escasez\nde alimentos)
+    Consumidor <- (Notificar escasez\nde alimentos)
     (Notificar escasez\nde alimentos) ..> (Monitorear escasez\nde alimentos) : <<extend>>
     (Comprar\nalimentos) .> (Notificar escasez\nde alimentos) : <<extend>>
-    User --- (Agregar\nproveedor)
+    Consumidor --- (Agregar\nproveedor)
     (Agregar\nproveedor) <. (Comprar\nalimentos) : <<extend>>
     (Monitorear vencimiento\nde alimentos) <-- Tiempo
     (Notificar alimentos\nen vencimiento) ..> (Monitorear vencimiento\nde alimentos) : <<extend>>
