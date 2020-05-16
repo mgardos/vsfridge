@@ -177,47 +177,51 @@ El diagrama esquematico presenta el entorno en el cual opera la heladera intelig
 
 ### Caso de uso Poner producto CU_PP
 
-| Nombre del caso de uso     |                                        |
-|----------------------------|----------------------------------------|
-| __Identificador__          |                                        |
-| __Actores__                |                                        |
-| __Entradas__               |                                        |
-| __Pre-condiciones__        |                                        |
-| __Post-condiciones__       |                                        |
+| Nombre del caso de uso     | Poner producto                                 |
+|----------------------------|------------------------------------------------|
+| __Identificador__          | CU_PP                                          |
+| __Actores__                | Consumidor                                     |
+| __Entradas__               | Producto                                       |
+| __Pre-condiciones__        | Caso de uso CU_AR fue ejecutado con éxito      |
+| __Post-condiciones__       | Uno o más productos en interior de la heladera |
 
 #### Flujo normal
 
 | Paso   | Estimulo del actor                  | Respuesta del sistema                  |
 |:------:|-------------------------------------|----------------------------------------|
-| 1      |                                     |                                        |
+| 1      | El consumidor introduce en el interior de la heladera un producto | La heladera detecta que un objeto fue introducido en su interior       |
+|        |                                                                   | La heladera registra que existen objetos en el interior que requieren detección |
+| 2      | El consumidor cierra la puerta de la heladera                     | La heladera ejecuta el caso de uso CU_CR |
 
 #### Flujo alternativo CU_PP_ALT1: Poner otro producto
 
 | Paso   | Estimulo del actor                  | Respuesta del sistema                  |
 |:------:|-------------------------------------|----------------------------------------|
-| 2.1    |                                     |                                        |
+| 2.1    | El consumidor decide poner en el interior de la heladera otro producto | Se ejecuta el paso 1 del flujo normal |
 
 ### Caso de uso Tomar producto CU_TP
 
-| Nombre del caso de uso     |                                        |
-|----------------------------|----------------------------------------|
-| __Identificador__          |                                        |
-| __Actores__                |                                        |
-| __Entradas__               |                                        |
-| __Pre-condiciones__        |                                        |
-| __Post-condiciones__       |                                        |
+| Nombre del caso de uso     | Tomar producto                                        |
+|----------------------------|-------------------------------------------------------|
+| __Identificador__          | CU_TP                                                 |
+| __Actores__                | Consumidor                                            |
+| __Entradas__               | Productos                                             |
+| __Pre-condiciones__        | Caso de uso CU_AR fue ejecutado con éxito             |
+| __Post-condiciones__       | Uno o más productos fuera del interior de la heladera |
 
 #### Flujo normal
 
-| Paso   | Estimulo del actor                  | Respuesta del sistema                  |
-|:------:|-------------------------------------|----------------------------------------|
-| 1      |                                     |                                        |
+| Paso   | Estimulo del actor                                           | Respuesta del sistema                  |
+|:------:|--------------------------------------------------------------|----------------------------------------|
+| 1      | El consumidor retira del interior de la heladera un producto | La heladera detecta que un objeto fue retirado de su interior |
+|        |                                                              | La heladera registra que se requiere detección de productos ya que existen menos productos en su interior |
+| 2      | El consumidor cierra la puerta de la heladera | La heladera ejecuta el caso de uso CU_CR |
 
 #### Flujo alternativo CU_TP_ALT1: Tomar otro producto
 
-| Paso   | Estimulo del actor                  | Respuesta del sistema                  |
-|:------:|-------------------------------------|----------------------------------------|
-| 2.1    |                                     |                                        |
+| Paso   | Estimulo del actor                                                   | Respuesta del sistema                 |
+|:------:|----------------------------------------------------------------------|---------------------------------------|
+| 2.1    | El consumidor decide tomar del interior de la heladera otro producto | Se ejecuta el paso 1 del flujo normal |
 
 ### Caso de uso Identificar productos CU_IP
 
@@ -470,6 +474,8 @@ El diagrama esquematico presenta el entorno en el cual opera la heladera intelig
 ## Mockups
 
 ## Diagramas del modelo de dominio
+
+![system overview](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/mgardos/vsfridge/master/src/site/resources/classes.puml)
 
 ## Diagramas de secuencia
 
