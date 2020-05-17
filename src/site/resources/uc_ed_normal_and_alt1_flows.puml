@@ -1,0 +1,31 @@
+@startuml
+
+hide footbox
+header CU_ED Flujo Normal y flujo alternativo 1
+autonumber
+
+Customer -> VirtualSmartFridge: turnOn() : void
+activate VirtualSmartFridge
+
+create FridgeDoor
+VirtualSmartFridge --> FridgeDoor: FridgeDoor()
+activate FridgeDoor
+
+create VirtualSmartFridgeInspector
+VirtualSmartFridge --> VirtualSmartFridgeInspector: VirtualSmartFridgeInspector()
+activate VirtualSmartFridgeInspector
+
+VirtualSmartFridge -> FridgeDoor : doorOpened = isOpened() : boolean
+
+autonumber stop
+FridgeDoor --> VirtualSmartFridge
+
+autonumber resume
+alt doorOpened == false
+VirtualSmartFridge -> CU_CR_Cerrar : <<include>>
+else doorOpened == true
+VirtualSmartFridge -> CU_AR_Abrir : <<include>>
+end
+|||
+
+@enduml

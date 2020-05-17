@@ -1,0 +1,20 @@
+@startuml
+
+hide footbox
+header CU_AR Flujo Normal
+autonumber
+
+Customer -> VirtualSmartFridge: open() : void
+activate VirtualSmartFridge
+
+VirtualSmartFridge -> FridgeDoor : open() : void
+activate FridgeDoor
+
+FridgeDoor -> FridgeDoor : increaseTimesOpened() : void
+FridgeDoor -> FridgeDoor : startTimer() : void
+
+Customer -> VirtualSmartFridge: close() : void
+VirtualSmartFridge -> CU_CR_Cerrar : <<include>>
+|||
+
+@enduml
