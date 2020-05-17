@@ -398,54 +398,61 @@ El diagrama esquematico presenta el entorno en el cual opera la heladera intelig
 
 ### Caso de uso Monitorear vencimiento de alimentos CU_MV
 
-| Nombre del caso de uso     |                                        |
-|----------------------------|----------------------------------------|
-| __Identificador__          |                                        |
-| __Actores__                |                                        |
-| __Entradas__               |                                        |
-| __Pre-condiciones__        |                                        |
-| __Post-condiciones__       |                                        |
+| Nombre del caso de uso     | Monitorear vencimiento de alimentos              |
+|----------------------------|--------------------------------------------------|
+| __Identificador__          | CU_MV                                            |
+| __Actores__                | Tiempo                                           |
+| __Entradas__               | Alimentos en el interior                         |
+| __Pre-condiciones__        | La puerta de la heladera está cerrada            |
+| __Post-condiciones__       | Registro de vencimiento de alimentos actualizado |
 
 #### Flujo normal
 
-| Paso   | Estimulo del actor                  | Respuesta del sistema                  |
-|:------:|-------------------------------------|----------------------------------------|
-| 1      |                                     |                                        |
+| Paso   | Estimulo del actor                                             | Respuesta del sistema                           |
+|:------:|----------------------------------------------------------------|-------------------------------------------------|
+| 1      | Una vez cada 24 hs se controla el vencimiento de los alimentos | La heladera revisa el registro de alimentos en su interior y chequea, para cada alimento que dispone de fecha de vencimiento, si dicha fecha es próxima a la actual |
+|        |                                                                | La heladera registra los alimentos vencidos, próximos a vencer y aquellos que no disponen de fecha de vencimiento |
 
 #### Flujo alternativo CU_MV_ALT1: Puerta abierta detectada durante monitoreo
 
-| Paso   | Estimulo del actor                  | Respuesta del sistema                  |
-|:------:|-------------------------------------|----------------------------------------|
-| 1.1    |                                     |                                        |
-| 1.2    |                                     |                                        |
+| Paso   | Estimulo del actor                                                          | Respuesta del sistema                  |
+|:------:|-----------------------------------------------------------------------------|----------------------------------------|
+| 1.1    | Una vez cada 24 hs se revisa el vencimiento de los alimentos                | La heladera chequea para cada alimento en su interior que dispone de fecha de vencimiento si dicha fecha es próxima a la actual |
+| 1.2    | El consumidor abre la puerta de la heladera durante el proceso de monitoreo | La heladera interrumpe el monitoreo de vencimiento de los alimentos en su interior |
+|        |                                                                             | La heladera registra que el monitoreo de vencimiento de alimentos en su interior está pendiente y lo agenda para iniciar luego de la identificación de alimentos |
 
-#### Flujo alternativo CU_MV_ALT2: Monitoreo pendiente por interrupcion
+#### Flujo alternativo CU_MV_ALT2: Monitoreo pendiente por interrupción
 
-| Paso   | Estimulo del actor                  | Respuesta del sistema                  |
-|:------:|-------------------------------------|----------------------------------------|
-| 1.1    |                                     |                                        |
+| Paso   | Estimulo del actor                                                     | Respuesta del sistema                  |
+|:------:|------------------------------------------------------------------------|----------------------------------------|
+| 1.1    | El monitoreo de vencimiento de alimentos fue agendado por interrupción | La heladera chequea para cada alimento en su interior que dispone de fecha de vencimiento si dicha fecha es próxima a la actual |
+|        |                                                                        | La heladera registra los alimentos vencidos, próximos a vencer y aquellos que no disponen de fecha de vencimiento |
 
 #### Flujo alternativo CU_MV_ALT3: Notificacion del resultado del monitoreo
 
-| Paso   | Estimulo del actor                  | Respuesta del sistema                  |
-|:------:|-------------------------------------|----------------------------------------|
-| 1.1    |                                     |                                        |
+| Paso   | Estimulo del actor                                                       | Respuesta del sistema                  |
+|:------:|--------------------------------------------------------------------------|----------------------------------------|
+| 1.1    | Durante los horarios en los cuales el consumidor hace uso de la heladera | La heladera recupera el registro de vencimiento de alimentos pendiente de informar al consumidor |
+|        |                                                                          | La heladera ejecuta el caso de uso CU_NV |
 
 ### Caso de uso Notificar alimentos en vencimiento CU_NV
 
-| Nombre del caso de uso     |                                        |
-|----------------------------|----------------------------------------|
-| __Identificador__          |                                        |
-| __Actores__                |                                        |
-| __Entradas__               |                                        |
-| __Pre-condiciones__        |                                        |
-| __Post-condiciones__       |                                        |
+| Nombre del caso de uso     | Notificar alimentos en vencimiento                         |
+|----------------------------|------------------------------------------------------------|
+| __Identificador__          | CU_NV                                                      |
+| __Actores__                | Tiempo, Consumidor                                         |
+| __Entradas__               | Registro de vencimiento de alimentos                       |
+| __Pre-condiciones__        | La puerta de la heladera está cerrada                      |
+|                            | Registro de vencimiento de alimentos pendiente de informar |
+| __Post-condiciones__       | ...                                                        |
 
 #### Flujo normal
 
-| Paso   | Estimulo del actor                  | Respuesta del sistema                  |
-|:------:|-------------------------------------|----------------------------------------|
-| 1      |                                     |                                        |
+| Paso   | Estimulo del actor                                                           | Respuesta del sistema                  |
+|:------:|------------------------------------------------------------------------------|----------------------------------------|
+| 1      | El registro de vencimiento de alimentos contiene alimentos próximos a vencer | La heladera alerta al consumidor sobre los alimentos que están próximos a vencer |
+| 2      | El consumidor revisa la lista de alimentos a vencer                          | La heladera solicita al consumidor iniciar la compra de los alimentos para reemplazar los que están próximos a vencer |
+| 3      | El consumidor acepta iniciar la compra de alimentos escasos                  | La heladera ejecuta el caso de uso CU_CA |
 
 #### Flujo alternativo CU_NV_ALT1: ...
 
@@ -455,64 +462,75 @@ El diagrama esquematico presenta el entorno en el cual opera la heladera intelig
 
 ### Caso de uso Monitorear escasez de alimentos CU_ME
 
-| Nombre del caso de uso     |                                        |
-|----------------------------|----------------------------------------|
-| __Identificador__          |                                        |
-| __Actores__                |                                        |
-| __Entradas__               |                                        |
-| __Pre-condiciones__        |                                        |
-| __Post-condiciones__       |                                        |
+| Nombre del caso de uso     | Monitorear escasez de alimentos           |
+|----------------------------|-------------------------------------------|
+| __Identificador__          | CU_ME                                     |
+| __Actores__                | Tiempo                                    |
+| __Entradas__               | Registro de alimentos en el interior      |
+| __Pre-condiciones__        | La puerta de la heladera está cerrada     |
+| __Post-condiciones__       | Registro de alimentos escasos actualizado |
+|                            | Registro de aprovisionamiento actualizado |
 
 #### Flujo normal
 
-| Paso   | Estimulo del actor                  | Respuesta del sistema                  |
-|:------:|-------------------------------------|----------------------------------------|
-| 1      |                                     |                                        |
+| Paso   | Estimulo del actor                                                 | Respuesta del sistema                     |
+|:------:|--------------------------------------------------------------------|-------------------------------------------|
+| 1      | Durante los horarios en los cuales el consumidor hace uso de la heladera, a intervalos convenientes se controla el registro de alimentos | La heladera revisa el registro de alimentos en su interior y chequea, para cada alimento, si el peso total del mismo es suficiente para atender la demanda del consumidor |
+|        |            | La heladera registra los alimentos escasos y aquellos para los que no fue posible determinarlo    |
+|        |            | La heladera actualiza el registro de aprovisionamiento con los alimentos escasos y sus cantidades |
+|        |            | La heladera ejecuta el caso de uso CU_NE                                                          |
 
 #### Flujo alternativo CU_ME_ALT1: Puerta abierta detectada durante monitoreo
 
 | Paso   | Estimulo del actor                  | Respuesta del sistema                  |
 |:------:|-------------------------------------|----------------------------------------|
-| 1.1    |                                     |                                        |
-| 1.2    |                                     |                                        |
+| 1.1    | Durante los horarios en los cuales el consumidor hace uso de la heladera, a intervalos convenientes se controla el registro de alimentos | La heladera revisa el registro de alimentos en su interior y chequea, para cada alimento, si el peso total del mismo es suficiente para atender la demanda del consumidor |
+| 1.2    | El consumidor abre la puerta de la heladera durante el proceso de monitoreo | La heladera interrumpe el monitoreo de escasez de los alimentos en su interior |
+|        |             | La heladera registra que el monitoreo de escasez de alimentos en su interior está pendiente y lo agenda para iniciar luego de la identificación de alimentos |
 
-#### Flujo alternativo CU_ME_ALT2: Monitoreo pendiente por interrupcion
+#### Flujo alternativo CU_ME_ALT2: Monitoreo pendiente por interrupción
 
-| Paso   | Estimulo del actor                  | Respuesta del sistema                  |
-|:------:|-------------------------------------|----------------------------------------|
-| 1.1    |                                     |                                        |
+| Paso   | Estimulo del actor                                                 | Respuesta del sistema                  |
+|:------:|--------------------------------------------------------------------|----------------------------------------|
+| 1.1    | El monitoreo de escasez de alimentos fue agendado por interrupción | La heladera revisa el registro de alimentos en su interior y chequea, para cada alimento, si el peso total del mismo es suficiente para atender la demanda del consumidor                                       |
+|        |                                                                    | La heladera registra los alimentos escasos y aquellos para los que no fue posible determinarlo |
+|        |                                                                    | La heladera actualiza el registro de aprovisionamiento con los alimentos escasos y sus cantidades |
+|        |                                                                    | La heladera ejecuta el caso de uso CU_NE |
 
 ### Caso de uso Notificar escasez de alimentos CU_NE
 
-| Nombre del caso de uso     |                                        |
-|----------------------------|----------------------------------------|
-| __Identificador__          |                                        |
-| __Actores__                |                                        |
-| __Entradas__               |                                        |
-| __Pre-condiciones__        |                                        |
-| __Post-condiciones__       |                                        |
+| Nombre del caso de uso     | Notificar escasez de alimentos                          |
+|----------------------------|---------------------------------------------------------|
+| __Identificador__          | CU_NE                                                   |
+| __Actores__                | Tiempo, Consumidor                                      |
+| __Entradas__               | Registro de alimentos escasos                           |
+| __Pre-condiciones__        | La puerta de la heladera está cerrada                   |
+|                            | Alimentos escasos                                       |
+| __Post-condiciones__       | Registro de postergación de compra de alimentos escasos |
 
 #### Flujo normal
 
 | Paso   | Estimulo del actor                  | Respuesta del sistema                  |
 |:------:|-------------------------------------|----------------------------------------|
-| 1      |                                     |                                        |
+| 1      | El registro de alimentos escasos contiene alimentos que requieren reposición | La heladera alerta al consumidor sobre los alimentos que requieren reposición informando la lista de reposición |
+| 2      | El consumidor revisa la lista                                                | La heladera solicita al consumidor iniciar la compra de los alimentos escasos |
+| 3      | El consumidor acepta iniciar la compra de alimentos escasos                  | La heladera ejecuta el caso de uso CU_CA |
 
 #### Flujo alternativo CU_NE_ALT1: Postergar compra de alimentos escasos
 
-| Paso   | Estimulo del actor                  | Respuesta del sistema                  |
-|:------:|-------------------------------------|----------------------------------------|
-| 2.1    |                                     |                                        |
-| 2.2    |                                     |                                        |
-| 2.3    |                                     |                                        |
+| Paso   | Estimulo del actor                                            | Respuesta del sistema                  |
+|:------:|---------------------------------------------------------------|----------------------------------------|
+| 2.1    | El consumidor revisa la lista                                 | La heladera solicita al consumidor iniciar la compra de los alimentos escasos |
+| 2.2    | El consumidor decide postergar la compra de alimentos escasos | La heladera solicita al consumidor informar el lapso de tiempo que la compra será postergada |
+| 2.3    | El consumidor informa el tiempo de postergación de la compra  | La heladera registra la postergación de la compra de alimentos escasos |
 
 #### Flujo alternativo CU_NE_ALT2: Aprobacion de compra de alimentos escasos
 
-| Paso   | Estimulo del actor                  | Respuesta del sistema                  |
-|:------:|-------------------------------------|----------------------------------------|
-| 1.1    |                                     |                                        |
-| 1.2    |                                     |                                        |
-| 1.3    |                                     |                                        |
+| Paso   | Estimulo del actor                                          | Respuesta del sistema                  |
+|:------:|-------------------------------------------------------------|----------------------------------------|
+| 1.1    | La reposición de alimentos escasos fue postergada           | La heladera informa al consumidor los alimentos que requieren reposición |
+| 1.2    | El consumidor revisa el listado de alimentos escasos        | La heladera solicita al consumidor iniciar la compra de los alimentos escasos |
+| 1.3    | El consumidor acepta iniciar la compra de alimentos escasos | La heladera ejecuta el caso de uso CU_CA |
 
 ## Mockups
 
