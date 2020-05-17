@@ -20,11 +20,15 @@ VirtualSmartFridge -> FridgeDoor : doorOpened = isOpened() : boolean
 autonumber stop
 FridgeDoor --> VirtualSmartFridge
 
+|||
 autonumber resume
+
 alt doorOpened == false
 VirtualSmartFridge -> CU_CR_Cerrar : <<include>>
+|||
 else doorOpened == true
 VirtualSmartFridge -> CU_AR_Abrir : <<include>>
+|||
 end
 |||
 

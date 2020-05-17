@@ -7,6 +7,7 @@ class FridgeDoor {
     -lastClosingTime : DataTime
     -increaseTimesOpened() : void
     -startTimer() : void
+    -stopTimer() : void
     +isOpened() : Boolean
     +open() : void
     +close() : void
@@ -44,6 +45,7 @@ interface SmartFridge {
 }
 
 class VirtualSmartFridge {
+    -scheduleInspection() : void
     +VirtualSmartFridge(door : FridgeDoor)
     +enableCustomInspection() : void
     +enableCustomLabeling() : void
@@ -86,6 +88,16 @@ class Snapshot {
     +add(image : Image, weight : float)
 }
 
+class Status {
+    -entries : StatusEntry[]
+    +save() : void
+    +retain() : void
+    +accept() : void
+    +discard() : void
+}
+
+VirtualSmartFridge *--> "1" Status
+
 hide SmartFridgeLabeler fields
 interface SmartFridgeLabeler {
     +identify(snapshots : Snapshot[]) : Product[]
@@ -97,9 +109,8 @@ class VirtualSmartFridgeLabeler {
     +VirtualSmartFridgeLabeler()
 }
 
-SmartFridgeLabeler .> Snapshot
-
 VirtualSmartFridge *--> "1" SmartFridgeLabeler
+SmartFridgeLabeler ..> Snapshot
 
 class Product {
     -name : String
