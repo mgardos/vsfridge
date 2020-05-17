@@ -5,6 +5,8 @@ class FridgeDoor {
     -timesOpened : Integer
     -lastOpeningTime : DateTime
     -lastClosingTime : DataTime
+    -increaseTimesOpened() : void
+    -startTimer() : void
     +isOpened() : Boolean
     +open() : void
     +close() : void
