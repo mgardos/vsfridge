@@ -22,9 +22,9 @@
 + [Mockups](#mockups)
 + [Diagramas del modelo de dominio](#diagramas-del-modelo-de-dominio)
 + [Diagramas de secuencia](#diagramas-de-secuencia)
-  + [Encendido de heladera con puerta abierta y sin productos en el interior](#encendido-de-heladera-con-puerta-abierta-y-sin-productos-en-el-interior)
-  + [Encendido de heladera con puerta cerrada y sin productos en el interior](#encendido-de-heladera-con-puerta-cerrada-y-sin-productos-en-el-interior)
-  + [Heladera con puerta abierta y productos en su interior](#heladera-con-puerta-abierta-y-productos-en-su-interior)
+  + [Flujos normal y alternativo para Encender](#flujos-normal-y-alternativo-para-encender)
+  + [Flujo normal para Abrir](#flujo-normal-para-abrir)
+  + [Flujos alternativos para Abrir](#flujos-alternativos-para-abrir)
 + [Diagramas de actividad](#diagramas-de-actividad)
 
 ## Descripcion de la propuesta
@@ -540,11 +540,19 @@ El diagrama esquematico presenta el entorno en el cual opera la heladera intelig
 
 ## Diagramas de secuencia
 
-### Encendido de heladera con puerta abierta y sin productos en el interior
+### Flujos normal y alternativo para Encender 
 
-### Encendido de heladera con puerta cerrada y sin productos en el interior
+![system overview](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/mgardos/vsfridge/master/src/site/resources/uc_ed_normal_and_alt1_flows.puml)
 
-### Heladera con puerta abierta y productos en su interior
+### Flujo normal para Abrir
+
+![system overview](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/mgardos/vsfridge/master/src/site/resources/uc_ar_normal_flow.puml)
+
+### Flujos alternativos para Abrir
+
+![system overview](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/mgardos/vsfridge/master/src/site/resources/uc_ar_alt1_flow.puml)
+
+![system overview](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/mgardos/vsfridge/master/src/site/resources/uc_ar_alt2_flow.puml)
 
 ## Diagramas de actividad
 
