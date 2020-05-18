@@ -1,0 +1,21 @@
+@startuml
+
+hide footbox
+header CU_TP Flujo Normal y flujo alternativo 1
+autonumber
+
+loop from 1 to many products
+|||
+Customer -> VirtualSmartFridge: take(product : Product) : void
+activate VirtualSmartFridge
+
+VirtualSmartFridge -> VirtualSmartFridge : scheduleInspection() : void
+|||
+end
+
+|||
+Customer -> VirtualSmartFridge: close() : void
+VirtualSmartFridge -> CU_CR_Cerrar : <<include>>
+|||
+
+@enduml
