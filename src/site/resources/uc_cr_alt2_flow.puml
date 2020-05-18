@@ -20,7 +20,11 @@ VirtualSmartFridge -> CU_IP_Identificar_Producto : <<include>>
 
 autonumber stop
 CU_IP_Identificar_Producto --> VirtualSmartFridge : identification result
+
+autonumber resume
 VirtualSmartFridge -> Status : save(identificationStatus : StatusEntry)
+
+autonumber stop
 Status --> VirtualSmartFridge : identification status
 VirtualSmartFridge --> Customer : identification status
 
