@@ -554,6 +554,26 @@ El diagrama esquematico presenta el entorno en el cual opera la heladera intelig
 
 ![system overview](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/mgardos/vsfridge/master/src/site/resources/uc_ar_alt2_flow.puml)
 
+### Flujos normal y alternativo para Poner producto
+
+![system overview](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/mgardos/vsfridge/master/src/site/resources/uc_pp_normal_and_alt1_flows.puml)
+
+### Flujos normal y alternativo para Tomar producto
+
+![system overview](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/mgardos/vsfridge/master/src/site/resources/uc_tp_normal_and_alt1_flows.puml)
+
+### Flujo normal para Identificar Producto
+
+### Flujo normal para Cerrar
+
+![system overview](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/mgardos/vsfridge/master/src/site/resources/uc_cr_normal_flow.puml)
+
+### Flujos alternativos para Cerrar
+
+![system overview](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/mgardos/vsfridge/master/src/site/resources/uc_cr_alt1_flow.puml)
+
+![system overview](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/mgardos/vsfridge/master/src/site/resources/uc_cr_alt2_flow.puml)
+
 ## Diagramas de actividad
 
 ### Encendido de la heladera
