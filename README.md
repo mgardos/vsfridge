@@ -59,50 +59,57 @@ El diagrama esquematico presenta el entorno en el cual opera la heladera intelig
 
 ## Cuadro de capacidades de heladeras inteligentes
 
-|                                                 | Samsung | LG      | Hitachi | Panasonic | Sharp | Virtual |
-| ------------------------------------------------|:-------:|:-------:|:-------:|:---------:|:-----:|:-------:|
-| Conectividad WiFi                               | Si      | Si      | Si      |           |       |         |
-| Control por aplicación móvil                    | Si      |         |         |           |       |         |
-| Instalacion de aplicaciones                     | Si      |         |         |           |       |         |
-| Comando por voz                                 | Si      | Si      |         |           |       |         |
-| Acceder a sitios en Internet                    | Si      |         |         |           |       |         |
-| Espejar telefono movil                          | Si      |         |         |           |       |         |
-| Detectar y notificar puerta abierta             | Si      | Si      | Si      |           |       |         |
-| Sensar tiempo de puerta abierta                 |         |         |         | Si        |       | Si      |
-| Sensar numero de aperturas de puerta            |         |         | Si      |           |       | Si      |
-| Ajustar temperatura                             |         | Si      | Si      |           |       |         |
-| Ajustar humedad                                 | Si      |         |         |           |       |         |
-| Ajustar filtro de aire                          |         |         |         |           |       |         |
-| Activar hielo adicional                         |         |         |         |           |       |         |
-| Ajustar ahorro de energia                       | Si      |         |         |           |       |         |
-| Visualizar consumo de energia                   |         |         |         |           |       |         |
-| Crear perfil del usuario                        | Si      |         |         |           |       |         |
-| Enviar mensajes a otros usuarios                | Si      |         |         |           |       |         |
-| Enviar lista de tareas a otros usuarios         |         |         |         |           |       |         |
-| Crear agenda de actividades para usuario        | Si      |         |         |           |       |         |
-| Crear mensajes y dibujos en la puerta           | Si      |         |         |           |       |         |
-| Mostrar fotos en la puerta                      | Si      |         |         |           |       |         |
-| Reproducir video en la puerta                   | Si      |         |         |           |       |         |
-| Espejar televisor inteligente                   | Si      |         |         |           |       |         |
-| Reproducir musica desde la puerta               | Si      |         |         |           |       |         |
-| Transmitir musica a dispositivos compatibles    | Si      |         |         |           |       |         |
-| Planificar comida con alimentos en el interior  |         |         |         |           |       |         |
-| Crear lista de compras                          | Si      |         |         |           |       | Si      |
-| Ver alimentos en el interior a puerta cerrada   | Si      |         |         |           |       | Si      |
-| Definir alarma para compra de alimentos         | No      |         |         |           |       | Si      |
-| Leer recetas al usuario                         | Si      |         |         |           |       |         |
-| Tomar dictado del usuario                       |         |         |         |           |       |         |
-| Realizar compra de alimentos manual             | Si      |         |         |           |       | Si      |
-| Comprar alimentos escazos sin asistencia manual | No      |         |         |           |       | Si      |
-| Controlar otros dispositivos inteligentes       | Si      |         |         |           |       |         |
-| Encender luz inteligente                        | Si      |         |         |           |       |         |
-| Atender portero inteligente                     | Si      |         |         |           |       |         |
-| Recibir notificacion de lavaropas inteligente   | Si      |         |         |           |       |         |
-| Administrar lista de alimentos en interior      | Si      |         |         |           |       | Si      |
-| Detectar e identificar productos en el interior | No      | No      |         |           |       | Si      |
-| Detectar cantidad de alimentos                  | No      | No      |         |           |       | Si      |
-| Monitorear vencimiento de alimentos             | No      | No      |         |           |       | Si      |
-| Administrar compra de alimentos segun consumo   | No      | No      |         |           |       | Si      |
+|                                                 | Samsung | LG      | Hitachi | Panasonic | Sharp | Bosch | Siemens | Virtual |
+| ------------------------------------------------|:-------:|:-------:|:-------:|:---------:|:-----:|:-----:|:-------:|:-------:|
+| Conectividad WiFi                               | Si      | Si      | Si      |           |       | Si    | Si      | N/A     |
+| Control por aplicación móvil                    | Si      |         | Si      |           |       | Si    | Si      |         |
+| Detectar heladera apagada                       | Si      | Si      | Si      | No        | No    | Si    | Si      | N/A     |
+| Control por panel en puerta                     | Si      | Si      | No      | No        | No    | No    | No      | Si      |
+| Instalacion de aplicaciones                     | Si      |         |         |           |       | No    | No      |         |
+| Comando por voz                                 | Si      | Si      |         |           |       |       |         |         |
+| Apertura de puerta tactil                       | No      | No      | Si      | Si        |       |       |         | N/A     |
+| Acceder a sitios en Internet                    | Si      |         |         |           |       | No    | No      |         |
+| Espejar telefono movil                          | Si      |         |         |           |       |       |         |         |
+| Detectar y notificar puerta abierta             | Si      | Si      | Si      | Si        |       | Si    | Si      | Si      |
+| Sensar tiempo de puerta abierta                 |         |         |         | Si        |       |       |         | Si      |
+| Sensar numero de aperturas de puerta            |         |         | Si      |           |       |       |         | Si      |
+| Ajustar temperatura                             |         | Si      | Si      |           |       | Si    | Si      |         |
+| Detectar y notificar cambio de temperatura      | No      | No      | No      | No        | No    | Si    | Si      | No      |
+| Ajustar humedad                                 | Si      |         |         |           |       |       |         |         |
+| Ajustar filtro de aire                          |         |         |         |           |       |       |         |         |
+| Activar hielo adicional                         |         |         |         |           |       |       |         |         |
+| Ajustar ahorro de energia                       | Si      |         | Si      |           |       |       |         |         |
+| Visualizar consumo de energia                   |         |         |         |           |       |       |         |         |
+| Crear perfil del usuario                        | Si      |         |         |           |       |       |         |         |
+| Enviar mensajes a otros usuarios                | Si      |         |         |           |       |       |         |         |
+| Enviar lista de tareas a otros usuarios         |         |         |         |           |       |       |         |         |
+| Crear agenda de actividades para usuario        | Si      |         |         |           |       |       |         |         |
+| Crear mensajes y dibujos en la puerta           | Si      |         |         |           |       |       |         |         |
+| Mostrar fotos en la puerta                      | Si      |         |         |           |       |       |         |         |
+| Reproducir video en la puerta                   | Si      |         |         |           |       |       |         |         |
+| Espejar televisor inteligente                   | Si      |         |         |           |       |       |         |         |
+| Reproducir musica desde la puerta               | Si      |         |         |           |       |       |         |         |
+| Transmitir musica a dispositivos compatibles    | Si      |         |         |           |       |       |         |         |
+| Planificar comida con alimentos en el interior  |         |         |         |           |       |       |         |         |
+| Crear lista de compras                          | Si      |         | Si      |           |       |       |         | Si      |
+| Ver alimentos en el interior a puerta cerrada   | Si      |         |         |           |       | Si    |         | Si      |
+| Sugerir ubicacion de alimentos                  | No      | No      | No      | No        | No    | Si    |         | No      |
+| Definir alarma para compra de alimentos         | No      |         |         |           |       |       |         | Si      |
+| Leer recetas al usuario                         | Si      |         |         |           |       |       |         |         |
+| Tomar dictado del usuario                       |         |         |         |           |       |       |         |         |
+| Realizar compra de alimentos manual             | Si      |         |         |           |       |       |         | Si      |
+| Comprar alimentos escazos sin asistencia manual | No      |         |         |           |       |       |         | Si      |
+| Controlar otros dispositivos inteligentes       | Si      |         |         |           |       |       |         |         |
+| Encender luz inteligente                        | Si      |         |         |           |       |       |         |         |
+| Atender portero inteligente                     | Si      |         |         |           |       |       |         |         |
+| Recibir notificacion de lavaropas inteligente   | Si      |         |         |           |       |       |         |         |
+| Administrar lista de alimentos en interior      | Si      |         | Si      |           |       |       |         | Si      |
+| Detectar e identificar productos en el interior | No      | No      |         |           |       |       |         | Si      |
+| Detectar cantidad de alimentos                  | No      | No      |         |           |       |       |         | Si      |
+| Monitorear vencimiento de alimentos             | No      | No      | No      |           |       |       |         | Si      |
+| Administrar compra de alimentos segun consumo   | No      | No      |         |           |       |       |         | Si      |
+
+La seccion de referencias incluye vinculos a los modelos de las marcas mencionadas en el cuadro de capacidades. 
 
 ## Usos de la heladera inteligente
 
@@ -604,4 +611,9 @@ El diagrama esquematico presenta el entorno en el cual opera la heladera intelig
 
 ## Referencias
 
++ [Heladera inteligente Samsung](https://www.samsung.com/us/home-appliances/refrigerators/4-door-flex/28-cu-ft-4-door-flex-with-21-5-in-connected-touch-screen-family-hub-refrigerator-rf28n9780sr-aa/)
++ [Heladera inteligente LG](https://www.lg.com/us/refrigerators/lg-LNXS30996D-door-in-door)
 + [Heladera inteligente Hitachi](https://www.homeappliances.hitachi.com/sg/eng/products/refrigerators/made-in-japan-iot-connected/r-zxc740ks.html?productId=r-zxc740ks)
++ [Aplicacion movil para heladera Hitachi](https://www.homeappliances.hitachi.com/global/app/ref/series01/index.html)
++ [Heladera pseudo inteligente Sharp](http://www.sharphomeappliances.com/products/cooling/fridge-freezers/sj-f1560eva-1442)
++ [Heladera inteligente Bosch](https://www.bosch-home.co.uk/bosch-innovations/homeconnect/homeconnect-fridges#tab-navigation)
