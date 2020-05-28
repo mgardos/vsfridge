@@ -70,55 +70,57 @@ El usuario o consumidor es quien hace uso de la heladera inteligente, deposita y
 
 ## Cuadro de capacidades de heladeras inteligentes
 
+El siguiente cuadro especifica las caractiristicas inteligentes de heladeras comercializadas por los fabricates indicados. El grado de inteligencia correspondiente a cada caracteristica varia entre fabricantes.
+
 |                                                 | Samsung | LG      | Hitachi | Panasonic | Sharp | Bosch | Siemens | Virtual |
 | ------------------------------------------------|:-------:|:-------:|:-------:|:---------:|:-----:|:-----:|:-------:|:-------:|
-| Conectar a red WiFi                             | Si      | Si      | Si      |           |       | Si    | Si      | N/A     |
-| Control por aplicación móvil                    | Si      |         | Si      |           |       | Si    | Si      | N/A        |
+| Conectar a red WiFi                             | Si      | Si      | Si      |           | No    | Si    | Si      | N/A     |
+| Control por aplicación móvil                    | Si      | Si      | Si      |           | No    | Si    | Si      | N/A        |
 | Detectar heladera apagada                       | Si      | Si      | Si      | No        | No    | Si    | Si      | N/A     |
-| Control por panel en puerta                     | Si      | Si      | No      | No        | No    | No    | No      | Si      |
-| Instalar aplicaciones                           | Si      |         |         |           |       | No    | No      | N/A        |
-| Comando por voz                                 | Si      | Si      |         |           |       |       |         | N/A        |
+| Control por panel en puerta                     | Si      | Si      | No      | No        | Si    | No    | No      | N/A      |
+| Instalar aplicaciones                           | Si      |         |         |           | No    | No    | No      | N/A        |
+| Comando por voz                                 | Si      | Si      |         |           | No    |       |         | N/A        |
 | Apertura de puerta tactil                       | No      | No      | Si      | Si        |       |       |         | N/A     |
-| Acceder a sitios en Internet                    | Si      |         |         |           |       | No    | No      | N/A        |
-| Espejar telefono movil                          | Si      |         |         |           |       |       |         | N/A        |
-| Detectar y notificar puerta abierta             | Si      | Si      | Si      | Si        |       | Si    | Si      | Si      |
-| Sensar tiempo de puerta abierta                 |         |         |         | Si        |       |       |         | Si      |
-| Sensar numero de aperturas de puerta            |         |         | Si      |           |       |       |         | Si      |
-| Ajustar temperatura                             |         | Si      | Si      |           |       | Si    | Si      |         |
+| Acceder a sitios en Internet                    | Si      |         |         |           | No    | No    | No      | N/A        |
+| Espejar telefono movil                          | Si      |         |         |           | No    |       |         | N/A        |
+| Detectar y notificar puerta abierta             | Si      | Si      | Si      | Si        | Si    | Si    | Si      | Si      |
+| Sensar tiempo de puerta abierta                 |         |         |         | Si        | No    |       |         | Si      |
+| Sensar numero de aperturas de puerta            |         |         | Si      |           | No    |       |         | Si      |
+| Ajustar temperatura                             |         | Si      | Si      |           | Si    | Si    | Si      | N/A        |
 | Detectar y notificar cambio de temperatura      | No      | No      | No      | No        | No    | Si    | Si      | N/A      |
-| Ajustar humedad                                 | Si      |         |         |           |       |       |         |         |
-| Ajustar filtro de aire                          |         |         |         |           |       |       |         |         |
-| Activar hielo adicional                         |         |         |         |           |       |       |         |         |
-| Ajustar ahorro de energia                       | Si      |         | Si      |           |       |       |         |         |
-| Visualizar consumo de energia                   |         |         |         |           |       |       |         |         |
-| Crear perfil del usuario                        | Si      |         |         |           |       |       |         | Si        |
-| Enviar mensajes a otros usuarios                | Si      |         |         |           |       |       |         | N/A        |
-| Enviar lista de tareas a otros usuarios         |         |         |         |           |       |       |         | N/A        |
-| Crear agenda de actividades para usuario        | Si      |         |         |           |       |       |         | N/A     |
-| Crear mensajes y dibujos en la puerta           | Si      |         |         |           |       |       |         | N/A        |
-| Mostrar fotos en la puerta                      | Si      |         |         |           |       |       |         | N/A        |
-| Reproducir video en la puerta                   | Si      |         |         |           |       |       |         | N/A        |
-| Espejar televisor inteligente                   | Si      |         |         |           |       |       |         | N/A        |
-| Reproducir musica desde la puerta               | Si      |         |         |           |       |       |         | N/A        |
-| Transmitir musica a dispositivos compatibles    | Si      |         |         |           |       |       |         | N/A        |
-| Planificar comida con alimentos en el interior  |         |         |         |           |       |       |         | N/A        |
+| Ajustar humedad                                 | Si      |         |         |           |       |       |         | N/A        |
+| Ajustar filtro de aire                          |         |         |         |           |       |       |         | N/A        |
+| Activar hielo adicional                         |         |         |         |           |       |       |         | N/A        |
+| Ajustar ahorro de energia                       | Si      |         | Si      |           | Si    |       |         | N/A        |
+| Visualizar consumo de energia                   |         |         |         |           |       |       |         | N/A        |
+| Crear perfil del usuario                        | Si      |         |         |           | No    |       |         | Si        |
+| Enviar mensajes a otros usuarios                | Si      |         |         |           | No    |       |         | N/A        |
+| Enviar lista de tareas a otros usuarios         |         |         |         |           | No    |       |         | N/A        |
+| Crear agenda de actividades para usuario        | Si      |         |         |           | No    |       |         | N/A     |
+| Crear mensajes y dibujos en la puerta           | Si      |         |         |           | No    | No    | No      | N/A        |
+| Mostrar fotos en la puerta                      | Si      |         |         |           | No    | No    | No      | N/A        |
+| Reproducir video en la puerta                   | Si      |         |         |           | No    | No    | No      | N/A        |
+| Espejar televisor inteligente                   | Si      |         |         |           | No    | No    | No      | N/A        |
+| Reproducir musica desde la puerta               | Si      |         |         |           | No    | No    | No      | N/A        |
+| Transmitir musica a dispositivos compatibles    | Si      |         |         |           | No    | No    | No      | N/A        |
+| Planificar comida con alimentos en el interior  |         |         |         |           | No    | No    | No      | N/A        |
 | Crear lista de compras                          | Si      |         | Si      |           |       |       |         | Si      |
 | Ver alimentos en el interior a puerta cerrada   | Si      |         |         |           |       | Si    |         | Si      |
 | Sugerir ubicacion de alimentos                  | No      | No      | No      | No        | No    | Si    | No      | N/A      |
 | Definir alarma para compra de alimentos         | No      | No      | No      | No        | No    | No    | No      | Si      |
-| Leer recetas al usuario                         | Si      |         |         |           |       |       |         | N/A        |
-| Tomar dictado del usuario                       |         |         |         |           |       |       |         | N/A        |
-| Realizar compra de alimentos manual             | Si      |         |         |           |       |       |         | Si      |
-| Comprar alimentos escazos sin asistencia manual | No      |         |         |           |       |       |         | Si      |
-| Controlar otros dispositivos inteligentes       | Si      |         |         |           |       |       |         | N/A        |
-| Encender luz inteligente                        | Si      |         |         |           |       |       |         | N/A        |
-| Atender portero inteligente                     | Si      |         |         |           |       |       |         | N/A        |
+| Leer recetas al usuario                         | Si      |         |         |           | No    | No    | No      | N/A        |
+| Tomar dictado del usuario                       |         |         |         |           | No    | No    | No      | N/A        |
+| Realizar compra de alimentos manual             | Si      | No      | No      | No        | No    | No    | No      | Si      |
+| Comprar alimentos escazos sin asistencia manual | No      | No      | No      | No        | No    | No    | No      | Si      |
+| Controlar otros dispositivos inteligentes       | Si      | No      | No      | No        | No    | No    | No      | N/A        |
+| Encender luz inteligente                        | Si      | No      | No      | No        | No    | No    | No      | N/A        |
+| Atender portero inteligente                     | Si      | No      | No      | No        | No    | No    | No      | N/A        |
 | Recibir notificacion de lavaropas inteligente   | Si      |         |         |           |       |       |         | N/A        |
 | Administrar lista de alimentos en interior      | Si      |         | Si      |           |       |       |         | Si      |
-| Detectar e identificar alimentos en el interior | No      | No      |         |           |       |       |         | Si      |
-| Detectar cantidad de alimentos                  | No      | No      |         |           |       |       |         | Si      |
-| Monitorear vencimiento de alimentos             | No      | No      | No      |           |       |       |         | Si      |
-| Administrar compra de alimentos segun consumo   | No      | No      |         |           |       |       |         | Si      |
+| Detectar e identificar alimentos en el interior | No      | No      | No      | No        | No    | No    | No      | Si      |
+| Detectar cantidad de alimentos                  | No      | No      | No      | No        | No    | No    | No      | Si      |
+| Monitorear vencimiento de alimentos             | No      | No      | No      | No        | No    | No    | No      | Si      |
+| Administrar compra de alimentos segun consumo   | No      | No      | No      | No        | No    | No    | No      | Si      |
 
 La seccion de referencias incluye vinculos a los modelos de las marcas mencionadas en el cuadro de capacidades. 
 
@@ -128,11 +130,19 @@ La heladera es capaz de detectar alimentos ingresados en su interior, identifica
 
 ### Detectar cantidad de alimentos
 
+La heladera es capaz de aproximar la cantidad de cada alimento en su interior ya que puede identificarlos, sensar el peso de cada estante y la estimar del volumen de cada alimento. Esto permite a la heladera informar al consumidor los alimentos escasos, y establecer patrones de consumo.
+
 ### Monitorear vencimiento de alimentos
+
+Como parte de la identificacion de alimentos en su interior, la heladera tambien detecta fechas de vencimiento impresas en en envases, envoltorios o los mismos productos (como es el caso de huevos que en ocasiones disponen de la fecha de vencimiento en la cascara). En caso de ser necesario, la heladera solicita confirmar o ingresar al consumidor la fecha de vencimiento de un alimento. Esto permite a la heladera informar al consumidor los alimentos proximos a vencer.
 
 ### Administrar compra de alimentos segun consumo
 
+En base al monitoreo de cantidad de alimentos, consumo y vencimientos de los mismos, la heladera prepara el listado de alimentos que sugiere al consumidor adquirir y procede con la compra en caso que el consumidor lo decida.
+
 ### Comprar alimentos escazos sin asistencia manual
+
+Para efectuar la compra de alimentos la heladera establecera comunicacion con aquellos proveedores de los mismos preferidos por el consumidor. Para esto, el consumidor previamente informa a la heladera sobre los proveedores de los cuales espara recibir alimentos. La heladera gestiona la compra manteniendo informado al consumidor respecto a stock, costos y plazos de entrega.
 
 ## Usos de la heladera inteligente
 
@@ -624,13 +634,13 @@ La heladera es capaz de detectar alimentos ingresados en su interior, identifica
 
 ## Pendientes
 
-+ Describir las partes involucradas en el diagrama esquematico
-+ Incluir datos sensoriales del producto (?)
-+ Agregar detalle sobre capacidades, explicando cada característica y en particular las que incorpora la heladera virtual
-+ Incluir diagrama de componentes
-+ Cada diagrama de modelado requiere una explicación, detallar clases y métodos (?)
-+ Incluir detalles de implementación del prototipo, infraestructura, caso de pruebas, pantallas de usuario
-+ Resultados obtenidos para cada caso de prueba
++ [x] Describir las partes involucradas en el diagrama esquematico
++ [ ] Incluir datos sensoriales del producto
++ [x] Agregar detalle sobre capacidades, explicando cada característica y en particular las que incorpora la heladera virtual
++ [ ] Incluir diagrama de componentes
++ [ ] Cada diagrama de modelado requiere una explicación, detallar clases y métodos
++ [ ] Incluir detalles de implementación del prototipo, infraestructura, caso de pruebas, pantallas de usuario
++ [ ] Resultados obtenidos para cada caso de prueba
 
 ## Referencias
 
