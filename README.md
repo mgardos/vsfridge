@@ -33,7 +33,17 @@ Algunas de las grandes compañías de electrónica y electrodomésticos han come
 
 El diagrama esquematico presenta el entorno en el cual opera la heladera inteligente. Los actores principales que se observan en el diagrama son la heladera inteligente y el consumidor, que hace uso de ella. Otros actores o participantes, que se consideran secundarios, son otras heladeras inteligentes vecinas o próximas, proveedores de alimentos o productos alimenticios, tales como supermercados, tiendas en línea o fuera de línea, y despachantes de productos, ya sea propios de los proveedores mencionados o independientes.
 
-(Diagrama esquematico pendiente)
+## Diagrama esquematico
+
+![schematic diagam](https://raw.githubusercontent.com/mgardos/vsfridge/master/src/site/resources/schematic_diagram.svg)
+
+### Heladera inteligente
+
+Equipo que ademas de conservar alimentos, ofrece un conjunto de facilidades que brindan al usuario o consumidor la posibilidad de aprovechar mas y mejor los alimentos. Este dispositivo es responsable de los alimentos en su interior y se encarga de identificar las costumbres alimentarias de consumidor, facilitando la administracion de dichos alimentos. Mantiene una comunicacion bidireccional con el consumidor, brindando informacion sobre su estado y de los alimentos que contiene, asi como tambien dispone de la capacidad para comunicarse con otros dispositivos inteligentes y sistemas de informacion mediante apis estandar.
+
+### Consumidor
+
+El usuario o consumidor es quien hace uso de la heladera inteligente, deposita y retira alimentos, consulta el estado y disponibilidad de los mismos sin necesidad de acercarse a la heladera, configura alertas relativas a los alimentos, entre otras acciones, y acepta las sugerencias de la heladera relativas a la administracion de alimentos.
 
 ## Caracteristicas de heladeras inteligentes
 
