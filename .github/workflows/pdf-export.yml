@@ -13,10 +13,10 @@ jobs:
           echo "::set-env name=FILELIST::$(printf '"%s" ' *.md)"
       - uses: docker://pandoc/latex:2.9.2.1
         with:
-          args: --output=output/readme.pdf ${{ env.FILELIST }}
+          args: --standalone --output=output/readme.pdf ${{ env.FILELIST }}
       - uses: docker://pandoc/latex:2.9.2.1
         with:
-          args: --output=output/readme.tex ${{ env.FILELIST }}
+          args: --standalone --output=output/readme.tex ${{ env.FILELIST }}
       - uses: actions/upload-artifact@master
         with:
           name: readme
