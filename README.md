@@ -36,7 +36,7 @@ El diagrama esquematico presenta el entorno en el cual opera la heladera intelig
 
 ## Diagrama esquematico
 
-![schematic diagam](https://raw.githubusercontent.com/mgardos/vsfridge/master/src/site/resources/schematic_diagram.svg)
+![diagrama esquematico](https://raw.githubusercontent.com/mgardos/vsfridge/master/src/site/resources/schematic_diagram.svg)
 
 ### Heladera inteligente
 
@@ -80,56 +80,78 @@ Provee servicios complementarios al consumidor mediante la captura de datos sens
 
 El siguiente cuadro especifica las caractiristicas inteligentes de heladeras comercializadas por los fabricates indicados. El grado de inteligencia correspondiente a cada caracteristica varia entre fabricantes.
 
-|                                                 | Samsung | LG      | Hitachi | Panasonic | Sharp | Bosch | Siemens | Virtual |
-| ------------------------------------------------|:-------:|:-------:|:-------:|:---------:|:-----:|:-----:|:-------:|:-------:|
-| Conectar a red WiFi                             | Si      | Si      | Si      |           | No    | Si    | Si      | N/A     |
-| Control por aplicación móvil                    | Si      | Si      | Si      |           | No    | Si    | Si      | N/A        |
-| Detectar heladera apagada                       | Si      | Si      | Si      | No        | No    | Si    | Si      | N/A     |
-| Control por panel en puerta                     | Si      | Si      | No      | No        | Si    | No    | No      | N/A      |
-| Proteger contra modificaciones de configuracion | Si.     | Si      | No      | No        | Si    | Si    | No      | N/A      |
-| Instalar aplicaciones                           | Si      |         | No      |           | No    | No    | No      | N/A        |
-| Comando por voz                                 | Si      | Si      | No      |           | No    | Si    | Si      | N/A        |
-| Apertura de puerta tactil                       | No      | No      | Si      | Si        | No    | No    | No      | N/A     |
-| Acceder a sitios en Internet                    | Si      |         | No      |           | No    | No    | No      | N/A        |
-| Espejar telefono movil                          | Si      |         | No      |           | No    | No    | No      | N/A        |
-| Detectar y notificar puerta abierta             | Si      | Si      | Si      | Si        | Si    | Si    | Si      | Si      |
-| Sensar tiempo de puerta abierta                 |         |         | No      | Si        | No    | No    | No      | Si      |
-| Sensar numero de aperturas de puerta            |         |         | Si      |           | No    | No    | No      | Si      |
-| Ajustar temperatura                             |         | Si      | Si      |           | Si    | Si    | Si      | N/A        |
-| Detectar y notificar cambio de temperatura      | No      | No      | No      | No        | No    | Si    | Si      | N/A      |
-| Ajustar humedad                                 | Si      |         | No      |           |       | Si    | Si      | N/A        |
-| Ajustar filtro de aire                          |         |         | No      |           |       | No    | No      | N/A        |
-| Activar hielo adicional                         |         |         | Si      |           |       | Si    | Si      | N/A        |
-| Ajustar ahorro de energia                       | Si      |         | Si      |           | Si    | Si    | Si      | N/A        |
-| Visualizar consumo de energia                   |         |         |         |           |       |       |         | N/A        |
-| Crear perfil del usuario                        | Si      |         | No      |           | No    | No    | No      | Si        |
-| Enviar mensajes a otros usuarios                | Si      |         | No      |           | No    | No    | No      | N/A        |
-| Enviar lista de tareas a otros usuarios         |         |         | No      |           | No    | No    | No      | N/A        |
-| Crear agenda de actividades para usuario        | Si      |         | No      |           | No    | No    | No      | N/A     |
-| Crear mensajes y dibujos en la puerta           | Si      |         | No      |           | No    | No    | No      | N/A        |
-| Mostrar fotos en la puerta                      | Si      |         | No      |           | No    | No    | No      | N/A        |
-| Reproducir video en la puerta                   | Si      |         | No      |           | No    | No    | No      | N/A        |
-| Espejar televisor inteligente                   | Si      |         | No      |           | No    | No    | No      | N/A        |
-| Reproducir musica desde la puerta               | Si      |         | No      |           | No    | No    | No      | N/A        |
-| Transmitir musica a dispositivos compatibles    | Si      |         | No      |           | No    | No    | No      | N/A        |
-| Planificar comida con alimentos en el interior  |         |         | No      |           | No    | No    | No      | N/A        |
-| Crear lista de compras                          | Si      |         | Si      |           | No    | No    | No      | Si      |
-| Ver alimentos en el interior a puerta cerrada   | Si      |         | No      |           | No    | Si    | Si      | Si      |
-| Sugerir ubicacion de alimentos                  | No      | No      | No      | No        | No    | Si    | No      | N/A      |
-| Definir alarma para compra de alimentos         | No      | No      | No      | No        | No    | No    | No      | Si      |
-| Leer recetas al usuario                         | Si      |         | No      |           | No    | No    | No      | N/A        |
-| Tomar dictado del usuario                       |         |         | No      |           | No    | No    | No      | N/A        |
-| Realizar compra de alimentos manual             | Si      | No      | No      | No        | No    | No    | No      | Si      |
-| Comprar alimentos escazos sin asistencia manual | No      | No      | No      | No        | No    | No    | No      | Si      |
-| Controlar otros dispositivos inteligentes       | Si      | No      | No      | No        | No    | Si    | Si      | N/A        |
-| Encender luz inteligente                        | Si      | No      | No      | No        | No    | Si    | Si      | N/A        |
-| Atender portero inteligente                     | Si      | No      | No      | No        | No    | No    | No      | N/A        |
-| Recibir notificacion de lavaropas inteligente   | Si      |         | No      |           |       | Si    | Si      | N/A        |
-| Administrar lista de alimentos en interior      | Si      |         | Si      |           |       | Si    | Si      | Si      |
-| Detectar e identificar alimentos en el interior | No      | No      | No      | No        | No    | No    | No      | Si      |
-| Detectar cantidad de alimentos                  | No      | No      | No      | No        | No    | No    | No      | Si      |
-| Monitorear vencimiento de alimentos             | No      | No      | No      | No        | No    | No    | No      | Si      |
-| Administrar compra de alimentos segun consumo   | No      | No      | No      | No        | No    | No    | No      | Si      |
+|                                | Samsung | LG      | Hitachi | Panasonic | Sharp | Bosch | Siemens | Virtual |
+| -------------------------------|:-------:|:-------:|:-------:|:---------:|:-----:|:-----:|:-------:|:-------:|
+| Conectar a red WiFi            | Si      | Si      | Si      |           | No    | Si    | Si      | N/A     |
+| Control por aplicación móvil   | Si      | Si      | Si      |           | No    | Si    | Si      | N/A     |
+| Detectar heladera apagada      | Si      | Si      | Si      | No        | No    | Si    | Si      | N/A     |
+| Control por panel en puerta    | Si      | Si      | No      | No        | Si    | No    | No      | N/A     |
+| Proteger contra modificaciones | Si      | Si      | No      | No        | Si    | Si    | No      | N/A     |
+| de configuracion               |         |         |         |           |       |       |         |         |
+| Instalar aplicaciones          | Si      |         | No      |           | No    | No    | No      | N/A     |
+| Comando por voz                | Si      | Si      | No      |           | No    | Si    | Si      | N/A     |
+| Apertura de puerta tactil      | No      | No      | Si      | Si        | No    | No    | No      | N/A     |
+| Acceder a sitios en Internet   | Si      |         | No      |           | No    | No    | No      | N/A     |
+| Espejar telefono movil         | Si      |         | No      |           | No    | No    | No      | N/A     |
+| Detectar y notificar puerta    | Si      | Si      | Si      | Si        | Si    | Si    | Si      | Si      |
+| abierta                        |         |         |         |           |       |       |         |         |
+| Sensar tiempo de puerta        |         |         | No      | Si        | No    | No    | No      | Si      |
+| abierta                        |         |         |         |           |       |       |         |         |
+| Sensar numero de aperturas     |         |         | Si      |           | No    | No    | No      | Si      |
+| de puerta                      |         |         |         |           |       |       |         |         |
+| Ajustar temperatura            |         | Si      | Si      |           | Si    | Si    | Si      | N/A     |
+| Detectar y notificar cambio    | No      | No      | No      | No        | No    | Si    | Si      | N/A     |
+| de temperatura                 |         |         |         |           |       |       |         |         |
+| Ajustar humedad                | Si      |         | No      |           |       | Si    | Si      | N/A     |
+| Ajustar filtro de aire         |         |         | No      |           |       | No    | No      | N/A     |
+| Activar hielo adicional        |         |         | Si      |           |       | Si    | Si      | N/A     |
+| Ajustar ahorro de energia      | Si      |         | Si      |           | Si    | Si    | Si      | N/A     |
+| Visualizar consumo de energia  |         |         |         |           |       |       |         | N/A     |
+| Crear perfil del usuario       | Si      |         | No      |           | No    | No    | No      | Si      |
+| Enviar mensajes a otros        | Si      |         | No      |           | No    | No    | No      | N/A     |
+| usuarios                       |         |         |         |           |       |       |         |         |
+| Enviar lista de tareas a       |         |         | No      |           | No    | No    | No      | N/A     |
+| otros usuarios                 |         |         |         |           |       |       |         |         |
+| Crear agenda de actividades    | Si      |         | No      |           | No    | No    | No      | N/A     |
+| para usuario                   |         |         |         |           |       |       |         |         |
+| Crear mensajes y dibujos en    | Si      |         | No      |           | No    | No    | No      | N/A     |
+| la puerta                      |         |         |         |           |       |       |         |         |
+| Mostrar fotos en la puerta     | Si      |         | No      |           | No    | No    | No      | N/A     |
+| Reproducir video en la puerta  | Si      |         | No      |           | No    | No    | No      | N/A     |
+| Espejar televisor inteligente  | Si      |         | No      |           | No    | No    | No      | N/A     |
+| Reproducir musica desde la     | Si      |         | No      |           | No    | No    | No      | N/A     |
+| puerta                         |         |         |         |           |       |       |         |         |
+| Transmitir musica a            | Si      |         | No      |           | No    | No    | No      | N/A     |
+| dispositivos compatibles       |         |         |         |           |       |       |         |         |
+| Planificar comida con          |         |         | No      |           | No    | No    | No      | N/A     |
+| alimentos en el interior       |         |         |         |           |       |       |         |         |
+| Crear lista de compras         | Si      |         | Si      |           | No    | No    | No      | Si      |
+| Ver alimentos en el interior   | Si      |         | No      |           | No    | Si    | Si      | Si      |
+| a puerta cerrada               |         |         |         |           |       |       |         |         |
+| Sugerir ubicacion de alimentos | No      | No      | No      | No        | No    | Si    | No      | N/A     |
+| Definir alarma para compra de  | No      | No      | No      | No        | No    | No    | No      | Si      |
+| alimentos                      |         |         |         |           |       |       |         |         |
+| Leer recetas al usuario        | Si      |         | No      |           | No    | No    | No      | N/A     |
+| Tomar dictado del usuario      |         |         | No      |           | No    | No    | No      | N/A     |
+| Realizar compra de alimentos   | Si      | No      | No      | No        | No    | No    | No      | Si      |
+| manual                         |         |         |         |           |       |       |         |         |
+| Comprar alimentos escazos sin  | No      | No      | No      | No        | No    | No    | No      | Si      |
+| asistencia manual              |         |         |         |           |       |       |         |         |
+| Controlar otros dispositivos   | Si      | No      | No      | No        | No    | Si    | Si      | N/A     |
+| inteligentes                   |         |         |         |           |       |       |         |         |
+| Encender luz inteligente       | Si      | No      | No      | No        | No    | Si    | Si      | N/A     |
+| Atender portero inteligente    | Si      | No      | No      | No        | No    | No    | No      | N/A     |
+| Recibir notificacion de        | Si      |         | No      |           |       | Si    | Si      | N/A     |
+| lavaropas inteligente          |         |         |         |           |       |       |         |         |
+| Administrar lista de alimentos | Si      |         | Si      |           |       | Si    | Si      | Si      |
+| en interior                    |         |         |         |           |       |       |         |         |
+| Detectar e identificar         | No      | No      | No      | No        | No    | No    | No      | Si      |
+| alimentos en el interior       |         |         |         |           |       |       |         |         |
+| Detectar cantidad de alimentos | No      | No      | No      | No        | No    | No    | No      | Si      |
+| Monitorear vencimiento de      | No      | No      | No      | No        | No    | No    | No      | Si      |
+| alimentos                      |         |         |         |           |       |       |         |         |
+| Administrar compra de          | No      | No      | No      | No        | No    | No    | No      | Si      |
+| alimentos segun consumo        |         |         |         |           |       |       |         |         |
 
 La seccion de referencias incluye vinculos a los modelos de las marcas mencionadas en el cuadro de capacidades. 
 
@@ -171,7 +193,7 @@ Para efectuar la compra de alimentos la heladera establecera comunicacion con aq
 
 ## Diagrama de casos de uso
 
-![system overview](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/mgardos/vsfridge/master/src/site/resources/usecases.puml)
+![diagrama de casos de uso](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/mgardos/vsfridge/master/src/site/resources/usecases.puml)
 
 ## Descripcion de casos de uso
 
@@ -222,8 +244,8 @@ Para efectuar la compra de alimentos la heladera establecera comunicacion con aq
 
 #### Flujo alternativo CU_AR_ALT1: Poner producto
 
-| Paso   | Estimulo del actor                                                   | Respuesta del sistema                  |
-|:------:|----------------------------------------------------------------------|----------------------------------------|
+| Paso   | Estimulo del actor                                                   | Respuesta del sistema                    |
+|:------:|----------------------------------------------------------------------|------------------------------------------|
 | 2.1    | El consumidor decide poner un producto en el interior de la heladera | La heladera ejecuta el caso de uso CU_PP |
 
 #### Flujo alternativo CU_AR_ALT2: Tomar producto
@@ -244,11 +266,11 @@ Para efectuar la compra de alimentos la heladera establecera comunicacion con aq
 
 #### Flujo normal
 
-| Paso   | Estimulo del actor                  | Respuesta del sistema                  |
-|:------:|-------------------------------------|----------------------------------------|
-| 1      | El consumidor introduce en el interior de la heladera un producto | La heladera detecta que un objeto fue introducido en su interior       |
+| Paso   | Estimulo del actor                                                | Respuesta del sistema                                                           |
+|:------:|-------------------------------------------------------------------|---------------------------------------------------------------------------------|
+| 1      | El consumidor introduce en el interior de la heladera un producto | La heladera detecta que un objeto fue introducido en su interior                |
 |        |                                                                   | La heladera registra que existen objetos en el interior que requieren detección |
-| 2      | El consumidor cierra la puerta de la heladera                     | La heladera ejecuta el caso de uso CU_CR |
+| 2      | El consumidor cierra la puerta de la heladera                     | La heladera ejecuta el caso de uso CU_CR                                        |
 
 #### Flujo alternativo CU_PP_ALT1: Poner otro producto
 
@@ -501,21 +523,21 @@ Para efectuar la compra de alimentos la heladera establecera comunicacion con aq
 | __Entradas__               | Registro de vencimiento de alimentos                       |
 | __Pre-condiciones__        | La puerta de la heladera está cerrada                      |
 |                            | Registro de vencimiento de alimentos pendiente de informar |
-| __Post-condiciones__       | ...                                                        |
+| __Post-condiciones__       | Registro de vencimiento de alimentos actualizado           |
 
 #### Flujo normal
 
 | Paso   | Estimulo del actor                                                           | Respuesta del sistema                  |
 |:------:|------------------------------------------------------------------------------|----------------------------------------|
 | 1      | El registro de vencimiento de alimentos contiene alimentos próximos a vencer | La heladera alerta al consumidor sobre los alimentos que están próximos a vencer |
-| 2      | El consumidor revisa la lista de alimentos a vencer                          | La heladera solicita al consumidor iniciar la compra de los alimentos para reemplazar los que están próximos a vencer |
-| 3      | El consumidor acepta iniciar la compra de alimentos escasos                  | La heladera ejecuta el caso de uso CU_CA |
+| 2      | El consumidor revisa y acepta la lista de alimentos a vencer                 | La heladera registra los alimentos proximos a vencer informados al consumidor |
 
-#### Flujo alternativo CU_NV_ALT1: ...
+#### Flujo alternativo CU_NV_ALT1: Iniciar compra de alimentos proximos a vencer
 
-| Paso   | Estimulo del actor                  | Respuesta del sistema                  |
-|:------:|-------------------------------------|----------------------------------------|
-| 1.1    |                                     |                                        |
+| Paso   | Estimulo del actor                                                           | Respuesta del sistema                  |
+|:------:|------------------------------------------------------------------------------|----------------------------------------|
+| 2.1    | El consumidor revisa y acepta la lista de alimentos a vencer                 | La heladera solicita al consumidor iniciar la compra de los alimentos para reemplazar los que están próximos a vencer |
+| 2.2    | El consumidor acepta iniciar la compra de alimentos escasos                  | La heladera ejecuta el caso de uso CU_CA |
 
 ### Caso de uso Monitorear escasez de alimentos CU_ME
 
@@ -591,25 +613,27 @@ Para efectuar la compra de alimentos la heladera establecera comunicacion con aq
 
 ## Mockups
 
+Las pantallas de la aplicacion seran incluidas en una entrega futura.
+
 ## Diagramas del modelo de dominio
 
-![system overview](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/mgardos/vsfridge/master/src/site/resources/classes.puml)
+![diagrama de clases del modelo de dominio](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/mgardos/vsfridge/master/src/site/resources/classes.puml)
 
 ## Diagramas de secuencia
 
 ### Flujos normal y alternativo para Encender 
 
-![system overview](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/mgardos/vsfridge/master/src/site/resources/uc_ed_normal_and_alt1_flows.puml)
+![diagrama de secuencia del caso de uso Encender](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/mgardos/vsfridge/master/src/site/resources/uc_ed_normal_and_alt1_flows.puml)
 
 ### Flujo normal para Abrir
 
-![system overview](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/mgardos/vsfridge/master/src/site/resources/uc_ar_normal_flow.puml)
+![diagrama de secuencia del flujo normal del caso de uso Abrir](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/mgardos/vsfridge/master/src/site/resources/uc_ar_normal_flow.puml)
 
 ### Flujos alternativos para Abrir
 
-![system overview](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/mgardos/vsfridge/master/src/site/resources/uc_ar_alt1_flow.puml)
+![diagrama de secuencia de flujo alternativo 1 del caso de uso Abrir](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/mgardos/vsfridge/master/src/site/resources/uc_ar_alt1_flow.puml)
 
-![system overview](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/mgardos/vsfridge/master/src/site/resources/uc_ar_alt2_flow.puml)
+![diagrama de secuencia de flujo alternativo 2 del caso de uso Abrir](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/mgardos/vsfridge/master/src/site/resources/uc_ar_alt2_flow.puml)
 
 ### Flujos normal y alternativo para Poner producto
 
@@ -632,6 +656,8 @@ Para efectuar la compra de alimentos la heladera establecera comunicacion con aq
 ![system overview](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/mgardos/vsfridge/master/src/site/resources/uc_cr_alt2_flow.puml)
 
 ## Diagramas de actividad
+
+Los diagrama de actividad seran incorporados en una entrega futura.
 
 ### Encendido de la heladera
 
