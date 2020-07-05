@@ -13,7 +13,7 @@ jobs:
           echo "::set-env name=FILELIST::$(printf '"%s" ' *.md)"
       - uses: docker://pandoc/latex:2.9.2.1
         with:
-          args: --standalone -V papersize:a4 -V geometry:top=20mm -V geometry:left=20mm -V geometry:paperwidth=170mm -V geometry:paperheight=257mm --output=output/readme.pdf ${{ env.FILELIST }}
+          args: --standalone -V papersize:a4 -V geometry:top=20mm -V geometry:left=20mm -V geometry:paperwidth=170mm -V geometry:paperheight=257mm -f markdown-implicit_figures --output=output/readme.pdf ${{ env.FILELIST }}
       - uses: docker://pandoc/latex:2.9.2.1
         with:
           args: --standalone --output=output/readme.tex ${{ env.FILELIST }}
