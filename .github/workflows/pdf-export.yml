@@ -1,22 +1,20 @@
 name: Convert PDF to Markdown
 
-on:
-  push:
-    paths:
-    - '**.md'
+on: push
 
 jobs:
-  convert_md: 
-    runs-on: ubuntu-latest
+  convert_via_pandoc:
+    runs-on: ubuntu-18.04
     steps:
-    # We must checkout the latest version of the code to get a copy of all .md files
-    - name: Checkout Code
-      uses: actions/checkout@v2.0.0
-      with:
-        fetch-depth: 1
-    - name: Create .pdfs
-      uses: scottypate/md-to-pdf@v0.1.1
-      env: {
-        # Use this parameter to determine where the generated .pdf(s) will be stored.
-        PDF_DIR: './pdfs'
-      }
+      - uses: actions/checkout@v2
+      - run: |
+          mkdir output  # create output dir
+          # this will include README.md
+          echo "::set-env name=FILELIST::$(printf '"%s" ' *.md)"
+      - uses: docker://pandoc/latex:2.9.2.1
+        with:
+          args: --output=output/readme.pdf ${{ env.FILELIST }}
+      - uses: actions/upload-artifact@master
+        with:
+          name: readme.pdf
+          path: output
