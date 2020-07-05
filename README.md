@@ -50,7 +50,7 @@ El usuario o consumidor es quien hace uso de la heladera inteligente, deposita y
 
 Ofrece algun mecanismo de comunicacion que la heladera puede aprovechar para facilitar la compra y reposicion de alimentos.
 
-### Fabricate
+### Fabricante
 
 Provee servicios complementarios al consumidor mediante la captura de datos sensales producidos por la heladera y procesamiento de los mismos.
 
