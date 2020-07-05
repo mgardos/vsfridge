@@ -1,4 +1,4 @@
-name: Convert PDF to Markdown
+name: Export readme to pdf and latex
 
 on: push
 
@@ -14,7 +14,10 @@ jobs:
       - uses: docker://pandoc/latex:2.9.2.1
         with:
           args: --output=output/readme.pdf ${{ env.FILELIST }}
+      - uses: docker://pandoc/latex:2.9.2.1
+        with:
+          args: --output=output/readme.tex ${{ env.FILELIST }}
       - uses: actions/upload-artifact@master
         with:
-          name: readme.pdf
+          name: readme
           path: output
