@@ -1,0 +1,69 @@
+@startuml
+
+package "vsfridge-core" {
+create_part -- [Assembler]
+build_part -- [Assembler]
+[Assembler] ..> fridge
+[Assembler] ..> door
+[Assembler] ..> sensor
+[Assembler] ..> shelf
+identify_food -- [Labeler]
+[Labeler] .d.> predict
+[Labeler] .d.> train_eval
+survey_food -- [Inspector]
+database food_inside
+[Inspector] .d.> food_inside
+fridge -- [Parts]
+door -- [Parts]
+sensor -- [Parts]
+shelf -- [Parts]
+}
+
+package "vsfridge-emu" {
+open -- [FridgeDoorWebController]
+close -- [FridgeDoorWebController]
+[FridgeDoorWebController] .d.> fridge_api
+configure -- [TouchPanelWebController]
+view -- [TouchPanelWebController]
+[TouchPanelWebController] .d.> fridge_api
+put_food -- [FridgeWebController]
+take_food -- [FridgeWebController]
+[FridgeWebController] .d.> fridge_api
+}
+
+package "vsfridge-assembly" {
+fridge_api -- [FridgeBroker]
+[FridgeBroker] ..d.> create_part
+[FridgeBroker] ..d.> build_part
+[FridgeBroker] ..d.> identify_food
+[FridgeBroker] ..d.> survey_food
+[FridgeBroker] ..d.> compose
+[FridgeBroker] ..d.> render
+}
+
+package "vsfridge-ai" {
+train_eval --- [FoodTransferModel]
+predict --- [FoodTransferModel]
+database food_data
+[FoodTransferModel] .l.> food_data
+}
+
+package "vsfridge-graphics" {
+compose -- [Modeller]
+render -- [Renderer]
+}
+
+package "vsfridge-satellite" {
+mobile_ui -- [FridgeMobileProxy]
+web_ui -- [FridgeWebProxy]
+[FridgeWebProxy] ..d.> open
+[FridgeWebProxy] ..d.> close
+[FridgeWebProxy] ..d.> configure
+[FridgeWebProxy] ..d.> view
+[FridgeWebProxy] ..d.> put_food
+[FridgeWebProxy] ..d.> take_food
+[FridgeMobileProxy] ..d.> view
+[FridgeMobileProxy] ..d.> configure
+}
+
+@enduml
