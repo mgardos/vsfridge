@@ -1,0 +1,298 @@
+@startuml
+
+package core #FFCC99 {
+package component #CC99FF {
+
+hide FridgeDoor fields
+interface FridgeDoor {
+    isOpened() : Boolean
+    open() : void
+    close() : void
+    timeElapsed() : Long
+    timesOpened() : Integer
+}
+
+hide FridgeDoors fields
+interface FridgeDoors {
+    addDoor(FridgeDoor door): void
+	hasDoors() : Boolean
+	size() : Integer
+	capacity() : Integer
+	hasCapacity() : Boolean
+}
+
+hide FridgeShelf fields
+interface FridgeShelf {
+    hasCapacityForSensors() : Boolean
+    hasSensors() : Boolean
+    addSensor(sensor : Sensor) : void
+}
+
+hide FridgeShelves fields
+interface FridgeShelves {
+    addShelf(FridgeShelf shelf)
+	hasShelves() : Boolean
+	size() : Integer
+	capacity() : Integer
+	hasCapacity() : Boolean
+}
+
+hide SmartFridge fields
+interface SmartFridge {
+    +turnOn() : void
+    +open() : void
+    +put(product : Product) : void
+    +take(product : Product) : void
+    +close() : void
+    +turnOn() : void
+}
+
+hide Sensor fields
+interface Sensor<AnyObject> {
+    sense(object : AnyObject) : void
+    sensedValuesIterator() : Iterator
+    enable() : void
+    disable() : void
+}
+
+hide Sensors fields
+interface Sensors {
+    addSensor(sensor : Sensor) : void
+    hasSensors() : Boolean
+    size() : Integer
+    hasCapacity() : Boolean
+}
+
+package base #CCFF99 {
+
+class BaseFridgeDoor {
+    -opened : Boolean
+    -timesOpened : Integer
+    -lastOpeningTime : DateTime
+    -lastClosingTime : DataTime
+    -increaseTimesOpened() : void
+    -startTimer() : void
+    -stopTimer() : void
+    +isOpened() : Boolean
+    +open() : void
+    +close() : void
+    +timeElapsed() : Long
+    +timesOpened() : Integer
+}
+
+FridgeDoor <|.. BaseFridgeDoor
+
+class BaseFridgeDoors {
+    -doorsLeft : FridgeDoor[]
+    -doorsCenter : FridgeDoor[]
+    -doorsRight : FridgeDoor[]
+    +addDoor(FridgeDoor door): void
+	+hasDoors() : Boolean
+	+size() : Integer
+	+capacity() : Integer
+	+hasCapacity() : Boolean
+}
+
+FridgeDoors <|.. BaseFridgeDoors
+FridgeDoor "1..*" <-l-* BaseFridgeDoors
+
+class BaseFridgeShelf {
+    +hasCapacityForSensors() : Boolean
+    +hasSensors() : Boolean
+    +addSensor(sensor : Sensor) : void
+}
+
+FridgeShelf <|.. BaseFridgeShelf
+
+class BaseFridgeShelves {
+    -shelves : FridgeShelf[]
+    +BaseFridgeShelves()
+    +addShelf(FridgeShelf shelf)
+    +hasShelves() : Boolean
+    +size() : Integer
+    +capacity() : Integer
+    +hasCapacity() : Boolean
+}
+
+FridgeShelves <|.. BaseFridgeShelves
+FridgeShelf "0..*" <-* BaseFridgeShelves
+
+class BaseSmartFridge {
+    -isPlugged : Boolean
+    -isTurnOn : Boolean
+    -doors : FridgeDoors;
+    -shelves : FridgeShelves
+    -scheduleInspection() : void
+    +VirtualSmartFridge(door : FridgeDoor)
+    +enableCustomInspection() : void
+    +enableCustomLabeling() : void
+    +hasUnidentifiedProducts() : Boolean
+    +hasFood() : Boolean
+}
+
+SmartFridge <|.. BaseSmartFridge
+FridgeDoors "1" <--* BaseSmartFridge
+
+class BaseSensors {
+    -sensors : Sensor[]
+    +addSensor(sensor : Sensor) : void
+    +hasSensors() : Boolean
+    +size() : Integer
+    +hasCapacity() : Boolean
+}
+
+Sensors <|.. BaseSensors
+Sensor "0..*" <-*  BaseSensors
+
+class BaseSensor<ObjectType, ValueType> {
+    #sensedValues[] : ValueType
+    +sense(object : ObjectType) : void
+    +sensedValuesIterator() : Iterator
+    +enable() : void
+    +disable() : void
+}
+
+class BaseSwitchSensor<FridgeDoor, Boolean> {
+    +sense(door : FridgeDoor) : void
+    +sensedValuesIterator() : Iterator
+    +enable() : void
+    +disable() : void
+}
+
+class BaseWeightSensor<FridgeShelf, Long> {
+    +sense(shelf : FridgeShelf) : void
+    +sensedValuesIterator() : Iterator
+    +enable() : void
+    +disable() : void
+}
+
+BaseSensor <|-- BaseSwitchSensor
+BaseSensor <|-- BaseWeightSensor
+}
+
+Sensor <|.. BaseSensor
+}
+
+BaseSmartFridge *---> "1" SmartFridgeLabeler
+BaseSmartFridge *---> "1" SmartFridgeInspector
+
+Sensors "1" <--* BaseSmartFridge
+Sensor "1" <--* BaseFridgeDoor
+
+hide Provider fields
+interface Provider {
+    makeAnOrder(list : ProvisionList) : Order
+}
+
+BaseSmartFridge *---> "1" Provider
+
+class FoodProvider {
+    -alias : String
+    +FoodProvider(alias : String)
+}
+
+Provider <|-- FoodProvider
+
+class Order {
+    -trackingNumber : String
+    -sentOn : DateTime
+}
+
+Provider ..> Order
+
+class ProvisionList {
+    +addFood() : void
+    +removeFood() : void
+    +hasFood() : Boolean
+}
+
+Provider ..> ProvisionList
+
+class Snapshot {
+    -imageData : Image[]
+    -weight : float
+    +Snapshot(image : Image, weight : float)
+    +add(image : Image, weight : float)
+}
+
+class Status {
+    -entries : StatusEntry[]
+    +save() : void
+    +retain() : void
+    +accept() : void
+    +discard() : void
+}
+
+BaseSmartFridge *---> "1" Status
+
+hide SmartFridgeLabeler fields
+interface SmartFridgeLabeler {
+    identify(snapshots : Snapshot[]) : Product[]
+}
+
+package label #FFFF99 {
+
+class BaseFridgeLabeler {
+    +BaseFridgeLabeler()
+    +identify(snapshots : Snapshot[]) : Product[]
+}
+
+SmartFridgeLabeler <|.. BaseFridgeLabeler
+}
+
+SmartFridgeLabeler ..> Snapshot
+
+class Product {
+    -name : String
+    -identificationCode : String
+    -imageData : Image[]
+    +Product(name : String, code : String)
+    +addImage(image : Image)
+    +getIdentificationCode() : String
+    +getImageData() : Image[]
+}
+
+class Food {
+    -expirationDate : DateTime
+    -totalWeight : float
+    +Food(nutritionFacts : NutritionFacts)
+    +addFood(food : Food) : void
+    +changeExpirationDate(date : Date) : void
+    +getExpirationDate() : Date
+    +getTotalWeight() : float
+}
+
+Product <|-- Food
+BaseSmartFridge ---> "0..*" Product
+Food "0..*" <-- BaseSmartFridge
+
+class NutritionFacts {
+    -calories : Integer
+    -carbohydrates : Integer
+    -proteins : Integer
+    -totalFats : Integer
+    -saturateFats : Integer
+    -transFats : Integer
+    -fiber : Integer
+    -sodium : Integer
+}
+
+Food *--> "1" NutritionFacts
+
+hide SmartFridgeInspector fields
+interface SmartFridgeInspector {
+    survey(products : Product[]) : Snapshot[]
+}
+
+package inspect #99FFFF {
+
+class BaseFridgeInspector {
+    +BaseFridgeInspector()
+    +survey(products : Product[]) : Snapshot[]
+}
+
+SmartFridgeInspector <|.. BaseFridgeInspector
+}
+}
+
+@enduml
