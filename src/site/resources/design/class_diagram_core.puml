@@ -38,18 +38,18 @@ interface FridgeShelves {
 }
 
 hide SmartFridge fields
-interface SmartFridge {
-    +turnOn() : void
-    +open() : void
-    +put(product : Product) : void
-    +take(product : Product) : void
-    +close() : void
-    +turnOn() : void
+interface SmartFridge<DoorIdType> {
+    turnOn() : void
+    open(id : DoorIdType) : void
+    put(product : Product) : void
+    take(product : Product) : void
+    close(id : DoorIdType) : void
+    turnOff() : void
 }
 
 hide Sensor fields
-interface Sensor<AnyObject> {
-    sense(object : AnyObject) : void
+interface Sensor<ObjectType> {
+    sense(object : ObjectType) : void
     sensedValuesIterator() : Iterator
     enable() : void
     disable() : void
@@ -60,6 +60,7 @@ interface Sensors {
     addSensor(sensor : Sensor) : void
     hasSensors() : Boolean
     size() : Integer
+    capacity() : Integer
     hasCapacity() : Boolean
 }
 
@@ -117,13 +118,22 @@ class BaseFridgeShelves {
 FridgeShelves <|.. BaseFridgeShelves
 FridgeShelf "0..*" <-* BaseFridgeShelves
 
-class BaseSmartFridge {
+class BaseSmartFridge<DoorIdType> {
     -isPlugged : Boolean
     -isTurnOn : Boolean
     -doors : FridgeDoors;
     -shelves : FridgeShelves
     -scheduleInspection() : void
-    +VirtualSmartFridge(door : FridgeDoor)
+    +BaseSmartFridge()
+    +BaseSmartFridge(doors : FridgeDoors)
+    +BaseSmartFridge(shelves : FridgeShelves)
+    +BaseSmartFridge(doors : FridgeDoors, shelves : FridgeShelves)
+    +turnOn() : void
+    +open(id : DoorIdType) : void
+    +put(product : Product) : void
+    +take(product : Product) : void
+    +close(id : DoorIdType) : void
+    +turnOff() : void
     +enableCustomInspection() : void
     +enableCustomLabeling() : void
     +hasUnidentifiedProducts() : Boolean
@@ -138,6 +148,7 @@ class BaseSensors {
     +addSensor(sensor : Sensor) : void
     +hasSensors() : Boolean
     +size() : Integer
+    +capacity() : Integer
     +hasCapacity() : Boolean
 }
 
