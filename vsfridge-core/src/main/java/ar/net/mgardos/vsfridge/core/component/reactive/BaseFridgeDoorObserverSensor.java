@@ -5,12 +5,12 @@ import ar.net.mgardos.vsfridge.core.component.Sensor;
 import io.reactivex.Observable;
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
-import lombok.extern.slf4j.Slf4j;
+import lombok.extern.log4j.Log4j2;
 
 import java.util.Optional;
 import java.util.concurrent.TimeUnit;
 
-@Slf4j
+@Log4j2
 public class BaseFridgeDoorObserverSensor implements Sensor<FridgeDoor>, Observer<Long> {
     protected FridgeDoor fridgeDoor;
     protected Boolean previousIsOpened;
