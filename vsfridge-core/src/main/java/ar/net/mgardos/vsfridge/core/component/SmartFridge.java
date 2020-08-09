@@ -64,9 +64,13 @@ public interface SmartFridge {
     }
 
     /**
+     * Opens the door identified by an id. This id could be anything, like a name or code, a number or the very same
+     * door object. It is up to the implementation how to handle this functionality.
      *
+     * @param id the unique value that identifies the door.
+     * @param <T> the type of the door identifier.
      */
-    default void close() {
+    default <T> void close(T id) {
         throw new RuntimeException(String.format(ERROR_MSG_TEMPLATE, "closing any door."));
     }
 

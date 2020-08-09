@@ -5,9 +5,9 @@ import ar.net.mgardos.vsfridge.core.component.FridgeDoor;
 import ar.net.mgardos.vsfridge.core.component.FridgeShelf;
 import ar.net.mgardos.vsfridge.core.component.Sensor;
 
-public interface SmartFridgeBuilder {
+public interface FridgeBuilder {
     SmartFridge build();
-    SmartFridgeBuilder addDoor(FridgeDoor fridgeDoor);
-    SmartFridgeBuilder addShelf(FridgeShelf fridgeShelf);
-    SmartFridgeBuilder addSensor(Sensor sensor);
+    FridgeBuilder addDoor(FridgeDoor fridgeDoor);
+    FridgeBuilder addShelf(FridgeShelf fridgeShelf);
+    FridgeBuilder addSensor(Sensor sensor);
 }
