@@ -10,6 +10,8 @@ import lombok.extern.log4j.Log4j2;
 import java.util.Optional;
 import java.util.concurrent.TimeUnit;
 
+import static java.lang.Boolean.FALSE;
+
 @Log4j2
 public class BaseFridgeDoorObserverSensor implements Sensor<FridgeDoor>, Observer<Long> {
     protected FridgeDoor fridgeDoor;
@@ -71,7 +73,7 @@ public class BaseFridgeDoorObserverSensor implements Sensor<FridgeDoor>, Observe
     @Override
     public void disable() {
         Optional.ofNullable(subscription)
-                .filter(observer -> Boolean.FALSE.equals(observer.isDisposed()))
+                .filter(observer -> FALSE.equals(observer.isDisposed()))
                 .ifPresentOrElse(observer -> {
                     onComplete();
                     observer.dispose();

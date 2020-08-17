@@ -7,27 +7,17 @@ import ar.net.mgardos.vsfridge.core.component.SmartFridge;
 
 import java.util.Optional;
 
-/**
- * Use the fridge to close one of its doors.
- *
- * @param <D> the type of the door identifier.
- */
-public class BaseCloseDoorUsage<D> implements FridgeUsage {
-	static final String INVALID_FRIDGE = "Unable to close the door of an invalid fridge.";
-
-	private final D doorId;
-
-	public BaseCloseDoorUsage(final D doorId) {
-		this.doorId = doorId;
-	}
+public class BaseUnplugFridgeUsage implements FridgeUsage {
+	static final String INVALID_FRIDGE = "Unable to unplug an invalid fridge.";
 
 	@Override
 	public FridgeState applyTo(SmartFridge fridge) {
 		Optional.ofNullable(fridge)
-				.orElseThrow(() -> new IllegalArgumentException(INVALID_FRIDGE))
-				.close(doorId);
+				.orElseThrow(() -> new IllegalArgumentException(INVALID_FRIDGE));
 
-		return new BaseFridgeStateBuilder().recordClose()
+		fridge.unplug();
+
+		return new BaseFridgeStateBuilder().recordUnplugged()
 		                                   .build();
 	}
 }

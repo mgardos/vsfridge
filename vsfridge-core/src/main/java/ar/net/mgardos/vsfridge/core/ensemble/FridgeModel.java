@@ -1,6 +1,8 @@
 package ar.net.mgardos.vsfridge.core.ensemble;
 
+import lombok.Getter;
 
+@Getter
 public class FridgeModel {
 	private String name;
 	private String factoryName;

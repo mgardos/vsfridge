@@ -1,6 +1,8 @@
 package ar.net.mgardos.vsfridge.emu.web.spring;
 
 import ar.net.mgardos.vsfridge.assembly.broker.FridgeBroker;
+import ar.net.mgardos.vsfridge.assembly.broker.base.usage.BaseCheckPluggedFridgeUsage;
+import ar.net.mgardos.vsfridge.assembly.broker.base.usage.BasePlugFridgeUsage;
 import ar.net.mgardos.vsfridge.assembly.broker.usage.FridgeUsage;
 import ar.net.mgardos.vsfridge.core.Product;
 import ar.net.mgardos.vsfridge.core.ensemble.FridgeModel;
@@ -20,6 +22,8 @@ public class FridgeSpringWebController implements FridgeController<String> {
 	private static final String INVALID_BROKER = "Fridge broker not present, unable to %s for fridge %s.";
 	private static final String INVALID_BROKER_FOR_NEW_FRIDGE = "Fridge broker not present, unable to create new fridge.";
 	private static final String UNABLE_TO_USE_FRIDGE = "Unable to %s for fridge %s due to broker error.";
+	private static final String INVALID_FRIDGE_STATE = "After using fridge %s, it is not %s.";
+	private static final String UNABLE_TO_DISCARD_FRIDGE = "Unable to discard fridge %s after failing to %s.";
 
 	@Setter(onMethod = @__({@Autowired}))
 	private FridgeBroker fridgeBroker;
@@ -31,17 +35,18 @@ public class FridgeSpringWebController implements FridgeController<String> {
 
 		checkForValidBroker(String.format(INVALID_BROKER, "check if plugged", fridgeId));
 
+		boolean fridgePlugged;
 		try {
-			final FridgeUsage isPlugged = null;
-			fridgeBroker.useFridge(fridgeId, isPlugged);
+			final FridgeUsage checkIfPlugged = new BaseCheckPluggedFridgeUsage();
+			fridgePlugged = fridgeBroker.useFridge(fridgeId, checkIfPlugged).isPlugged();
 		} catch (final Exception e) {
 			log.error(String.format(UNABLE_TO_USE_FRIDGE, "check if plugged", fridgeId));
 			throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, String.format(UNABLE_TO_USE_FRIDGE, "check if plugged", fridgeId), e);
 		}
 
-		log.info(String.format("The fridge %s is currently %s.", fridgeId, ""));
+		log.info(String.format("The fridge %s is currently %s.", fridgeId, fridgePlugged ? "plugged" : "not plugged"));
 
-		return false;
+		return fridgePlugged;
 	}
 
 	@Override
@@ -52,12 +57,24 @@ public class FridgeSpringWebController implements FridgeController<String> {
 		checkForValidBroker(INVALID_BROKER_FOR_NEW_FRIDGE);
 
 		String fridgeId = "";
+		boolean fridgePlugged;
 		try {
-			final FridgeUsage plug = null;
 			fridgeId = fridgeBroker.makeFridge(model);
+			final FridgeUsage plugFridge = new BasePlugFridgeUsage();
+			fridgePlugged = fridgeBroker.useFridge(fridgeId, plugFridge).isPlugged();
 		} catch (final Exception e) {
 			log.error(String.format(UNABLE_TO_USE_FRIDGE, "plug", fridgeId));
 			throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, String.format(UNABLE_TO_USE_FRIDGE, "plug", fridgeId), e);
+		}
+
+		if (!fridgePlugged) {
+			try {
+				fridgeBroker.discardFridge(fridgeId);
+			} catch (final Exception e) {
+				log.error(String.format(UNABLE_TO_DISCARD_FRIDGE, fridgeId, "plug"));
+			}
+			log.error(String.format(INVALID_FRIDGE_STATE, fridgeId, "plugged"));
+			throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, String.format(INVALID_FRIDGE_STATE, fridgeId, "plugged"));
 		}
 
 		log.info(String.format("The fridge %s is now created and plugged.", fridgeId));

@@ -15,12 +15,7 @@ class BaseFridgeDoorObserverSensorTest {
     private BaseFridgeDoorObserverSensor sensor;
 
     @Test
-    public void testCreate() {
-        new BaseFridgeDoorObserverSensor();
-    }
-
-    @Test
-    void testSenseInvalidDoor() {
+    void testSenseWhenInvalidDoorThenException() {
         FridgeDoor door = null;
         sensor = new BaseFridgeDoorObserverSensor();
 
@@ -29,7 +24,7 @@ class BaseFridgeDoorObserverSensorTest {
     }
 
     @Test
-    void testSenseWhenAlreadySensingSameDoor() {
+    void testSenseWhenAlreadySensingSameDoorThenException() {
         FridgeDoor door = new BaseFridgeDoor();
         sensor = new BaseFridgeDoorObserverSensor();
 
@@ -40,7 +35,7 @@ class BaseFridgeDoorObserverSensorTest {
     }
 
     @Test
-    void testSenseWhenAlreadySensingDoor() {
+    void testSenseWhenAlreadySensingDoorThenException() {
         FridgeDoor sensedDoor = new BaseFridgeDoor();
         FridgeDoor notSensedDoor = new BaseFridgeDoor();
         sensor = new BaseFridgeDoorObserverSensor();
@@ -52,7 +47,7 @@ class BaseFridgeDoorObserverSensorTest {
     }
 
     @Test
-    void testSenseThenEnableAndDisable() {
+    void testSenseWhenEnableAndDisable() {
         FridgeDoor door = new BaseFridgeDoor();
         sensor = spy(new BaseFridgeDoorObserverSensor(1L, TimeUnit.MILLISECONDS));
         sensor.sense(door);
@@ -69,7 +64,7 @@ class BaseFridgeDoorObserverSensorTest {
     }
 
     @Test
-    void testEnableWhenSensorNotSensingDoor() {
+    void testEnableWhenSensorNotSensingDoorThenException() {
         sensor = new BaseFridgeDoorObserverSensor();
 
         assertThatThrownBy(() -> sensor.enable()).isInstanceOf(IllegalStateException.class)
@@ -77,7 +72,7 @@ class BaseFridgeDoorObserverSensorTest {
     }
 
     @Test
-    void testEnableWhenAlreadyEnabled() {
+    void testEnableWhenAlreadyEnabledThenException() {
         FridgeDoor door = new BaseFridgeDoor();
         sensor = spy(new BaseFridgeDoorObserverSensor());
 
@@ -93,7 +88,7 @@ class BaseFridgeDoorObserverSensorTest {
     }
 
     @Test
-    void testDisableWhenSensorNotPreviouslyEnabled() {
+    void testDisableWhenSensorNotPreviouslyEnabledThenException() {
         sensor = new BaseFridgeDoorObserverSensor();
 
         assertThatThrownBy(() -> sensor.disable()).isInstanceOf(IllegalStateException.class)
@@ -101,7 +96,7 @@ class BaseFridgeDoorObserverSensorTest {
     }
 
     @Test
-    void testDisableWhenPreviouslyDisabled() {
+    void testDisableWhenPreviouslyDisabledThenException() {
         FridgeDoor door = new BaseFridgeDoor();
         sensor = spy(new BaseFridgeDoorObserverSensor());
 

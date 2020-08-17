@@ -1,5 +1,6 @@
 package ar.net.mgardos.vsfridge.assembly.broker;
 
+import ar.net.mgardos.vsfridge.assembly.broker.state.FridgeState;
 import ar.net.mgardos.vsfridge.assembly.broker.usage.FridgeUsage;
 import ar.net.mgardos.vsfridge.core.ensemble.FridgeAssembler;
 import ar.net.mgardos.vsfridge.core.ensemble.FridgeModel;
@@ -28,9 +29,9 @@ public interface FridgeBroker {
 	 * @param fridgeId the identifier of the fridge to be used.
 	 * @param usage the use of Fridge to be done.
 	 * @param <F> the type of identifier of the Fridge.
-	 * @return the usage updated with the result of the use of the Fridge.
+	 * @return the state of the Fridge after the usage is applied to it.
 	 */
-	<F> FridgeUsage useFridge(F fridgeId, FridgeUsage usage);
+	<F> FridgeState useFridge(F fridgeId, FridgeUsage usage);
 
 	/**
 	 * Make use of a new Fridge, it is created, initialized and then the specified use is applied to it.
@@ -40,4 +41,12 @@ public interface FridgeBroker {
 	 * @return the identifier of the Fridge created and used.
 	 */
 	<F> F makeFridge(FridgeModel model);
+
+	/**
+	 * Dismisses the Fridge so it is not longer available.
+	 *
+	 * @param fridgeId the identifier of the fridge to be dismissed.
+	 * @param <F> the type of identifier of the Fridge.
+	 */
+	<F> void discardFridge(F fridgeId);
 }
