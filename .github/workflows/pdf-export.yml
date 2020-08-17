@@ -17,6 +17,9 @@ jobs:
       - uses: docker://pandoc/latex:2.9.2.1
         with:
           args: --standalone --output=output/readme.tex ${{ env.FILELIST }}
+      - uses: docker://pandoc/latex:2.9.2.1
+        with:
+          args: --standalone --css ${{ env.HOME }}/src/site/resources/export/style.css --output=output/readme.html ${{ env.FILELIST }}
       - uses: actions/upload-artifact@master
         with:
           name: readme
