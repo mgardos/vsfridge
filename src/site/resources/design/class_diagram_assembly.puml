@@ -1,0 +1,118 @@
+@startuml
+
+package assembly #FFCC99 {
+hide FridgeBroker fields
+interface FridgeBroker {
+    registerFridgeAssembler(assembler : FridgeAssembler) : void
+    registerFridgeStore(store : FridgeStore) : void
+    <F> useFridge(fridgeId : F, usage : FridgeUsage) : FridgeState
+    <F> makeFridge(model : FridgeModel) : F
+    <F> discardFridge(fridgeId : F) : void
+}
+
+hide FridgeStore fields
+interface FridgeStore {
+    <F> reclaim(fridgeId : F) : SmartFridge
+    <F> setAside(fridge : SmartFridge) : F
+    <F> disassemble(fridgeId : F) : void
+}
+
+package state #CC99FF {
+hide FridgeState fields
+interface FridgeState {
+    isOpened() : boolean
+    isPlugged() : boolean
+}
+
+hide FridgeStateBuilder fields
+interface FridgeStateBuilder {
+    recordOpen() : FridgeStateBuilder
+    recordClose() : FridgeStateBuilder
+    recordIsPlugged() : FridgeStateBuilder
+    recordUnplugged() : FridgeStateBuilder
+    build() : FridgeState
+}
+}
+
+package usage #FFCCE5 {
+hide FridgeUsage fields
+interface FridgeUsage {
+    applyTo(fridge : SmartFridge) : FridgeState
+}
+}
+
+package base #CCFF99 {
+class BaseFridgeBroker {
+    -fridgeAssembler : FridgeAssembler
+    -fridgeStore : FridgeStore
+    +registerFridgeAssembler(assembler : FridgeAssembler) : void
+    +registerFridgeStore(store : FridgeStore) : void
+    +useFridge(fridgeId : String, usage : FridgeUsage) : FridgeState
+    +makeFridge(model : FridgeModel) : String
+    +discardFridge(fridgeId : String) : void
+}
+
+FridgeBroker <|.. BaseFridgeBroker
+
+class BaseFridgeStore {
+    +reclaim(fridgeId : String) : SmartFridge
+    +setAside(fridge : SmartFridge) : String
+    +disassemble(fridgeId : String) : void
+}
+
+FridgeStore <|.. BaseFridgeStore
+
+package base.state #CC99FF {
+class BaseFridgeState {
+    -isOpened : boolean
+    -isPlugged : boolean
+    +isOpened() : boolean
+    +isPlugged() : boolean
+}
+
+class BaseFridgeStateBuilder {
+    -isOpened : boolean
+    -isPlugged : boolean
+    +recordOpen() : FridgeStateBuilder
+    +recordClose() : FridgeStateBuilder
+    +recordIsPlugged() : FridgeStateBuilder
+    +recordUnplugged() : FridgeStateBuilder
+    +build() : FridgeState
+}
+}
+
+FridgeState <|.. BaseFridgeState
+FridgeStateBuilder <|.. BaseFridgeStateBuilder
+
+package base.usage #FFCCE5 {
+class BaseCheckPluggedFridgeUsage {
+    +applyTo(fridge : SmartFridge) : FridgeState
+}
+
+class BaseCloseDoorFridgeUsage {
+    +applyTo(fridge : SmartFridge) : FridgeState
+}
+
+class BaseOpenDoorFridgeUsage {
+    +applyTo(fridge : SmartFridge) : FridgeState
+}
+
+class BasePlugFridgeUsage {
+    +applyTo(fridge : SmartFridge) : FridgeState
+}
+
+class BaseUnplugFridgeUsage {
+    +applyTo(fridge : SmartFridge) : FridgeState
+}
+}
+
+FridgeUsage <|.. BaseCheckPluggedFridgeUsage
+FridgeUsage <|.. BaseCloseDoorFridgeUsage
+FridgeUsage <|.. BaseOpenDoorFridgeUsage
+FridgeUsage <|.. BasePlugFridgeUsage
+FridgeUsage <|.. BaseUnplugFridgeUsage
+}
+
+}
+
+@enduml

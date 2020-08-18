@@ -1,0 +1,71 @@
+@startuml
+
+package emu #FFCC99 {
+package web #CC99FF {
+
+hide FridgeController fields
+interface FridgeController<FridgeIdType> {
+    isPlugged(fridgeId : FridgeIdType) : boolean
+    plug(model : FridgeModel) : FridgeIdType
+    unplug(fridgeId : FridgeIdType) : void
+    isTurnedOn(fridgeId : FridgeIdType) : boolean
+    turnOn(fridgeId : FridgeIdType) : void
+    turnOff(fridgeId : FridgeIdType) : void
+    put(product : Product) : void
+    take(product : Product) : void
+}
+
+hide FridgeDoorController fields
+interface FridgeDoorController<FridgeIdType, DoorIdType> {
+    open(fridgeId : FridgeIdType, doorId : DoorIdType) : void
+    close(fridgeId : FridgeIdType, doorId : DoorIdType) : void
+}
+
+hide TouchPanelController fields
+interface TouchPanelController {
+    viewAllFood() : List<Food>
+}
+}
+
+package spring #CCFF99 {
+
+class FridgeSpringWebConfig {
+    +fridgeBroker() : FridgeBroker
+    +fridgeAssembler() : FridgeAssembler
+    +fridgeStore() : FridgeStore
+}
+
+class FridgeSpringWebEmulation {
+    +main(args : String[]) : void
+}
+
+class FridgeDoorSpringWebController {
+    +open(fridgeId : String, doorId : String) : void
+    +close(fridgeId : String, doorId : String) : void
+}
+
+class FridgeSpringWebController {
+    -fridgeBroker : FridgeBroker
+    +isPlugged(fridgeId : String) : boolean
+    +plug(model : FridgeModel) : String
+    +unplug(fridgeId : String) : void
+    +isTurnedOn(fridgeId : String) : boolean
+    +turnOn(fridgeId : String) : void
+    +turnOff(fridgeId : String) : void
+    +put(product : Product) : void
+    +take(product : Product) : void
+}
+
+class TouchPanelSpringWebController {
+    +viewAllFood() : List<Food>
+}
+
+FridgeController <|.. FridgeSpringWebController
+FridgeDoorController <|.. FridgeDoorSpringWebController
+TouchPanelController <|.. TouchPanelSpringWebController
+
+
+}
+}
+
+@enduml
