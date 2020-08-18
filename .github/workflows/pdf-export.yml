@@ -20,6 +20,9 @@ jobs:
       - uses: docker://pandoc/latex:2.9.2.1
         with:
           args: --css=src/site/resources/export/style.css --self-contained --output=output/readme.html ${{ env.FILELIST }} "https://github.com/mgardos/vsfridge/wiki/Home.md"
+      - uses: docker://pandoc/latex:2.9.2.1
+        with:
+          args: --standalone -V geometry:top=18mm -V geometry:left=18mm -V geometry:paperwidth=210mm -V geometry:paperheight=297mm -V fontsize=10pt -f markdown-implicit_figures --output=output/readme-html.pdf "output/readme.html"
       - uses: actions/upload-artifact@master
         with:
           name: readme
