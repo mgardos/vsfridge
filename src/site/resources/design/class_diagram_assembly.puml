@@ -17,30 +17,6 @@ interface FridgeStore {
     <F> disassemble(fridgeId : F) : void
 }
 
-package state #CC99FF {
-hide FridgeState fields
-interface FridgeState {
-    isOpened() : boolean
-    isPlugged() : boolean
-}
-
-hide FridgeStateBuilder fields
-interface FridgeStateBuilder {
-    recordOpen() : FridgeStateBuilder
-    recordClose() : FridgeStateBuilder
-    recordIsPlugged() : FridgeStateBuilder
-    recordUnplugged() : FridgeStateBuilder
-    build() : FridgeState
-}
-}
-
-package usage #FFCCE5 {
-hide FridgeUsage fields
-interface FridgeUsage {
-    applyTo(fridge : SmartFridge) : FridgeState
-}
-}
-
 package base #CCFF99 {
 class BaseFridgeBroker {
     -fridgeAssembler : FridgeAssembler
@@ -61,28 +37,6 @@ class BaseFridgeStore {
 }
 
 FridgeStore <|.. BaseFridgeStore
-
-package base.state #CC99FF {
-class BaseFridgeState {
-    -isOpened : boolean
-    -isPlugged : boolean
-    +isOpened() : boolean
-    +isPlugged() : boolean
-}
-
-class BaseFridgeStateBuilder {
-    -isOpened : boolean
-    -isPlugged : boolean
-    +recordOpen() : FridgeStateBuilder
-    +recordClose() : FridgeStateBuilder
-    +recordIsPlugged() : FridgeStateBuilder
-    +recordUnplugged() : FridgeStateBuilder
-    +build() : FridgeState
-}
-}
-
-FridgeState <|.. BaseFridgeState
-FridgeStateBuilder <|.. BaseFridgeStateBuilder
 
 package base.usage #FFCCE5 {
 class BaseCheckPluggedFridgeUsage {
@@ -106,13 +60,61 @@ class BaseUnplugFridgeUsage {
 }
 }
 
-FridgeUsage <|.. BaseCheckPluggedFridgeUsage
-FridgeUsage <|.. BaseCloseDoorFridgeUsage
-FridgeUsage <|.. BaseOpenDoorFridgeUsage
-FridgeUsage <|.. BasePlugFridgeUsage
-FridgeUsage <|.. BaseUnplugFridgeUsage
+package base.state #CC99FF {
+class BaseFridgeState {
+    -isOpened : boolean
+    -isPlugged : boolean
+    +isOpened() : boolean
+    +isPlugged() : boolean
 }
 
+class BaseFridgeStateBuilder {
+    -isOpened : boolean
+    -isPlugged : boolean
+    +recordOpen() : FridgeStateBuilder
+    +recordClose() : FridgeStateBuilder
+    +recordIsPlugged() : FridgeStateBuilder
+    +recordUnplugged() : FridgeStateBuilder
+    +build() : FridgeState
+}
+}
+}
+
+package usage #FFCCE5 {
+
+BaseCheckPluggedFridgeUsage ...|> FridgeUsage
+BaseCloseDoorFridgeUsage ...|> FridgeUsage
+BaseOpenDoorFridgeUsage ...|> FridgeUsage
+BasePlugFridgeUsage ...|> FridgeUsage
+BaseUnplugFridgeUsage ...|> FridgeUsage
+
+hide FridgeUsage fields
+interface FridgeUsage {
+    applyTo(fridge : SmartFridge) : FridgeState
+}
+}
+
+package state #CC99FF {
+hide FridgeState fields
+interface FridgeState {
+    isOpened() : boolean
+    isPlugged() : boolean
+}
+
+hide FridgeStateBuilder fields
+interface FridgeStateBuilder {
+    recordOpen() : FridgeStateBuilder
+    recordClose() : FridgeStateBuilder
+    recordIsPlugged() : FridgeStateBuilder
+    recordUnplugged() : FridgeStateBuilder
+    build() : FridgeState
+}
+
+FridgeState <|.. BaseFridgeState
+FridgeStateBuilder <|.. BaseFridgeStateBuilder
+}
+
+base.state -[hidden]- base.usage
 }
 
 @enduml
