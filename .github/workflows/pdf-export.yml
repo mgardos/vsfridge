@@ -19,16 +19,19 @@ jobs:
           args: --standalone --output=output/readme.tex ${{ env.FILELIST }}
       - uses: docker://pandoc/latex:2.9.2.1
         with:
-          args: --css=src/site/resources/export/style.css --self-contained --output=output/front.html "https://github.com/mgardos/vsfridge/wiki/vsfridge-export-front.md"
+          args: --css=src/site/resources/export/style.css --self-contained --output=output/01_front.html "https://github.com/mgardos/vsfridge/wiki/vsfridge-export-front.md"
       - uses: docker://pandoc/latex:2.9.2.1
         with:
-          args: --standalone -V geometry:top=18mm -V geometry:left=18mm -V geometry:paperwidth=210mm -V geometry:paperheight=297mm -V fontsize=10pt --output=output/front.pdf "output/front.html"
+          args: --css=src/site/resources/export/style.css --self-contained --output=output/02_readme.html ${{ env.FILELIST }}
       - uses: docker://pandoc/latex:2.9.2.1
         with:
-          args: --standalone -V geometry:top=18mm -V geometry:left=18mm -V geometry:paperwidth=210mm -V geometry:paperheight=297mm -V fontsize=10pt --output=output/readme.pdf ${{ env.FILELIST }}
+          args: --standalone -V geometry:top=18mm -V geometry:left=18mm -V geometry:paperwidth=210mm -V geometry:paperheight=297mm -V fontsize=10pt --output=output/01_front.pdf "output/01_front.html"
       - uses: docker://pandoc/latex:2.9.2.1
         with:
-          args: --standalone -V geometry:top=18mm -V geometry:left=18mm -V geometry:paperwidth=210mm -V geometry:paperheight=297mm -V fontsize=10pt --output=output/readme-merge.pdf "output/front.pdf" "output/readme.pdf"
+          args: --standalone -V geometry:top=18mm -V geometry:left=18mm -V geometry:paperwidth=210mm -V geometry:paperheight=297mm -V fontsize=10pt --output=output/02_readme.pdf "output/02_readme.html"
+      - uses: docker://pandoc/latex:2.9.2.1
+        with:
+          args: --standalone -V geometry:top=18mm -V geometry:left=18mm -V geometry:paperwidth=210mm -V geometry:paperheight=297mm -V fontsize=10pt --output=output/report.pdf "output/01_front.html" "output/02_readme.html"
       - uses: actions/upload-artifact@master
         with:
           name: readme
