@@ -18,7 +18,31 @@ jobs:
           args: --standalone --pdf-engine=xelatex -V geometry:top=18mm -V geometry:left=18mm -V geometry:paperwidth=210mm -V geometry:paperheight=297mm -V fontsize=10pt -f markdown-implicit_figures --output=output/readme.pdf ${{ env.FILELIST }} ${{ env.WIKILIST }}
       - uses: docker://pandoc/latex:2.9.2.1
         with:
-          args: --standalone --output=output/readme.tex ${{ env.FILELIST }}
+          args: --standalone --pdf-engine=xelatex --output=output/02_vsfridge-detailed-design-architecture.tex "vsfridge.wiki/02_vsfridge-detailed-design-architecture.md"
+      - uses: docker://pandoc/latex:2.9.2.1
+        with:
+          args: --standalone --pdf-engine=xelatex --output=output/03_vsfridge-detailed-design-architecture-core.tex "vsfridge.wiki/03_vsfridge-detailed-design-architecture-core.md"
+      - uses: docker://pandoc/latex:2.9.2.1
+        with:
+          args: --standalone --pdf-engine=xelatex --output=output/05_vsfridge-detailed-design-architecture-emu.tex "vsfridge.wiki/05_vsfridge-detailed-design-architecture-emu.md"
+      - uses: docker://pandoc/latex:2.9.2.1
+        with:
+          args: --standalone --pdf-engine=xelatex --output=output/06_vsfridge-detailed-design-architecture-assembly.tex "vsfridge.wiki/06_vsfridge-detailed-design-architecture-assembly.md"
+      - uses: docker://pandoc/latex:2.9.2.1
+        with:
+          args: --standalone --pdf-engine=xelatex --output=output/09_vsfridge-implementation-model-food-identification.tex "vsfridge.wiki/09_vsfridge-implementation-model-food-identification.md"
+      - uses: docker://pandoc/latex:2.9.2.1
+        with:
+          args: --standalone --pdf-engine=xelatex --output=output/vsfridge-test-cases.tex "vsfridge.wiki/vsfridge-test-cases.md"
+      - uses: docker://pandoc/latex:2.9.2.1
+        with:
+          args: --standalone --pdf-engine=xelatex --output=output/vsfridge-test-cases-data.tex "vsfridge.wiki/vsfridge-test-cases-data.md"
+      - uses: docker://pandoc/latex:2.9.2.1
+        with:
+          args: --standalone --pdf-engine=xelatex --output=output/vsfridge-test-cases-definition-add-one-food.tex "vsfridge.wiki/vsfridge-test-cases-definition-add-one-food.md"
+      - uses: docker://pandoc/latex:2.9.2.1
+        with:
+          args: --standalone --pdf-engine=xelatex --template=src/site/resources/export/report.tex -f markdown-implicit_figures --output=output/report.pdf
       - uses: docker://pandoc/latex:2.9.2.1
         with:
           args: --css=src/site/resources/export/style.css --self-contained --output=output/readme.html ${{ env.FILELIST }}
