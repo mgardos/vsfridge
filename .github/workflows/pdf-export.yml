@@ -19,10 +19,16 @@ jobs:
           args: --standalone --output=output/readme.tex ${{ env.FILELIST }}
       - uses: docker://pandoc/latex:2.9.2.1
         with:
-          args: --css=src/site/resources/export/style.css --self-contained --output=output/readme.html "https://github.com/mgardos/vsfridge/wiki/vsfridge-export-front.md" ${{ env.FILELIST }} "https://github.com/mgardos/vsfridge/wiki/Home.md"
+          args: --css=src/site/resources/export/style.css --self-contained --output=output/front.html "https://github.com/mgardos/vsfridge/wiki/vsfridge-export-front.md"
       - uses: docker://pandoc/latex:2.9.2.1
         with:
-          args: --standalone -V geometry:top=18mm -V geometry:left=18mm -V geometry:paperwidth=210mm -V geometry:paperheight=297mm -V fontsize=10pt --output=output/readme-html.pdf "output/readme.html"
+          args: --standalone -V geometry:top=18mm -V geometry:left=18mm -V geometry:paperwidth=210mm -V geometry:paperheight=297mm -V fontsize=10pt --output=output/front.pdf "output/front.html"
+      - uses: docker://pandoc/latex:2.9.2.1
+        with:
+          args: --standalone -V geometry:top=18mm -V geometry:left=18mm -V geometry:paperwidth=210mm -V geometry:paperheight=297mm -V fontsize=10pt --output=output/readme.pdf ${{ env.FILELIST }}
+      - uses: docker://pandoc/latex:2.9.2.1
+        with:
+          args: --standalone -V geometry:top=18mm -V geometry:left=18mm -V geometry:paperwidth=210mm -V geometry:paperheight=297mm -V fontsize=10pt --output=output/readme-merge.pdf "output/front.pdf" "output/readme.pdf"
       - uses: actions/upload-artifact@master
         with:
           name: readme
