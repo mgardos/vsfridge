@@ -1,6 +1,4 @@
-# Heladera Inteligente Virtual
-
-## Contenidos
+# Contenidos
 + [Descripcion de la propuesta](#descripcion-de-la-propuesta)
 + [Diagrama esquematico](#diagrama-esquematico)
 + [Caracteristicas de heladeras inteligentes](#caracteristicas-de-heladeras-inteligentes)
@@ -623,7 +621,7 @@ Las pantallas de la aplicacion seran incluidas en una entrega futura.
 
 ### Flujos normal y alternativo para Encender 
 
-![diagrama de secuencia del caso de uso Encender](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/mgardos/vsfridge/master/src/site/resources/uc_ed_normal_and_alt1_flows.puml)
+![diagrama de secuencia del flujo noraml y alternativo 1 del caso de uso Encender](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/mgardos/vsfridge/master/src/site/resources/uc_ed_normal_and_alt1_flows.puml)
 
 ### Flujo normal para Abrir
 
@@ -631,29 +629,29 @@ Las pantallas de la aplicacion seran incluidas en una entrega futura.
 
 ### Flujos alternativos para Abrir
 
-![diagrama de secuencia de flujo alternativo 1 del caso de uso Abrir](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/mgardos/vsfridge/master/src/site/resources/uc_ar_alt1_flow.puml)
+![diagrama de secuencia del flujo alternativo 1 del caso de uso Abrir](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/mgardos/vsfridge/master/src/site/resources/uc_ar_alt1_flow.puml)
 
-![diagrama de secuencia de flujo alternativo 2 del caso de uso Abrir](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/mgardos/vsfridge/master/src/site/resources/uc_ar_alt2_flow.puml)
+![diagrama de secuencia del flujo alternativo 2 del caso de uso Abrir](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/mgardos/vsfridge/master/src/site/resources/uc_ar_alt2_flow.puml)
 
 ### Flujos normal y alternativo para Poner producto
 
-![system overview](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/mgardos/vsfridge/master/src/site/resources/uc_pp_normal_and_alt1_flows.puml)
+![diagrama de secuencia del flujo normal y alternativo 1 del caso de uso Poner producto](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/mgardos/vsfridge/master/src/site/resources/uc_pp_normal_and_alt1_flows.puml)
 
 ### Flujos normal y alternativo para Tomar producto
 
-![system overview](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/mgardos/vsfridge/master/src/site/resources/uc_tp_normal_and_alt1_flows.puml)
+![diagrama de secuencia del flujo normal y alternativo 1 del caso de uso Tomar producto](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/mgardos/vsfridge/master/src/site/resources/uc_tp_normal_and_alt1_flows.puml)
 
 ### Flujo normal para Identificar Producto
 
 ### Flujo normal para Cerrar
 
-![system overview](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/mgardos/vsfridge/master/src/site/resources/uc_cr_normal_flow.puml)
+![diagrama de secuencia del flujo normal del caso de uso Cerrar](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/mgardos/vsfridge/master/src/site/resources/uc_cr_normal_flow.puml)
 
 ### Flujos alternativos para Cerrar
 
-![system overview](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/mgardos/vsfridge/master/src/site/resources/uc_cr_alt1_flow.puml)
+![diagrama de secuencia del flujo alternativo 1 del caso de uso Cerrar](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/mgardos/vsfridge/master/src/site/resources/uc_cr_alt1_flow.puml)
 
-![system overview](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/mgardos/vsfridge/master/src/site/resources/uc_cr_alt2_flow.puml)
+![diagrama de secuencia del flujo alternativo 2 del caso de uso Cerrar](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/mgardos/vsfridge/master/src/site/resources/uc_cr_alt2_flow.puml)
 
 ## Diagramas de actividad
 
@@ -670,10 +668,10 @@ Los diagrama de actividad seran incorporados en una entrega futura.
 ## Pendientes
 
 + [x] Describir las partes involucradas en el diagrama esquematico
-+ [ ] Incluir datos sensoriales del producto
++ [x] Incluir datos sensoriales del producto (ver wiki)
 + [x] Agregar detalle sobre capacidades, explicando cada característica y en particular las que incorpora la heladera virtual
-+ [ ] Incluir diagrama de componentes
-+ [ ] Cada diagrama de modelado requiere una explicación, detallar clases y métodos
++ [x] Incluir diagrama de componentes (ver wiki)
++ [x] Cada diagrama de modelado requiere una explicación, detallar clases y métodos (ver wiki)
 + [ ] Incluir detalles de implementación del prototipo, infraestructura, caso de pruebas, pantallas de usuario
 + [ ] Resultados obtenidos para cada caso de prueba
 
