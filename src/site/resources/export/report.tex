@@ -1,0 +1,54 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                           Document style
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[12pt]{article}
+
+% Importing report style and the first pages 
+\input{report.sty}
+
+% sections without numbers, but still in table of contents
+%\setcounter{secnumdepth}{0} % remove "%" to include
+
+
+%=================================================================
+%                           Start Document
+%=================================================================
+\begin{document}
+
+% adding the first two pages 
+\FirstPage
+\SecondPage
+\pagebreak
+
+% creating table of contents 
+\setlength{\parskip}{0em}
+\lhead{Innhold} % section header
+\renewcommand{\baselinestretch}{0.95}\normalsize
+\tableofcontents
+\renewcommand{\baselinestretch}{1.0}\normalsize
+\setlength{\parskip}{1em}
+\newpage
+
+% adding the different sections
+\subfile{02_vsfridge-detailed-design-architecture.tex}
+\newpage
+\subfile{03_vsfridge-detailed-design-architecture-core.tex}
+\newpage
+\subfile{03_vsfridge-detailed-design-architecture-core.tex}
+\newpage
+\subfile{05_vsfridge-detailed-design-architecture-emu.tex}
+\newpage
+\subfile{06_vsfridge-detailed-design-architecture-assembly.tex}
+\newpage
+\subfile{09_vsfridge-implementation-model-food-identification.tex}
+\newpage
+\subfile{vsfridge-test-cases.tex}
+\newpage
+\subfile{vsfridge-test-cases-data.tex}
+\newpage
+\subfile{vsfridge-test-cases-definition-add-one-food.tex}
+
+%=================================================================
+%                           End Document
+%=================================================================
+\end{document}
