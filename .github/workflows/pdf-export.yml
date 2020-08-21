@@ -42,7 +42,7 @@ jobs:
           args: --standalone --pdf-engine=xelatex --output=output/vsfridge-test-cases-definition-add-one-food.tex "vsfridge.wiki/vsfridge-test-cases-definition-add-one-food.md"
       - uses: docker://pandoc/latex:2.9.2.1
         with:
-          args: --standalone --pdf-engine=xelatex --template=src/site/resources/export/report.tex -f markdown-implicit_figures --output=output/report.pdf
+          args: --standalone --pdf-engine=pdflatex --template=src/site/resources/export/report.tex -f markdown-implicit_figures --output=output/report.pdf
       - uses: docker://pandoc/latex:2.9.2.1
         with:
           args: --css=src/site/resources/export/style.css --self-contained --output=output/readme.html ${{ env.FILELIST }}
