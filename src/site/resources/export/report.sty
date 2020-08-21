@@ -40,7 +40,7 @@
 
 % creating base header 
 \pagestyle{fancy}
-\rhead{\includegraphics[width=3.2cm]{images/ntnu_logo.png}}
+\rhead{\includegraphics[width=1.5cm]{images/logo-fiuba-large.png}}
 
 %define colors for links
 \definecolor{ceruleanblue}{rgb}{0.16, 0.32, 0.75}
@@ -156,7 +156,6 @@
   {ö}{{\"o}}1
 }
 
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %                   Command for the first page 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -175,63 +174,6 @@
                 \put(260,100){\fontsize{28}{28}\selectfont{\large{\textbf{Primer cuatrimestre 2020}}}}
                 }]{images/fiuba-background.pdf}}
 
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%                   Command for the second page
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\newcommand*\SecondPage{
-\thispagestyle{fancy}
-
-% creating base header 
-\rhead{\includegraphics[width=2.0cm]{images/logo-fiuba-large.png}}
-
-% section header
-\lhead{Prosjektoppgave Vår 2020}
-
-% recreating the table from the given Word-report-template
-\begin{table}[ht]
-\setlength\extrarowheight{5pt}
-    
-    % first row
-    \begin{tabularx}{\textwidth}{|X|}
-        \hline
-        \textbf{KANDIDATER (etternavn, fornavn):} \newpara
-        Navn
-    \end{tabularx}
-    
-    % second row
-    \begin{tabularx}{\textwidth}{|p{1,4cm}|p{2,4cm}|p{4,4cm}|p{4,2cm}|p{2,25cm}|}
-    \hline
-    \textbf{DATO:} & \textbf{FAGKODE:} & \textbf{GRUPPE (navn/nr):} & \multicolumn{1}{c|}{\textbf{SIDER/BILAG:}} & \textbf{BIBL. NR:}\\
-    30.04.20 & TST101 & \multicolumn{1}{c|}{Team Pro / Gruppe 16} & \multicolumn{1}{c|}{\pageref{LastPage} / 8} & N/A \\ 
-    \hline
-    \end{tabularx}
-    
-    % third row
-    \begin{tabularx}{\textwidth}{|X|}
-        \textbf{FAGLÆRER(E):} \\
-        Navn \\
-        \hline
-    \end{tabularx}
-    
-    % forth row
-    \begin{tabularx}{\textwidth}{|X|}
-        \textbf{TITTEL:} \\
-        Tittel \\
-        \hline
-    \end{tabularx}
-    
-    %fifth row
-    \begin{tabularx}{\textwidth}{|X|}
-        \addSammendrag \\ % new command to at the text file from sections (more orginised to write this way)
-        \hline
-    \end{tabularx}
-\end{table}}
-
-
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %                       New Commands
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -249,10 +191,6 @@
 \newgeometry{margin=0cm}
 \includepdf[pages=-,angle=90]{#1}
 \end{landscape}} 
-
-%add conclusion (used in second-page table) --> \addSammendrag
-\newcommand*\addSammendrag{
-\subfile{sections/00_sammendrag.tex}}
 
 %add sections with 4 numbers --> \paragraph
 \usepackage{titlesec}
