@@ -13,7 +13,7 @@ jobs:
           echo "::set-env name=ROOT_MD_LIST::$(printf '"%s" ' *.md)"
           git clone https://github.com/mgardos/vsfridge.wiki.git
           echo "::set-env name=WIKI_MD_LIST::$(printf '"%s" ' vsfridge.wiki/*.md)"
-      - name: set up python ${{ matrix.python-version }}
+      - name: Set up python 3.x
         uses: actions/setup-python@v2
         with:
           python-version: '3.x'
@@ -47,13 +47,13 @@ jobs:
       - uses: docker://pandoc/latex:2.9.2.1
         with:
           args: --standalone --pdf-engine=xelatex --output=output/vsfridge-test-cases-definition-add-several-food.tex "vsfridge.wiki/vsfridge-test-cases-definition-add-several-food.md"
-      - uses: docker://pandoc/latex:2.9.2.1
-        with:
-          args: --pdf-engine=pdflatex --template=src/site/resources/export/report.tex --output=output/report.pdf
+      #- uses: docker://pandoc/latex:2.9.2.1
+      #  with:
+      #    args: --pdf-engine=pdflatex --template=src/site/resources/export/report.tex --output=output/report.pdf
       #- uses: docker://pandoc/latex:2.9.2.1
       #  with:
       #    args: --css=src/site/resources/export/style.css --self-contained --output=output/readme.html ${{ env.ROOT_MD_LIST }}
-      - name: process generated tex 
+      - name: Process generated tex 
         run: python tex_processor.py output/02_vsfridge-detailed-design-architecture.tex output/03_vsfridge-detailed-design-architecture-core.tex
       - uses: actions/upload-artifact@master
         with:
