@@ -5,9 +5,6 @@ on: push
 jobs:
   export_docs:
     runs-on: ubuntu-18.04
-    strategy:
-      matrix:
-        python-version: [2.7, 3.5, 3.6, 3.7, 3.8]
     steps:
       - uses: actions/checkout@v2
       - run: |
@@ -19,7 +16,7 @@ jobs:
       - name: set up python ${{ matrix.python-version }}
         uses: actions/setup-python@v2
         with:
-          python-version: ${{ matrix.python-version }}
+          python-version: '3.x'
       - uses: docker://pandoc/latex:2.9.2.1
         with:
           args: --standalone --pdf-engine=xelatex -V geometry:top=18mm -V geometry:left=18mm -V geometry:paperwidth=210mm -V geometry:paperheight=297mm -V fontsize=10pt -f markdown-implicit_figures --output=output/readme.pdf ${{ env.ROOT_MD_LIST }}
