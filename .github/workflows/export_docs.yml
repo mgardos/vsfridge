@@ -1,21 +1,28 @@
-name: Export readme to pdf and latex
+name: Export repository and wiki documentation to latex and pdf
 
 on: push
 
 jobs:
-  convert_via_pandoc:
+  export_docs:
     runs-on: ubuntu-18.04
+    strategy:
+      matrix:
+        python-version: [2.7, 3.5, 3.6, 3.7, 3.8]
     steps:
       - uses: actions/checkout@v2
       - run: |
           mkdir output  # create output dir
-          # this will include README.md
-          echo "::set-env name=FILELIST::$(printf '"%s" ' *.md)"
+          # this will include README.md and any other .md file within the repository root
+          echo "::set-env name=ROOT_MD_LIST::$(printf '"%s" ' *.md)"
           git clone https://github.com/mgardos/vsfridge.wiki.git
-          echo "::set-env name=WIKILIST::$(printf '"%s" ' vsfridge.wiki/*.md)"
+          echo "::set-env name=WIKI_MD_LIST::$(printf '"%s" ' vsfridge.wiki/*.md)"
+      - name: set up python ${{ matrix.python-version }}
+        uses: actions/setup-python@v2
+        with:
+          python-version: ${{ matrix.python-version }}
       - uses: docker://pandoc/latex:2.9.2.1
         with:
-          args: --standalone --pdf-engine=xelatex -V geometry:top=18mm -V geometry:left=18mm -V geometry:paperwidth=210mm -V geometry:paperheight=297mm -V fontsize=10pt -f markdown-implicit_figures --output=output/readme.pdf ${{ env.FILELIST }} ${{ env.WIKILIST }}
+          args: --standalone --pdf-engine=xelatex -V geometry:top=18mm -V geometry:left=18mm -V geometry:paperwidth=210mm -V geometry:paperheight=297mm -V fontsize=10pt -f markdown-implicit_figures --output=output/readme.pdf ${{ env.ROOT_MD_LIST }}
       - uses: docker://pandoc/latex:2.9.2.1
         with:
           args: --standalone --pdf-engine=xelatex --output=output/02_vsfridge-detailed-design-architecture.tex "vsfridge.wiki/02_vsfridge-detailed-design-architecture.md"
@@ -42,11 +49,16 @@ jobs:
           args: --standalone --pdf-engine=xelatex --output=output/vsfridge-test-cases-definition-add-one-food.tex "vsfridge.wiki/vsfridge-test-cases-definition-add-one-food.md"
       - uses: docker://pandoc/latex:2.9.2.1
         with:
-          args: --pdf-engine=pdflatex --template=src/site/resources/export/report.tex --output=output/report.pdf
+          args: --standalone --pdf-engine=xelatex --output=output/vsfridge-test-cases-definition-add-several-food.tex "vsfridge.wiki/vsfridge-test-cases-definition-add-several-food.md"
       - uses: docker://pandoc/latex:2.9.2.1
         with:
-          args: --css=src/site/resources/export/style.css --self-contained --output=output/readme.html ${{ env.FILELIST }}
+          args: --pdf-engine=pdflatex --template=src/site/resources/export/report.tex --output=output/report.pdf
+      #- uses: docker://pandoc/latex:2.9.2.1
+      #  with:
+      #    args: --css=src/site/resources/export/style.css --self-contained --output=output/readme.html ${{ env.ROOT_MD_LIST }}
+      - name: process generated tex 
+        run: python tex_processor.py output/02_vsfridge-detailed-design-architecture.tex output/03_vsfridge-detailed-design-architecture-core.tex
       - uses: actions/upload-artifact@master
         with:
-          name: readme
+          name: export-docs
           path: output
