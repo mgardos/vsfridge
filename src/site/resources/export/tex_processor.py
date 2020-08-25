@@ -56,7 +56,7 @@ def main(argv):
             output_content += line
             
       if len(output_content) > 0:
-         tex_file = open(outputfile, "wb")
+         tex_file = open(outputfile, "w")
          tex_file.write(output_content)
          tex_file.close()
    except Exception as e:
