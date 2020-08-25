@@ -56,7 +56,12 @@ jobs:
       #  with:
       #    args: --css=src/site/resources/export/style.css --self-contained --output=output/readme.html ${{ env.ROOT_MD_LIST }}
       - name: Process generated tex 
-        run: python src/site/resources/export/tex_processor.py -i output/02_vsfridge-detailed-design-architecture.tex -o output/02_vsfridge-detailed-design-architecture_custom.tex
+        run: |
+          python src/site/resources/export/tex_processor.py -i output/02_vsfridge-detailed-design-architecture.tex -o output/02_vsfridge-detailed-design-architecture_custom.tex
+          python src/site/resources/export/tex_processor.py -i output/03_vsfridge-detailed-design-architecture-core.tex -o output/03_vsfridge-detailed-design-architecture-core_custom.tex
+          python src/site/resources/export/tex_processor.py -i output/05_vsfridge-detailed-design-architecture-emu.tex -o output/05_vsfridge-detailed-design-architecture-emu_custom.tex
+          python src/site/resources/export/tex_processor.py -i output/06_vsfridge-detailed-design-architecture-assembly.tex -o output/06_vsfridge-detailed-design-architecture-assembly_custom.tex
+          python src/site/resources/export/tex_processor.py -i output/09_vsfridge-implementation-model-food-identification.tex -o output/09_vsfridge-implementation-model-food-identification_custom.tex
       - uses: actions/upload-artifact@master
         with:
           name: export-docs
