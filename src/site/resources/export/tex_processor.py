@@ -18,11 +18,11 @@ def main(argv):
          inputfile = arg
       elif opt in ("-o", "--output"):
          outputfile = arg
-   print('Input file is {0}'.format(inputfile))
-   print('Output file is {0}'.format(outputfile))
+   print('Input file is {}'.format(inputfile))
+   print('Output file is {}'.format(outputfile))
    
    try:
-      f = open("demofile.txt", "r")
+      f = open(inputfile, "r")
       for line in f:
          if "\includegraphics" in line and ".puml" in line:
             start_tex = line.index("\includegraphics")
