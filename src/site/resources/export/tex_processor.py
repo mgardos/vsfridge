@@ -36,7 +36,7 @@ def main(argv):
             print("start: {} | end: {}".format(start_fileext, end_fileext))
             
             url = line[end_tex+1:end_fileext]
-            print("url: ".format(url))
+            print("url: {}".format(url))
    except Exception as e:
       print("Unable to process tex: {}".format(e))
    finally:
