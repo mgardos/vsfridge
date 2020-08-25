@@ -54,7 +54,7 @@ jobs:
       #  with:
       #    args: --css=src/site/resources/export/style.css --self-contained --output=output/readme.html ${{ env.ROOT_MD_LIST }}
       - name: Process generated tex 
-        run: python src/site/resources/export/tex_processor.py output/02_vsfridge-detailed-design-architecture.tex output/03_vsfridge-detailed-design-architecture-core.tex
+        run: python src/site/resources/export/tex_processor.py -i output/02_vsfridge-detailed-design-architecture.tex -o output/02_vsfridge-detailed-design-architecture_custom.tex
       - uses: actions/upload-artifact@master
         with:
           name: export-docs
