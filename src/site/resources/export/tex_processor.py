@@ -33,7 +33,7 @@ def main(argv):
             start_fileext = line.index(".puml", end_tex)
             length = len(".puml")
             end_fileext = start_fileext+length
-            print("start: {} | end: {}".format(start2, end2))
+            print("start: {} | end: {}".format(start_fileext, end_fileext))
             
             url = line[end_tex+1:end_fileext]
             print("url: ".format(url))
