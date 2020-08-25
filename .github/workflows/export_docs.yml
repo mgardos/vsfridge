@@ -17,6 +17,8 @@ jobs:
         uses: actions/setup-python@v2
         with:
           python-version: '3.x'
+      - name: Install python dependencies
+        run: python -m pip install --upgrade pip requests
       - uses: docker://pandoc/latex:2.9.2.1
         with:
           args: --standalone --pdf-engine=xelatex -V geometry:top=18mm -V geometry:left=18mm -V geometry:paperwidth=210mm -V geometry:paperheight=297mm -V fontsize=10pt -f markdown-implicit_figures --output=output/readme.pdf ${{ env.ROOT_MD_LIST }}
