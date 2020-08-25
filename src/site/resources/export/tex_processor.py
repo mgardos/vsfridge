@@ -40,8 +40,14 @@ def main(argv):
             diagram_url = line[end_tex+1:end_fileext]
             print("diagram url: {}".format(diagram_url))
             
+            diagram_path = ""
+            diagram_path_end = outputfile.rfind("/")
+            if outputfile.find("/") > 0:
+               diagram_path = outputfile[0:diagram_path_end+1]
+               print("diagram path: {}".format(diagram_path))
+            
             start_filename = diagram_url.rindex("/")
-            diagram_filename = diagram_url[start_filename+1:start_fileext]+".png"
+            diagram_filename = diagram_path+diagram_url[start_filename+1:start_fileext]+".png"
             print("diagram filename: {}".format(diagram_filename))
 
             diagram = requests.get(diagram_url, allow_redirects=True)
