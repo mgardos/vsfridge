@@ -49,9 +49,9 @@ jobs:
       - uses: docker://pandoc/latex:2.9.2.1
         with:
           args: --standalone --pdf-engine=xelatex --output=output/vsfridge-test-cases-definition-add-several-food.tex "vsfridge.wiki/vsfridge-test-cases-definition-add-several-food.md"
-      #- uses: docker://pandoc/latex:2.9.2.1
-      #  with:
-      #    args: --pdf-engine=pdflatex --template=src/site/resources/export/report.tex --output=output/report.pdf
+      - uses: docker://pandoc/latex:2.9.2.1
+        with:
+          args: --pdf-engine=pdflatex --template=src/site/resources/export/report.tex --output=output/report.pdf
       #- uses: docker://pandoc/latex:2.9.2.1
       #  with:
       #    args: --css=src/site/resources/export/style.css --self-contained --output=output/readme.html ${{ env.ROOT_MD_LIST }}
